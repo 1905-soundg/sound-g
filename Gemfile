@@ -68,3 +68,4 @@ gem "refile-mini_magick"
 gem "cocoon"
 gem 'kaminari','~> 1.1.1'
 gem 'ransack'
+gem 'pry-rails'

@@ -22,10 +22,10 @@
             <% if user_signed_in? %>
               <p>ようこそ　ユーザー名　 様</p>
               <li class="">
-                <%= link_to 'cart' %>
+                <%= link_to 'cart', class: "glyphicon glyphicon-shopping-cart" %>
               </li>
               <li class="">
-                <%= link_to 'mypage', users_path, class: "glyphicon glyphicon-book books" %>
+                <%= link_to 'mypage', users_path, class: "glyphicon glyphicon-user" %>
               </li>
                <li class="">
                 <%= link_to 'logout', destroy_user_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %>

@@ -1,0 +1,20 @@
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>name</th>
+				<th>tell</th>
+				<th>mail</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= user.name %></td>
+				<td>電話</td>
+				<td>メール</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</body>

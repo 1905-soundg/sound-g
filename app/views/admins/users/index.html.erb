@@ -10,9 +10,9 @@
 		<tbody>
 			<% @users.each do |user| %>
 			<tr>
-				<td><%= user.name %></td>
-				<td>電話</td>
-				<td>メール</td>
+				<td><%= user.last_name + user.first_name %></td>
+				<td><%= user.telephone_number %></td>
+				<td><%= user.email %></td>
 			</tr>
 			<% end %>
 		</tbody>

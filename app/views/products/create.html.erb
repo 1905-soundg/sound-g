@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>商品登録</title>
+</head>
+<body>
+  <header>
+   <!--ヘッダー部分テンプレート挿入-->
+  </header>
+
+  <form>
+  <!--<%= form_for(@post) do |f| %>-->
+
+  <h1>商品登録</h1>
+   <div>
+    <span class="label label-default">シングル/アルバム名</span>
+    <input type="text" name="" value="">
+   </div>
+   <div>
+    <span class="label label-default">ジャンル</span>
+    <input type="text" name="" value="">
+   </div>
+   <div>
+    <span class="label label-default">アートワーク</span>
+    <input type="file" name="" value="">
+    <!--　<%= attachment_image_tag @post, :image, :fill, 500, 500, format: 'jpeg' %> -->
+   </div>
+   <div>
+    <span class="label label-default">レーベル</span>
+    <input type="text" name="" value="">
+   </div>
+   <div>
+    <span class="label label-default">価格（税別）</span>
+    <input type="number" name="" value="">
+   </div>
+   <div>
+    <span class="label label-default">在庫数</span>
+    <input type="number" name="" value="">
+   </div>
+   <div>
+    <span class="label label-default">ステータス</span>
+    <a href="">販売中</a>
+    <a href="">販売中止</a>
+   </div>
+
+   <a href="">追加</a>
+
+　<h1>ディスク登録</h1>
+   <div>
+    <span class="label label-default">ディスク枚数</span>
+    <input type="number" name="" value="">
+   </div>
+   <a href="">追加</a>
+
+  <h1>楽曲登録</h1>
+  <div>
+   <span class="label label-default">アーティスト名</span>
+   <input type="text" name="" value="">
+  </div>
+  <div>
+   <span class="label label-default">ディスクナンバー</span>
+   <input type="text" name="" value="">
+  </div>
+  <div>
+   <span class="label label-default">トラックナンバー</span>
+   <input type="text" name="" value="">
+  </div>
+  <div>
+   <span class="label label-default">曲名</span>
+   <input type="text" name="" value="">
+  </div>
+  <a href="">追加</a>
+
+  </form>
+  <!--<% end %>-->
+  <a href="">登録</a>
+
+</body>
+</html>

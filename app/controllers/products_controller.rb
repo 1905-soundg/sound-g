@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 	def create
 		@album = Product.new(product_params)
 		@album.save
-		redirect_to products_path
+		redirect_to ('/')
 	end
 
 	def product_paerams

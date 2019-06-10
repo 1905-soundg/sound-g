@@ -13,6 +13,15 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
 }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :admins do
+    resources :users
+    resources :products
+    resources :genres
+    resources :labels
+    resources :artists
+    resources :reviews
+  end
+
   resources :admins
   resources :users
   resources :addresses

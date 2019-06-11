@@ -23,8 +23,9 @@ Rails.application.routes.draw do
   end
 
   resources :admins
-  resources :users
-  resources :addresses
+  resources :users do
+    resources :addresses
+  end
   resources :carts
   resources :orders
   resources :order_details

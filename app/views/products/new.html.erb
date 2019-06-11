@@ -1,19 +1,32 @@
+<!-- テスト -->
+
+
+
 <%= Genre.all.length %><br>
 <%= Label.all.length %><br>
-<%= Artist.all.length %>
+<%= Artist.all.length %><br>
 
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-    ジャンル
-    <span class="caret"></span>
-  </button>
 
-  <ul class="dropdown-menu" role="menu">
-    <li role="presentation">
-      okahsi
-    </li>
-  </ul>
-</div>
+<p>
+  選択したジャンル<span id="span11"></span>
+</p>
+
+<select id="genre">ジャンル
+  <% Genre.all.each do |g| %>
+  <option value="g.genre"><%= g.genre %></option>
+  <% end %>
+</select>
+<input type="button" value="ジャンル" onclick="clickBtn33()">
+
+<script>
+  function clickBtn33(){
+    const str = document.getElementById("genre").value;
+
+    document.getElementById("span11").textContent = str;
+  }
+</script>
+
+<!-- テスト -->
 
 
 <%= form_for(@album) do |f| %>
@@ -29,7 +42,7 @@
     <span class="caret"></span>
   </button>
 
-  <ul class="dropdown-menu" role="menu">
+  <ul id="genre" class="dropdown-menu" role="menu">
       <% Genre.all.each do |g| %>
     <li role="presentation">
       <%= g.genre %>

@@ -1,4 +1,28 @@
-<h2>Log in</h2>
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav class="nav navbar-nav navbar-left">
+      <span>SoundG</span>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+        <div id="slidemenu">
+          <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+              <li class="">
+                <%= link_to "login", new_admin_session_path, class: "glyphicon glyphicon-log-in sign_in" %>
+              </li>
+          </ul>
+    </div>
+  </div>
+  </div>
+  </header>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+    <div class="form-user style-1 rounded has-shadow-1">
+
+      <div class="form-header text-center">
+        <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -24,3 +48,8 @@
 <% end %>
 
 <%= render "admins/shared/links" %>
+</div>
+</div>
+</div>
+</div>
+</div>

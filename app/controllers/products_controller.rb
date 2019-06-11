@@ -14,6 +14,9 @@ class ProductsController < ApplicationController
 		redirect_to ('/')
 	end
 
+
+	protected
+
 	def product_paerams
 		params.require(:product).permit(:album, :image, :price, :stock_quantity, :sales_status,
 			                            musics_attributes: [:id, :title, :track_number, :_destroy,

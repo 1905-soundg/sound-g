@@ -1,20 +1,19 @@
-<table>
-  <thead>
-    <tr>
-      <th>album</th>
-      <th>artist</th>
-    </tr>
-  </thead>
-  <% Genre.all.each do |f| %>
-  <tbody>
-    <tr>
-      <td>
-        <%= f.genre %>
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+<%= Genre.all.length %><br>
+<%= Label.all.length %><br>
+<%= Artist.all.length %>
+
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+    ジャンル
+    <span class="caret"></span>
+  </button>
+
+  <ul class="dropdown-menu" role="menu">
+    <li role="presentation">
+      okahsi
+    </li>
+  </ul>
+</div>
 
 
 <%= form_for(@album) do |f| %>
@@ -89,12 +88,13 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
-      <% Artist.all.each do |a| %>
+      <% Artist.all.each do |f| %>
     <li role="presentation">
-      <%= a.artist %>
+      <%= f.id %>
     </li>
       <% end %>
   </ul>
+
 </div>
 
 

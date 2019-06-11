@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   #管理者ログイン後機能一覧に遷移
 	def after_sign_in_path_for(resource)
-		  admin_path(resource)
+		admin_path(resource)
     end
 	 protected
 	  def configure_permitted_parameters

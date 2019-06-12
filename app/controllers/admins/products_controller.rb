@@ -1,14 +1,14 @@
 class Admins::ProductsController < ApplicationController
 
 	def new
-		@album = Product.new
+		@product = Product.new
 		@disc = @product.discs.build
 		@music = @disc.musics.build
 	end
 
 	def create
-		@album = Product.new(product_params)
-		@album.save
+		@product = Product.new(product_params)
+		@product.save
 		redirect_to ('/')
 	end
 

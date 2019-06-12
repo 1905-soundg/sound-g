@@ -11,9 +11,9 @@ class CartsController < ApplicationController
 	end
 
 	def create
-	 @cart_datail = Cart.new(cart_params)
-	 @cart.user_id = curret_user.id
-	 if @cart.save
+	    product = Product.find(params[:product_id])
+		cart = current_user.cart.new(cart_params)
+	 if cart.save
 	 redrect_to('/')
 	 else
 	 render ('/users/sign_in')
@@ -23,7 +23,7 @@ class CartsController < ApplicationController
     private
 
     def cart_params
-    	params.require(:cart).permit(:quantity)
+    	params.require(:cart).permit(:quantity, :product_id, :user_id)
     end
 
 end

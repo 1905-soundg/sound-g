@@ -1,4 +1,10 @@
 <h3>ユーザー編集</h3>
-<%= form.text_field 姓, last_name %>
-
-<% end %>
+<%= form.text_field "姓", last_name %>
+<%= form.text_field "名", first_name %>
+<%= form.text_field "姓(カナ)", last_name_k %>
+<%= form.text_field "名(カナ)", first_name_k %>
+<%= form.text_field "郵便番号", postalcode %>
+<%= form.text_field "住所", address %>
+<%= form.text_field "電話番号", telephone_number %>
+<%= form.text_field "mail", email %>
+<%= form.text_field "パスワード", password %>

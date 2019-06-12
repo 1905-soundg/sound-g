@@ -1,0 +1,19 @@
+<%= attachment_image_tag  @product,:image, :file,400,400, class: "img-rounded" %>
+
+
+<table class="table">
+	<thead>
+	    <tr>
+	        <th></th>
+	        <th></th>
+	        <th></th>
+	    </tr>
+	</thead>
+<% @books.each do |f| %>
+	<tbody>
+	    <tr>
+	        <td></td>
+	        <td></td>
+	        <td> <%= f.body %> </td>
+	    </tr>
+	</tbody>

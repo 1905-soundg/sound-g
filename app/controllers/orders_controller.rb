@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 	def create
 	end
 
-	def succese
+	def success
 	end
 
 

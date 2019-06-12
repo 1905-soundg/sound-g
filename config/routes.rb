@@ -31,7 +31,11 @@ Rails.application.routes.draw do
   end
 
   resources :carts
-  resources :orders
+  resources :orders do
+    collection do
+      get :success
+    end
+  end
   resources :order_details
   resources :products, only:[:index, :show, :create]
   resources :artists

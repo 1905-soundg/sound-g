@@ -1,5 +1,4 @@
-<%= attachment_image_tag  @product,:image, :file,400,400, class: "img-rounded" %>
-
+<%= attachment_image_tag @product,:image, :fill,400,400, class: "img-rounded" %>
 
 <table class="table">
 	<thead>
@@ -9,11 +8,19 @@
 	        <th></th>
 	    </tr>
 	</thead>
-<%  do |f| %>
 	<tbody>
 	    <tr>
-	        <td></td>
-	        <td></td>
-	        <td> <%= f.body %> </td>
+	        <td> <%= @product.album %> </td>
+	        <td> <%= @product.genre.genre %> </td>
+	        <td> <%= @product.label.label %> </td>
 	    </tr>
 	</tbody>
+
+
+<%= form_for (Cart.new) do |f| %>
+
+<%= f.text_field :quantity %>
+
+<%= f.submit %>
+
+<% end %>

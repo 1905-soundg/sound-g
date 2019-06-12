@@ -1,0 +1,26 @@
+<%= attachment_image_tag @product,:image, :fill,400,400, class: "img-rounded" %>
+
+<table class="table">
+	<thead>
+	    <tr>
+	        <th></th>
+	        <th></th>
+	        <th></th>
+	    </tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td> <%= @product.album %> </td>
+	        <td> <%= @product.genre.genre %> </td>
+	        <td> <%= @product.label.label %> </td>
+	    </tr>
+	</tbody>
+
+
+<%= form_for (Cart.new) do |f| %>
+
+<%= f.text_field :quantity %>
+
+<%= f.submit %>
+
+<% end %>

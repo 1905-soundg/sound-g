@@ -2,6 +2,8 @@ class Admins::ProductsController < ApplicationController
 
 	def new
 		@album = Product.new
+		@disc = @product.discs.build
+		@music = @disc.musics.build
 	end
 
 	def create
@@ -13,10 +15,10 @@ class Admins::ProductsController < ApplicationController
 
 	protected
 
-	def product_paerams
-		params.require(:product).permit(:album, :image, :price, :stock_quantity, :sales_status,
-			                            discs_attributes: [:id, :disc_number, :_destroy,
-			                            musics_attributes: [:id, :title, :track_number, :_destroy,
+	def product_params
+		params.require(:product).permit(:album, :genre_id, :label_id, :image, :price, :stock_quantity, :sales_status,
+			                            discs_attributes: [:id, :disc_number, :product_id, :_destroy,
+			                            musics_attributes: [:id, :title, :track_number, :disc_id, :artist_id, :_destroy,
 		                                 ]])
 	end
 end

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :discs
   end
 
+
   resources :admins
   resources :users do
     resources :addresses
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :order_details
-  resources :products
+  resources :products, only:[:index]
   resources :artists
   resources :favorites
   resources :reviews

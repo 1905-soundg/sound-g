@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :order_details
-  resources :products, only:[:index]
+  resources :products, only:[:index, :show, :create]
   resources :artists
   resources :favorites
   resources :reviews

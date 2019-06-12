@@ -2,14 +2,7 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
-	end
-
-	def create
-		@product = Product.find(params[:id])
-		@cart = Cart.new(cart_params)
-		@cart.user_id = current_user.id
-		@cart.product_id = @Product.id
-		@cart.save
+		@cart = Cart.new
 	end
 
 	def index
@@ -25,7 +18,4 @@ class ProductsController < ApplicationController
 		                                 ]])
 	end
 
-	def create_params
-		params.require(:cart).permit(:user_id, :product_id, :quanttity)
 	end
-end

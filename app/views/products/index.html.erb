@@ -1,0 +1,16 @@
+<<<<<<< HEAD
+<h1>商品一覧</h1>
+
+<% @products.each do |product| %>
+<%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %></td>
+<%= product.album %>
+<%= product.label.label %>
+<%= product.price %>
+<% product.discs.each do |disc| %>
+<% disc.musics.each do |music| %>
+<%= music.artist.artist %>
+<% end %>
+<% end %>
+<% end %>
+=======
+>>>>>>> 55841ea1c06533bdb4d732cbca538d01c05f6440

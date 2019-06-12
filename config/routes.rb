@@ -20,18 +20,21 @@ Rails.application.routes.draw do
     resources :labels
     resources :artists
     resources :reviews
+    resources :musics
+    resources :discs
   end
 
   resources :admins
   resources :users do
     resources :addresses
   end
+  resources :reviews
+  resources :musics
+  resources :discs
   resources :carts
   resources :orders
   resources :order_details
   resources :products
-  resources :discs
-  resources :musics
   resources :artists
   resources :favorites
   resources :reviews

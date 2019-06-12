@@ -29,9 +29,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :addresses
   end
-  resources :reviews
-  resources :musics
-  resources :discs
+
   resources :carts
   resources :orders
   resources :order_details

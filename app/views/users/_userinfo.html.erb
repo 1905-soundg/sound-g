@@ -1,10 +1,20 @@
 <h3>ユーザー編集</h3>
-<%= form.text_field "姓", last_name %>
-<%= form.text_field "名", first_name %>
-<%= form.text_field "姓(カナ)", last_name_k %>
-<%= form.text_field "名(カナ)", first_name_k %>
-<%= form.text_field "郵便番号", postalcode %>
-<%= form.text_field "住所", address %>
-<%= form.text_field "電話番号", telephone_number %>
-<%= form.text_field "mail", email %>
-<%= form.text_field "パスワード", password %>
+<%= form_for(@user_id) do |f| %>
+  <%= f.label :last_name, '姓' %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :first_name, '名' %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name_k, '姓(カナ)' %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :first_name_k_name, '名(カナ)' %>
+  <%= f.text_field :first_name_k %>
+
+  <%= f.label :postalcode, '郵便番号' %>
+  <%= f.text_field :postalcode %>
+
+
+  <%= f.submit '編集' %>
+<% end %>

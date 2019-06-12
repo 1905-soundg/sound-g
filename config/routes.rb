@@ -20,7 +20,10 @@ Rails.application.routes.draw do
     resources :labels
     resources :artists
     resources :reviews
+    resources :musics
+    resources :discs
   end
+
 
   resources :admins
   resources :users do
@@ -30,9 +33,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :order_details
-  resources :products
-  resources :discs
-  resources :musics
+  resources :products, only:[:index]
   resources :artists
   resources :favorites
   resources :reviews

@@ -1,5 +1,12 @@
 class Admins::ProductsController < ApplicationController
 
+    def index
+    	@products = Product.all
+    end
+
+    def show
+    end
+
 	def new
 		@product = Product.new
 		@disc = @product.discs.build

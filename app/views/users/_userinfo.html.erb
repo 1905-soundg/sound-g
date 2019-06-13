@@ -1,4 +1,5 @@
 <%= form_for(@user) do |f| %>
+
 	<%= f.label :姓 %>
 	<p><%= f.text_field :last_name %></p>
   <%= f.label :名 %>
@@ -18,6 +19,6 @@
   <%= f.label :パスワード %>
   <p><%= f.text_field :password %></p>
 
-	<p><%= f.submit "編集" %></p>
+	<p><%= f.submit "更新" %></p>
 
 <% end %>

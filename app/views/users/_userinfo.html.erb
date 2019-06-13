@@ -1,20 +1,23 @@
-<h3>ユーザー編集</h3>
-<%= form_for(@user_id) do |f| %>
-  <%= f.label :last_name, '姓' %>
-  <%= f.text_field :last_name %>
+<%= form_for(@user) do |f| %>
+	<%= f.label :姓 %>
+	<p><%= f.text_field :last_name %></p>
+  <%= f.label :名 %>
+	<p><%= f.text_field :first_name %></p>
+  <%= f.label :姓（カナ） %>
+  <p><%= f.text_field :last_name_k %></p>
+  <%= f.label :名（カナ） %>
+  <p><%= f.text_field :first_name_k %></p>
+  <%= f.label :郵便番号 %>
+	<p><%= f.text_field :postalcode %></p>
+  <%= f.label :住所 %>
+	<p><%= f.text_field :address %></p>
+  <%= f.label :電話番号 %>
+  <p><%= f.text_field :telephone_number %></p>
+  <%= f.label :メール %>
+  <p><%= f.text_field :email %></p>
+  <%= f.label :パスワード %>
+  <p><%= f.text_field :password %></p>
 
-  <%= f.label :first_name, '名' %>
-  <%= f.text_field :first_name %>
+	<p><%= f.submit "編集" %></p>
 
-  <%= f.label :last_name_k, '姓(カナ)' %>
-  <%= f.text_field :last_name %>
-
-  <%= f.label :first_name_k_name, '名(カナ)' %>
-  <%= f.text_field :first_name_k %>
-
-  <%= f.label :postalcode, '郵便番号' %>
-  <%= f.text_field :postalcode %>
-
-
-  <%= f.submit '編集' %>
 <% end %>

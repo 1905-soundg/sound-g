@@ -11,12 +11,12 @@ class CartsController < ApplicationController
 	end
 
 	def create
-	    product = Product.find(params[:product_id])
-		cart = current_user.cart.new(cart_params)
-	 if cart.save
+		@cart = Cart.new(cart_params)
+	    @cart.user_id = current_user.id
+	 if @cart.save
 	 redrect_to('/')
 	 else
-	 render ('/users/sign_in')
+	 render :index
 	 end
     end
 

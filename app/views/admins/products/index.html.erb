@@ -1,0 +1,27 @@
+<div class="container">
+	<h3>商品一覧</h3>
+		<body>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th></th>
+				<th>title</th>
+				<th>artist</th>
+			</tr>
+		</thead>
+			<% @products.each do |product| %>
+			<tbody>
+			<tr>
+				<td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %></td>
+				<td><%= product.album %></td>
+				<% product.discs.each do |disc| %>
+				<% disc.musics.each do |music| %>
+                <td><%= music.artist.artist %></td>
+　　　　　　　　　　<% end %>
+                 <% end %>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</body>
+</div>

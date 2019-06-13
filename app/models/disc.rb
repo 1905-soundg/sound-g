@@ -1,7 +1,9 @@
 class Disc < ApplicationRecord
 
-	has_many :musics
+	belongs_to :product, inverse_of: :discs
 
-	belongs_to :product
+	has_many :musics, inverse_of: :disc
+    accepts_nested_attributes_for :musics, reject_if: :all_blank, allow_destroy: true
+
 
 end

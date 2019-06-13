@@ -1,0 +1,44 @@
+<h3>送付先住所</h3>
+<% @addresses.each do |address| %>
+<%= form_for address, url:user_address_path(user_id: @user, id: address.id) do |f| %>
+<ul>
+
+<li class="postalcode">
+<label for="postalcode">郵便番号</label>
+<%= f.text_field :postalcode %></li>
+
+<li class="address">
+<label for="address">住所</label>
+<%= f.text_field :address %></li>
+
+<li class="name">
+<label for="name">宛名</label>
+<%= f.text_field :name %></li>
+
+<%= f.submit 'Edit', class: "btn-sm btn-success edit_#{@address.id}" %>
+ <% end %>
+<%= link_to "Destroy", user_address_path(user_id: @user, id: address.id), class: "btn-sm btn-danger destroy_#{@address.id}",method: :delete %>
+
+</ul>
+<% end %>
+
+
+<h3>送付先の追加</h3>
+
+<%= form_for @address, url:user_addresses_path(user_id: @user) do |f| %>
+<ul>
+    <li class="postalcode">
+    <label for="postalcode">郵便番号</label>
+    <%= f.text_field :postalcode %></li>
+
+    <li class="address">
+    <label for="address">住所</label>
+    <%= f.text_field :address %></li>
+
+    <li class="name">
+    <label for="name">宛名</label>
+    <%= f.text_field :name %></li>
+
+    <%= f.submit '登録' %>
+</ul>
+<% end %>

@@ -15,12 +15,13 @@
 				<% @carts.each do |cart| %>
 				<tr>
 					<td><%= attachment_image_tag cart.product, :image, :fill, 10, 10, format: 'jpg' %><br>
-						<%= form_tag("/users/#{@user.id}/carts/#{cart.id}/update") do  %>
-						<%= number_field_tag :quantity,nil, in: 0...101 %>
-						<%= submit_tag "update" %>
+						<%= form_for(cart, url: "/users/#{@user.id}/carts/#{cart.id}/update") do |f| %>
+						<%= f.number_field :quantity %>
+						<%= f.submit "update" %>
 						<% end %>
+						<%= link_to "Destroy","/users/#{@user.id}/carts/#{cart.id}", method: :delete %>
 					</td>
-					<td><h3 class="page-header">商品名</h3><br>
+					<td><h3 class="page-header">商品名</h3>
 						<%= cart.product.album %></td>
 					<td></td>
 				</tr>

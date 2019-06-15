@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 		@cart = Cart.new
 		@review = Review.new
 		@reviews = Review.all
+		@user = current_user.id
 	end
 
 	def index

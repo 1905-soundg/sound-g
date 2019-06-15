@@ -21,37 +21,49 @@
    		<% end %>
 
 
-            <div class="d-inline">
                <% @discs.each do |d| %>
-           <ul class="list-unstyled">
-               <li>
-                  ディスクNo.<%= d.disc_number %>
-               </li>
-                  <% d.musics.each do |m| %>
-               <li>
-                  <%= m.title %>
-               </li>
+               <div class="d-inline-block col-xs-5">
+               <ul class="list-unstyled">
+                     <li>
+                        ディスクNo.<%= d.disc_number %>
+                     </li>
+                     <% d.musics.each do |m| %>
+                     <li>
+                        <%= m.title %>
+                     </li>
+                     <% end %>
+                  </div>
+               </ul>
                <% end %>
-            </ul>
-            <% end %>
-         </div>
 
    	 </div>
     </div>
-
   </div>
 </div>
 
-<%= form_for (@review) do |r| %>
-<h3>商品レビュー</h3>
 
-<p>新規投稿</p>
+<div class="row">
+   <div class="col-xs-8 col-xs-offset-2">
+      <%= form_for (@review) do |r| %>
+<div class="d-center-block">
 
-<%= r.text_area :review, :size => "100" %>
+   <h3>商品レビュー</h3>
 
-<% end %>
+   <p>新規投稿</p>
 
-<% @reviews.each do |r| %>
-<h4>みんなのレビュー</h4>
-<%= r.review %>
-<% end %>
+      <%= r.text_area :review, :size => "100" %>
+
+   <% end %>
+
+
+   <h3>みんなのレビュー</h3>
+      <% @reviews.each do |r| %>
+
+      <%= r.review %>
+
+   <% end %>
+</div>
+
+</div>
+
+</div>

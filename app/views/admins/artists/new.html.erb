@@ -1,26 +1,46 @@
-<h2>アーティスト・ジャンル・レーベル登録</h2>
+<div class="container">
+      <div class="row">
+      	      	 <div class="col-md-6 col-md-offset-3" >
+      	      	 	<h3 class="text-center">アーティスト・ジャンル・レーベル登録</h3>
+
+<div class="panel panel-default">
+  <div class="panel-heading">アーティスト</div>
+  <div class="panel-body">
 
 <%= form_for @artist, url:admins_artists_path do |f| %>
 
-    <h4>アーティスト名</h4>
     <%= f.text_field :artist %>
 
     <%= f.submit '登録' %>
 <% end %>
+</div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">レーベル</div>
+  <div class="panel-body">
 
 <%= form_for @label, url: admins_labels_path do |f| %>
 
-    <h4>レーベル名</h4>
     <%= f.text_field :label %>
 
     <%= f.submit '登録' %>
 <% end %>
+</div>
+</div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">ジャンル</div>
+  <div class="panel-body">
 <%= form_for @genre, url:admins_genres_path do |f| %>
 
-    <h4>ジャンル名</h4>
     <%= f.text_field :genre %>
 
     <%= f.submit '登録' %>
 <% end %>
+</div>
+</div>
 
+</div>
+</div>
+</div>

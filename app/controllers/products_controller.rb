@@ -2,7 +2,12 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		@genre = @product.genre
+		@label = @product.label
+		@discs = @product.discs
 		@cart = Cart.new
+		@review = Review.new
+		@reviews = Review.all
 	end
 
 	def index

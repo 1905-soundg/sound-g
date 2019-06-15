@@ -1,5 +1,32 @@
 <body>
-<h1>カート内容</h1>
-<span class="btn-sm btn-danger">削除</span>
-
+<div class="row">
+  <div class="col-xs-1"></div>
+   <div class="col-xs-10">
+	<h1>カート内容</h1>
+	<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @carts.each do |cart| %>
+				<tr>
+					<td><%= attachment_image_tag cart.product, :image, :fill, 10, 10, format: 'jpg' %><br>
+						<%= form_tag("/users/#{@user.id}/carts/#{cart.id}/update") do  %>
+						<%= number_field_tag :quantity,nil,   in: 0...101 %><br>
+						<%= submit_tag "update" %>
+						<% end %>
+					</td>
+					<td><h3 class="page-header">商品名</h3><br>
+						<%= cart.product.album %></td>
+					<td></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+  </div>
+</div>
 </body>

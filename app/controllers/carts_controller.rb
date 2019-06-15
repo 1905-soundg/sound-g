@@ -2,9 +2,13 @@ class CartsController < ApplicationController
 	before_action :authenticate_user!
 	def index
 	 @carts = Cart.all
+	 @user = current_user
 	end
 
 	def update
+	 @cart = Cart.find(params[:id])
+	 @cart.update(cart_params)
+	 redrect_to user_carts_path
 	end
 
 	def destroy

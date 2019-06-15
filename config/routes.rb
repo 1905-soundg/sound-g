@@ -26,11 +26,13 @@ Rails.application.routes.draw do
 
 
   resources :admins
+
   resources :users do
     resources :addresses
+    resources :carts
   end
+  post "/users/:id/carts/:id/update" => "carts#update"
 
-  resources :carts
   resources :orders do
     collection do
       get :success

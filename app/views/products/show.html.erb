@@ -1,34 +1,3 @@
-<<<<<<< HEAD
-<%= attachment_image_tag @product,:image, :fill,400,400, class: "img-rounded" %>
-
-<table class="table">
-	<thead>
-	    <tr>
-	        <th></th>
-	        <th></th>
-	        <th></th>
-	    </tr>
-	</thead>
-	<tbody>
-	    <tr>
-	        <td> <%= @product.album %> </td>
-	        <td> <%= @product.genre.genre %> </td>
-	        <td> <%= @product.label.label %> </td>
-	    </tr>
-	</tbody>
-
-
-<%= form_for (@cart) do |f| %>
-
-<%= f.text_field :quantity %>
-
-<%= f.hidden_field :product_id, :value => @product.id %>
-
-
-<%= f.submit %>
-
-<% end %>
-=======
 <div class="container">
 	<div class="row">
 <%= render 'layouts/header' %>
@@ -78,27 +47,22 @@
 
 <div class="row">
    <div class="col-xs-8 col-xs-offset-2">
-      <%= form_for (@review) do |r| %>
-<div class="d-center-block">
+      <%= form_for (@review) do |f| %>
+    <div class="d-center-block">
 
-   <h3>商品レビュー</h3>
+    <h3>商品レビュー</h3>
 
-   <p>新規投稿</p>
+    <p>新規投稿</p>
 
-      <%= r.text_area :review, :size => "100" %>
+      <%= f.text_area :review, :size => "100" %>
+      <%= f.submit "投稿" %>
+      <% end %>
 
-   <% end %>
+     <h3>みんなのレビュー</h3>
+     <% @reviews.each do |r| %>
+	   <%= r.review %>
+     <% end %>
 
-
-   <h3>みんなのレビュー</h3>
-      <% @reviews.each do |r| %>
-
-      <%= r.review %>
-
-   <% end %>
+    </div>
+   </div>
 </div>
-
-</div>
-
-</div>
->>>>>>> a3a637c34969b05c884e1e94a382189fb4ea6e95

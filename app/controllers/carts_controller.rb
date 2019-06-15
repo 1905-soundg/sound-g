@@ -7,6 +7,7 @@ class CartsController < ApplicationController
 
 	def update
 	 @cart = Cart.find(params[:id])
+	 binding.pry
 	 @cart.update(cart_params)
 	 redrect_to user_carts_path
 	end

@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :orders
   has_many :carts
   has_many :favorites
-  has_many :reviews
+  has_many :reviews,dependent: :destroy
 
 end

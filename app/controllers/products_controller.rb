@@ -2,7 +2,17 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+<<<<<<< HEAD
 		@cart = Cart.new
+=======
+		@genre = @product.genre
+		@label = @product.label
+		@discs = @product.discs
+		@cart = Cart.new
+		@review = Review.new
+		@reviews = Review.all
+		@user = current_user.id
+>>>>>>> a3a637c34969b05c884e1e94a382189fb4ea6e95
 	end
 
 	def index

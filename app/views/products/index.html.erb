@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <h1>商品一覧</h1>
 
@@ -12,3 +13,29 @@
 <% end %>
 <% end %>
 <% end %>
+=======
+<%= render 'layouts/header' %>
+<div class="container">
+		<h1>商品一覧</h1>
+		<div class="row">
+		<div class="d-inline-block col-lg-12">
+
+			<% @products.each do |product| %>
+			<div class="d-inline-block col-lg-3">
+				<%= attachment_image_tag product, :image, :fill, 250, 250, format: 'jpg' %></td>
+				<p><%= product.album %></p>
+				<p><%= product.label.label %></p>
+				<p><%= product.price %></p>
+				<% product.discs.each do |disc| %>
+					<% disc.musics.each do |music| %>
+						<p><%= music.artist.artist %></p>
+					<% end %>
+				<% end %>
+			</div>
+			<% end %>
+
+			</div>
+		</div>
+	</div>
+</div>
+>>>>>>> a3a637c34969b05c884e1e94a382189fb4ea6e95

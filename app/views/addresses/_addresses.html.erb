@@ -1,7 +1,6 @@
- <div class="border">
-<h3>送付先住所</h3>
-<% @addresses.each do |address| %>
-<%= form_for address, url:user_address_path(user_id: @user, id: address.id) do |f| %>
+    <h3>送付先住所</h3>
+     <% @addresses.each do |address| %>
+    <%= form_for address, url:user_address_path(user_id: @user, id: address.id) do |f| %>
 <ul class="list-unstyled">
 
 <li class="postalcode">
@@ -43,4 +42,3 @@
     <%= f.submit '登録' %>
 </ul>
 <% end %>
-</div>

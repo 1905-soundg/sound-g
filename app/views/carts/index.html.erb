@@ -16,7 +16,7 @@
 				<tr>
 					<td><%= attachment_image_tag cart.product, :image, :fill, 10, 10, format: 'jpg' %><br>
 						<%= form_tag("/users/#{@user.id}/carts/#{cart.id}/update") do  %>
-						<%= number_field_tag :quantity,nil,   in: 0...101 %><br>
+						<%= number_field_tag :quantity,nil, in: 0...101 %>
 						<%= submit_tag "update" %>
 						<% end %>
 					</td>

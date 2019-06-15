@@ -7,12 +7,14 @@ class CartsController < ApplicationController
 
 	def update
 	 @cart = Cart.find(params[:id])
-	 binding.pry
-	 @cart.update(cart_params)
-	 redrect_to user_carts_path
+	 @cart.update!(cart_params)
+	 redirect_to user_carts_path(@cart.user_id)
 	end
 
 	def destroy
+	 cart = Cart.find(params[:id])
+	 cart.destroy
+	 redirect_to user_carts_path()
 	end
 
 	def create

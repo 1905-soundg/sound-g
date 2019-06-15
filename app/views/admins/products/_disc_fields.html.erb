@@ -1,16 +1,28 @@
-<div class="nested-fields well well-compact">
-	<div class="form-group">
-		<%= f.text_field :disc_number %><br>
-		<%= link_to_remove_association "remove disc", f %>
-	</div>
+<div class="col-xs-12">
+	<div class="d-center-block">
+		<div class="nested-fields well well-compact">
 
-	<div  class="music">
-		<%= f.fields_for :musics do |music| %>
-		  <%= render 'music_fields', f: music %>
-		<% end %>
+			<div class="filed">
+				<%= f.label :discs, "ディスク登録" %>
+			</div>
 
-		<div class="links">
-			<%= link_to_add_association "add music", f, :musics %>
+			<div class="form-group">
+				<%= f.label :discs_number, "ディスクNo." %>
+				<%= f.text_field :disc_number %><br>
+				<%= link_to_remove_association "ディスク削除", f %>
+			</div>
+
+			<%= f.label :music, "楽曲" %>
+
+			<div  class="music">
+				<%= f.fields_for :musics do |music| %>
+				<%= render 'music_fields', f: music %>
+				<% end %>
+
+				<div class="links">
+					<%= link_to_add_association "楽曲追加", f, :musics %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

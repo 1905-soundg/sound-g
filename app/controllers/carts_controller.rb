@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
 	before_action :authenticate_user!
 	def index
-	 @carts = Cart.all
+	 @carts = Cart.where(user_id: current_user.id)
 	 @user = current_user
 	end
 

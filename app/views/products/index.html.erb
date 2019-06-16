@@ -9,19 +9,18 @@
 			<%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpg' %>
 			<% end %>
 			<div class="productdata">
-			<p class="" style="margin: 10px 0px 0px 0px;">
-				<%= product.album %></p>
-			<p class="" style="margin: 0px 0px 0px 0px;"><%= product.label.label %></p>
-			<p class="" style="margin: 0px 0px 0px 0px;">￥<%= product.price %></p>
-			<% product.discs.each do |disc| %>
-				<% disc.musics.each do |music| %>
-					<p class="" style="margin: 0px 0px 0px 0px;"><strong><%= music.artist.artist %></strong></p>
+				<p class="" style="margin: 10px 0px 0px 0px;"><%= product.album %></p>
+				<p class="" style="margin: 0px 0px 0px 0px;"><%= product.label.label %></p>
+				<p class="" style="margin: 0px 0px 0px 0px;">￥<%= product.price %></p>
+					<% product.discs.each do |disc| %>
+						<% disc.musics.each do |music| %>
+						<p class="" style="margin: 0px 0px 0px 0px;"><strong><%= music.artist.artist %></strong></p>
 		    </div>
-				<% end %>
+			<% end %>
 			<% end %>
 		</div>
 		<% end %>
 
-		</div>
+	</div>
 	</div>
 </div>

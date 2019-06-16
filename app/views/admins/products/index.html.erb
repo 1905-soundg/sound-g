@@ -12,7 +12,10 @@
 			<% @products.each do |product| %>
 			<tbody>
 			<tr>
-				<td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %></td>
+				<td><%=link_to admins_product_path(product.id) do %>
+					<%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %>
+					<% end %>
+					</td>
 				<td><%= product.album %></td>
 				<% product.discs.each do |disc| %>
 				<% disc.musics.each do |music| %>

@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+          <h3>ユーザー編集</h3>
+<ul class="list-unstyled">
+<%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
+
+<li class="姓">
+	<div class="col-md-3">姓</div>
+  <div class="col-md-9">
+	<%= f.text_field :last_name, size:20 %>
+  </div>
+  </li>
+
+<li class="名">
+  <div class="col-md-3">名</div>
+  <div class="col-md-9">
+	<%= f.text_field :first_name, size:20 %>
+  </div>
+  </li>
+
+  <li class="姓（カナ）">
+  <div class="col-md-3">姓（カナ）</div>
+  <div class="col-md-9">
+  <%= f.text_field :last_name_k, size:20 %>
+  </div>
+  </li>
+
+  <li class="名（カナ）">
+  <div class="col-md-3">名（カナ）</div>
+  <div class="col-md-9">
+  <%= f.text_field :first_name_k, size:20 %>
+  </div>
+  </li>
+
+  <li class="郵便番号">
+  <div class="col-md-3">郵便番号</div>
+  <div class="col-md-9">
+	<%= f.text_field :postalcode, size:20 %>
+  </div>
+  </li>
+
+  <li class="住所">
+  <div class="col-md-3">住所</div>
+  <div class="col-md-9">
+	<%= f.text_field :address, size:20 %>
+  </div>
+  </li>
+
+  <li class="電話番号">
+  <div class="col-md-3">電話番号</div>
+  <div class="col-md-9">
+  <%= f.text_field :telephone_number, size:20 %>
+  </div>
+  </li>
+
+  <li class="メール">
+  <div class="col-md-3">メール</div>
+  <div class="col-md-9">
+  <%= f.text_field :email, size:20 %>
+  </div>
+  </li>
+
+  <li class="パスワード">
+  <div class="col-md-3">パスワード</div>
+  <div class="col-md-9">
+  <%= f.text_field :password, size:20 %>
+  </div>
+  </li>
+
+	<p><%= f.submit "更新" %></p>
+
+</ul>
+<% end %>
+</div>
+</div>
+</div>

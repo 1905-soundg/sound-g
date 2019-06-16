@@ -1,0 +1,68 @@
+<div class="container">
+	<div class="row">
+<%= render 'layouts/header' %>
+
+
+
+		<div class="col-xs-7">
+			<%= attachment_image_tag @product,:image, :fill,400,400, class: "img-rounded" %>
+
+		</div>
+
+   <div class="row">
+   	<div class="col-xs-5">
+
+   		<p> <%= @genre.genre %> </p>
+   		<h2> <%= @product.album %> </h2>
+   		<p> <%= @label.label %></p>
+   		<p> ¥<%= @product.price %> </p>
+
+   		<%= form_for @cart, url:user_carts_path(user_id: @user) do |f| %>
+   		<%= f.number_field :quantity, in: 0...101 %>
+   		<%= f.hidden_field :product_id, :value => @product.id %>
+   		<%= f.submit "カートに追加" %>
+   		<% end %>
+
+
+               <% @discs.each do |d| %>
+               <div class="d-inline-block col-xs-5">
+               <ul class="list-unstyled">
+                     <li>
+                        ディスクNo.<%= d.disc_number %>
+                     </li>
+                     <% d.musics.each do |m| %>
+                     <li>
+                        <%= m.title %>
+                     </li>
+                     <% end %>
+                  </div>
+               </ul>
+               <% end %>
+
+   	 </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+   <div class="col-xs-8 col-xs-offset-2">
+      <%= form_for (@review) do |f| %>
+    <div class="d-center-block">
+
+    <h3>商品レビュー</h3>
+
+    <p>新規投稿</p>
+
+      <%= f.text_area :review, :size => "100" %>
+      <%= f.submit "投稿" %>
+      <% end %>
+
+     <h3>みんなのレビュー</h3>
+     <% @reviews.each do |r| %>
+	   <%= r.review %>
+     <% end %>
+
+    </div>
+   </div>
+</div>

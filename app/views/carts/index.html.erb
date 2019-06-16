@@ -1,0 +1,40 @@
+<body>
+<div class="row">
+  <div class="col-xs-1"></div>
+   <div class="col-xs-10">
+	<h1>カート内容</h1>
+	<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @carts.each do |cart| %>
+				<tr>
+					<td><%= attachment_image_tag cart.product, :image, :fill, 10, 10, format: 'jpg' %><br>
+						<%= form_for(cart, url: "/users/#{@user.id}/carts/#{cart.id}/update") do |f| %>
+						<%= f.number_field :quantity %>
+						<%= f.submit "update" %>
+						<% end %>
+						<%= link_to "Destroy","/users/#{@user.id}/carts/#{cart.id}", method: :delete %>
+					</td>
+					<td><h3 class="page-header">商品名 <%= cart.product.album %></h3><br>
+					    小計　¥<%= cart.product.price * cart.quantity %></td>
+					<td></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="col-xs-7"></div>
+		<div class="col-xs-3">
+			<span class="page-header">総計</span>
+		</div>
+  </div>
+  <div class="col-xs-1"></div>
+</div>
+</body>

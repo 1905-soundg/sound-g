@@ -1,0 +1,68 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6">
+
+<%= form_for @product, url:admins_products_path do |f| %>
+
+
+<div class="filed">
+<%= f.label :album, "アルバム名" %>
+<%= f.text_field :album %>
+</div><br>
+
+<div class="filed">
+	<%= f.label :genre, "ジャンル" %>
+	<%= f.collection_select :genre_id, Genre.all, :id, :genre %>
+</div><br>
+
+<div class="filed">
+	<%= f.label :image, "CD画像" %>
+	<%= f.attachment_field :image %>
+</div><br>
+
+<div class="filed">
+	<%= f.label :label, "レーベル" %>
+	<%= f.collection_select :label_id, Label.all, :id, :label %>
+</div><br>
+
+</div>
+</div>
+
+<div class="row">
+		<div class="col-xs-6">
+
+<div class="filed">
+
+	<%= f.label :price, "価格" %>
+	<%= f.text_field :price %>
+</div><br>
+
+<div class="filed">
+	<%= f.label :stock_quantity, "在庫数" %>
+	<%= f.text_field :stock_quantity %>
+</div><br>
+
+<div class="filed">
+	<%= f.label :sales_status, "販売ステータス" %>
+	<%= f.text_field :sales_status %>
+</div><br>
+
+</div>
+</div>
+</div>
+
+
+<div id="discs">
+	<%= f.fields_for :discs do |disc| %>
+	<%= render 'disc_fields', f: disc %>
+<% end %>
+</div>
+
+<div id="links">
+	<%= link_to_add_association "ディスク追加", f, :discs %>
+</div><br>
+
+<%= f.submit "商品登録" %>
+
+<% end %>

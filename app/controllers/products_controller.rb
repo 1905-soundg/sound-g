@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+
 		@genre = @product.genre
 		@label = @product.label
 		@discs = @product.discs
@@ -9,6 +10,7 @@ class ProductsController < ApplicationController
 		@review = Review.new
 		@reviews = Review.all
 		@user = current_user.id
+
 	end
 
 	def index

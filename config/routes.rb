@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :carts
   end
 
+  patch "/users/:id/carts/:id/update" => "carts#update"
 
   resources :orders do
     collection do

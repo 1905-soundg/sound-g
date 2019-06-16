@@ -21,7 +21,7 @@ class CartsController < ApplicationController
 		@cart = Cart.new(cart_params)
 	    @cart.user_id = current_user.id
 	 if @cart.save
-	 redrect_to('/')
+	 redirect_to ('/')111
 	 else
 	 render :index
 	 end

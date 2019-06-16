@@ -9,6 +9,8 @@
 					<th></th>
 					<th></th>
 					<th></th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -21,13 +23,18 @@
 						<% end %>
 						<%= link_to "Destroy","/users/#{@user.id}/carts/#{cart.id}", method: :delete %>
 					</td>
-					<td><h3 class="page-header">商品名</h3>
-						<%= cart.product.album %></td>
+					<td><h3 class="page-header">商品名 <%= cart.product.album %></h3><br>
+					    小計　¥<%= cart.product.price * cart.quantity %></td>
 					<td></td>
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
+		<div class="col-xs-7"></div>
+		<div class="col-xs-3">
+			<span class="page-header">総計</span>
+		</div>
   </div>
+  <div class="col-xs-1"></div>
 </div>
 </body>

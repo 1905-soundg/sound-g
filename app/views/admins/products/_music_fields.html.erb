@@ -11,7 +11,7 @@
 	<div class="form-group">
 		<%= f.label :artist, "アーティスト" %>
 		<%= f.collection_select :artist_id, Artist.all, :id, :artist %>
-		<%= link_to_remove_association "楽曲削除", f %>
+		<%= link_to_remove_association "楽曲削除", f, class: "btn btn-danger" %>
 	</div>
 
 </div>

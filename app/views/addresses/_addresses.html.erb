@@ -1,44 +1,66 @@
-    <h3>送付先住所</h3>
-     <% @addresses.each do |address| %>
+<div class="container">
+    <div class="row">
+<h3>送付先住所</h3>
+    <% @addresses.each do |address| %>
     <%= form_for address, url:user_address_path(user_id: @user, id: address.id) do |f| %>
 <ul class="list-unstyled">
 
-<li class="postalcode">
-<label for="postalcode">郵便番号</label>
-<%= f.text_field :postalcode %></li>
+<div class="postalcode">
+<div class="col-md-1">郵便番号</div>
+<div class="col-md-11">
+<%= f.text_field :postalcode, size:50 %>
+</div>
+</div>
 
 <li class="address">
-<label for="address">住所</label>
-<%= f.text_field :address %></li>
+<div class="col-md-1">住所</div>
+<div class="col-md-11">
+<%= f.text_field :address, size:50 %>
+</div>
+</li>
 
 <li class="name">
-<label for="name">宛名</label>
-<%= f.text_field :name %></li>
+<div class="col-md-1">宛名</div>
+<div class="col-md-11">
+<%= f.text_field :name, size:50 %>
+</div>
+</li>
 
+<div class="col-md-12">
 <%= f.submit 'Edit', class: "btn-sm btn-success edit_#{@address.id}" %>
  <% end %>
 <%= link_to "Destroy", user_address_path(user_id: @user, id: address.id), class: "btn-sm btn-danger destroy_#{@address.id}",method: :delete %>
-
+</div>
 </ul>
 <% end %>
-
 
 <h3>送付先の追加</h3>
 
 <%= form_for @address, url:user_addresses_path(user_id: @user) do |f| %>
 <ul class="list-unstyled">
     <li class="postalcode">
-    <label for="postalcode">郵便番号</label>
-    <%= f.text_field :postalcode %></li>
+    <div class="col-md-1">郵便番号</div>
+    <div class="col-md-11">
+    <%= f.text_field :postalcode, size:50 %>
+    </div>
+    </li>
 
     <li class="address">
-    <label for="address">住所</label>
-    <%= f.text_field :address %></li>
+    <div class="col-md-1">住所</div>
+    <div class="col-md-11">
+    <%= f.text_field :address, size:50 %>
+    </div>
+    </li>
 
     <li class="name">
-    <label for="name">宛名</label>
-    <%= f.text_field :name %></li>
+    <div class="col-md-1">宛名</div>
+    <div class="col-md-11">
+    <%= f.text_field :name, size:50 %>
+    </div>
+    </li>
 
     <%= f.submit '登録' %>
 </ul>
 <% end %>
+</div>
+</div>

@@ -69,3 +69,4 @@ gem "cocoon"
 gem 'kaminari','~> 1.1.1'
 gem 'ransack'
 gem 'pry-rails'
+gem "paranoia", "~> 2.0"

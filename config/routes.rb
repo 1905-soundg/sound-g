@@ -47,4 +47,6 @@ Rails.application.routes.draw do
   resources :labels
   resources :genres
 
+  post 'reviews' => 'reviews#create'
+
 end

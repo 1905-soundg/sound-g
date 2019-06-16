@@ -1,6 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%= form_for @product, url:admins_products_path() do |f| %>
 =======
+=======
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6">
+
+>>>>>>> master
 <%= form_for @product, url:admins_products_path do |f| %>
 >>>>>>> a3a637c34969b05c884e1e94a382189fb4ea6e95
 
@@ -8,50 +15,59 @@
 <div class="filed">
 <%= f.label :album, "アルバム名" %>
 <%= f.text_field :album %>
-</div>
+</div><br>
 
 <div class="filed">
-<%= f.collection_select :genre_id, Genre.all, :id, :genre %>
-</div>
+	<%= f.label :genre, "ジャンル" %>
+	<%= f.collection_select :genre_id, Genre.all, :id, :genre %>
+</div><br>
 
 <div class="filed">
-<p>CD画像</p>
-<%= f.attachment_field :image %>
-</div>
-
-
-<%= f.collection_select :label_id, Label.all, :id, :label %>
+	<%= f.label :image, "CD画像" %>
+	<%= f.attachment_field :image %>
+</div><br>
 
 <div class="filed">
-<p>価格</p>
-<%= f.text_field :price %>
+	<%= f.label :label, "レーベル" %>
+	<%= f.collection_select :label_id, Label.all, :id, :label %>
+</div><br>
+
 </div>
+</div>
+
+<div class="row">
+		<div class="col-xs-6">
 
 <div class="filed">
-<p>在庫数</p>
-<%= f.text_field :stock_quantity %>
-</div>
+	<%= f.label :price, "価格" %>
+	<%= f.text_field :price %>
+</div><br>
 
 <div class="filed">
-<p>販売ステータス</p>
-<%= f.text_field :sales_status %>
+	<%= f.label :stock_quantity, "在庫数" %>
+	<%= f.text_field :stock_quantity %>
+</div><br>
+
+<div class="filed">
+	<%= f.label :sales_status, "販売ステータス" %>
+	<%= f.text_field :sales_status %>
+</div><br>
+
+</div>
+</div>
 </div>
 
-
-<p>ディスク登録</p>
 
 <div id="discs">
-<%= f.fields_for :discs do |disc| %>
+	<%= f.fields_for :discs do |disc| %>
 	<%= render 'disc_fields', f: disc %>
 <% end %>
 </div>
 
 <div id="links">
+	<%= link_to_add_association "ディスク追加", f, :discs %>
+</div><br>
 
-<%= link_to_add_association "add disc", f, :discs %>
-
-</div>
-
-<%= f.submit %>
+<%= f.submit "商品登録" %>
 
 <% end %>

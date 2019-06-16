@@ -39,8 +39,7 @@ Rails.application.routes.draw do
     resources :addresses
     resources :carts
   end
-  
-  post "/users/:id/carts/:id/update" => "carts#update"
+
 
 >>>>>>> a3a637c34969b05c884e1e94a382189fb4ea6e95
   resources :orders do

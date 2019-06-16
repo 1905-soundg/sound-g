@@ -9,7 +9,7 @@
 			<div class="form-group">
 				<%= f.label :discs_number, "ディスクNo." %>
 				<%= f.text_field :disc_number %><br>
-				<%= link_to_remove_association "ディスク削除", f %>
+				<%= link_to_remove_association "ディスク削除", f,  class: "btn btn-danger" %>
 			</div>
 
 			<%= f.label :music, "楽曲" %>
@@ -20,7 +20,7 @@
 				<% end %>
 
 				<div class="links">
-					<%= link_to_add_association "楽曲追加", f, :musics %>
+					<%= link_to_add_association "楽曲追加", f, :musics, class: "btn btn-success" %>
 				</div>
 			</div>
 		</div>

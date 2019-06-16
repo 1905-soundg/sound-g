@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+<%= form_for(@user) do |f| %>
+
+	<%= f.label :姓 %>
+	<p><%= f.text_field :last_name %></p>
+  <%= f.label :名 %>
+	<p><%= f.text_field :first_name %></p>
+  <%= f.label :姓（カナ） %>
+  <p><%= f.text_field :last_name_k %></p>
+  <%= f.label :名（カナ） %>
+  <p><%= f.text_field :first_name_k %></p>
+  <%= f.label :郵便番号 %>
+	<p><%= f.text_field :postalcode %></p>
+  <%= f.label :住所 %>
+	<p><%= f.text_field :address %></p>
+  <%= f.label :電話番号 %>
+  <p><%= f.text_field :telephone_number %></p>
+  <%= f.label :メール %>
+  <p><%= f.text_field :email %></p>
+  <%= f.label :パスワード %>
+  <p><%= f.text_field :password %></p>
+=======
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
@@ -67,8 +89,9 @@
   <%= f.text_field :password, size:20 %>
   </div>
   </li>
+>>>>>>> master
 
-	<p><%= f.submit "編集" %></p>
+	<p><%= f.submit "更新" %></p>
 
 </ul>
 <% end %>

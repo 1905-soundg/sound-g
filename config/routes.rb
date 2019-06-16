@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admins do
     resources :users
@@ -26,6 +27,13 @@ Rails.application.routes.draw do
 
 
   resources :admins
+<<<<<<< HEAD
+  resources :users do
+    resources :addresses
+  end
+
+  resources :carts
+=======
 
   resources :users do
     resources :addresses
@@ -33,6 +41,7 @@ Rails.application.routes.draw do
   end
 
 
+>>>>>>> a3a637c34969b05c884e1e94a382189fb4ea6e95
   resources :orders do
     collection do
       get :success

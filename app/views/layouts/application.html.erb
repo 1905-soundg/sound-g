@@ -10,7 +10,7 @@
   </head>
 
 <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
+    <header class="navbar navbar-fixed-top navbar-inverse", style="background-color: #00ff7f;">
     <div class="container">
       <nav class="nav navbar-nav navbar-left">
       <span>SoundG</span>
@@ -22,6 +22,7 @@
             <% if user_signed_in? %>
               <li class="">
                 <p>ようこそ
+                  <%= current_user.last_name %> <%= current_user.first_name %>
                 様</p>
               </li>
               <li class="">
@@ -31,11 +32,11 @@
                 <%= link_to 'mypage', user_path(current_user.id), class: "glyphicon glyphicon-user" %>
               </li>
                <li class="">
-                <%= link_to 'logout', destroy_user_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %>
+                <%= link_to 'logout', destroy_user_session_path, class: "glyphicon glyphicon-log-out", method: :delete %>
               </li>
             <% elsif admin_signed_in? %>
               <li class="">
-                <%= link_to 'logout', destroy_admin_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %>
+                <%= link_to 'logout', destroy_admin_session_path, class: "glyphicon glyphicon-log-out", method: :delete %>
               </li>
             <% end %>
           </ul>

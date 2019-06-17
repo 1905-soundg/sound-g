@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
-          <h3>ユーザー編集</h3>
+          <h3 class="" style="margin-left: 20px;margin-bottom: 30px;"><strong>ユーザー編集</strong></h3>
 <ul class="list-unstyled">
 <%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
 
@@ -62,13 +62,16 @@
   </li>
 
   <li class="パスワード">
-  <div class="col-md-3">パスワード</div>
-  <div class="col-md-9">
+  <div class="col-md-3" style="margin-bottom: 20px;">パスワード</div>
+  <div class="col-md-9" style="margin-bottom: 20px;">
   <%= f.text_field :password, size:20 %>
   </div>
   </li>
 
-	<p><%= f.submit "更新" %></p>
+<div class="" style="margin: 0 20px 0 20px;">
+	<%= f.submit "更新", class: "btn btn-default col-xs-3" %>
+  <%= link_to "退会", user_path(@user), class: "btn btn-danger  col-xs-3 destroy_#{@user.id}",method: :delete %>
+</div>
 
 </ul>
 <% end %>

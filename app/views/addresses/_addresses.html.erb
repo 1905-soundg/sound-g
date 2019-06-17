@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-<h3>送付先住所</h3>
+<h3 class="" style="margin-left: 20px;margin-bottom: 30px;"><strong>送付先住所</strong></h3>
     <% @addresses.each do |address| %>
     <%= form_for address, url:user_address_path(user_id: @user, id: address.id) do |f| %>
 <ul class="list-unstyled">
@@ -26,15 +26,15 @@
 </div>
 </li>
 
-<div class="col-md-12">
-<%= f.submit 'Edit', class: "btn-sm btn-success edit_#{@address.id}" %>
+<div class="col-md-12" style="margin:  10px 0 30px 0;">
+<%= f.submit '編集', class: "btn btn-default edit_#{@address.id}" %>
  <% end %>
-<%= link_to "Destroy", user_address_path(user_id: @user, id: address.id), class: "btn-sm btn-danger destroy_#{@address.id}",method: :delete %>
+<%= link_to "削除", user_address_path(user_id: @user, id: address.id), class: "btn btn-danger destroy_#{@address.id}",method: :delete %>
 </div>
 </ul>
 <% end %>
 
-<h3>送付先の追加</h3>
+<h3 class="" style="margin-left: 20px;margin-bottom: 30px;"><strong>送付先の追加</strong></h3>
 
 <%= form_for @address, url:user_addresses_path(user_id: @user) do |f| %>
 <ul class="list-unstyled">
@@ -59,7 +59,10 @@
     </div>
     </li>
 
-    <%= f.submit '登録' %>
+<div class="col-md-6" style="margin: 20px 0 0 0;">
+    <%= f.submit '登録', class: "btn btn-default w-100 mt-2" %>
+</div>
+
 </ul>
 <% end %>
 </div>

@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+  class ReviewsController < ApplicationController
 
 
   def show
@@ -7,7 +7,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-      @review = Review.new
+      @review = Review.new(review_params)
+
       @review.user_id = current_user.id
       @review.save
       redirect_to ('/')
@@ -15,7 +16,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-      params.require(:review).permit(:content)
+      params.require(:review).permit(:review, :product_id)
   end
 
 end

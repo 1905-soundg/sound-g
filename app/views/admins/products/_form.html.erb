@@ -1,50 +1,57 @@
 <%= form_for @product, url:admins_products_path do |f| %>
 
 <div class="container">
+	<div class="nested-fields well well-compact">
 	<div class="row">
 
 
-<div class="col-lg-2">
-</div>
 
-		<div class="col-lg-4">
+		<div class="col-lg-6">
 
 
 
-	<div class="filed", style="padding-bottom: 50px;">
+	<div class="filed", style="font-size: 24px; padding-bottom: 40px;">
+		<div class="col-md-1">
+		</div>
 		<div class="col-md-4">
 			<%= f.label :album, "アルバム名" %>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-6">
 			<%= f.text_field :album %>
 		</div>
-	</div>
+	</div><br>
 
-	<div class="filed", style="padding-bottom: 30px;">
+	<div class="filed", style="font-size: 24px; padding-bottom: 30px;">
+		<div class="col-md-1">
+		</div>
 		<div class="col-md-4">
 			<%= f.label :genre, "ジャンル" %>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-6">
 		<%= f.collection_select :genre_id, Genre.all, :id, :genre %>
-	</div>
 	</div><br>
+	</div>
 
 
 
-	<div class="filed", style="padding-bottom: 30px;">
+	<div class="filed", style="font-size: 24px; padding-bottom: 30px;">
+		<div class="col-md-1">
+		</div>
 		<div class="col-md-4">
 			<%= f.label :label, "レーベル" %>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-6">
 		<%= f.collection_select :label_id, Label.all, :id, :label %>
-	</div>
 	</div><br>
+	</div>
 
-	<div class="filed", style="padding-bottom: 30px;">
-		<div class="col-md-4">
+	<div class="filed", style="padding-bottom: 50px;">
+		<div class="col-md-1">
+		</div>
+		<div class="col-md-4", style="font-size: 24px;" >
 			<%= f.label :image, "CD画像" %>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-6">
 		<%= f.attachment_field :image %>
 	</div>
 	</div><br>
@@ -53,28 +60,39 @@
 
 <div class="col-lg-6">
 
-<div class="filed">
-	<%= f.label :price, "価格" %><br>
+<div class="filed", style="font-size: 24px; padding-bottom: 50px;">
+	<div class="col-md-5">
+	<%= f.label :price, "価格" %>
+</div>
+		<div class="col-md-7">
 	<%= f.number_field :price %>
 </div><br>
+</div>
 
 
 
-	<div class="filed">
-		<%= f.label :stock_quantity, "在庫数" %><br>
+	<div class="filed", style="font-size: 24px; padding-bottom: 50px;">
+		<div class="col-md-5">
+		<%= f.label :stock_quantity, "在庫数" %>
+	</div>
+			<div class="col-md-7">
 		<%= f.number_field :stock_quantity %>
 	</div><br>
+	</div>
 
 
-	<div class="filed">
-		<%= f.label :sales_status, "販売ステータス" %><br>
+	<div class="filed", style="font-size: 24px; padding-bottom: 30px;">
+		<div class="col-md-5">
+		<%= f.label :sales_status, "販売ステータス" %>
+	</div>
+			<div class="col-md-7">
 		<%= f.text_field :sales_status %>
 	</div><br>
+	</div>
 
 </div>
 </div>
 </div>
-
 
 
 <div id="discs">

@@ -1,6 +1,9 @@
 class OrderDetailsController < ApplicationController
 
 	def create
+	  @order_detail = OrderDetail.new
+	  @order_detail.save
+	  redirect_to new_user_orders_path()
 	end
 
 

@@ -5,19 +5,25 @@ class Admins::ProductsController < ApplicationController
     end
 
     def show
-    end
+  		@product = Product.find(params[:id])
+  		@genre = @product.genre
+  		@label = @product.label
+  		@discs = @product.discs
+  		@review = Review.new
+  		@reviews = @product.reviews
+  	end
 
-	def new
-		@product = Product.new
-		@disc = @product.discs.build
-		@music = @disc.musics.build
-	end
+	  def new
+	 	  @product = Product.new
+	   	@disc = @product.discs.build
+	  	@music = @disc.musics.build
+	  end
 
-	def create
-		@product = Product.new(product_params)
-		@product.save
-		redirect_to ('/')
-	end
+	  def create
+		  @product = Product.new(product_params)
+	  	@product.save
+		  redirect_to ('/')
+	  end
 
 
 	protected

@@ -1,1 +1,45 @@
-商品詳細(admins)
+<div class="container">
+	<div class="row">
+<%= render 'layouts/header' %>
+
+		<div class="col-xs-7">
+			<%= attachment_image_tag @product,:image, :fill,400,400, class: "img-rounded" %>
+
+		</div>
+
+    <div class="row">
+   	 <div class="col-xs-5">
+
+   		<p> <%= @genre.genre %> </p>
+   		<h2> <%= @product.album %> </h2>
+   		<p> <%= @label.label %></p>
+   		<p> ¥<%= @product.price %> </p>
+
+               <% @discs.each do |d| %>
+               <div class="d-inline-block col-xs-5">
+                 <ul class="list-unstyled">
+                     <li>
+                        ディスクNo.<%= d.disc_number %>
+                     </li>
+                     <% d.musics.each do |m| %>
+                     <li>
+                        <%= m.title %>
+                     </li>
+                     <% end %>
+								 </ul>
+               </div>
+               <% end %>
+   	 </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+   <div class="col-xs-8 col-xs-offset-2">
+      <div class="d-center-block">
+				<h3>商品レビュー</h3>
+        <%= render 'reviews/reviews' %>
+      </div>
+   </div>
+</div>

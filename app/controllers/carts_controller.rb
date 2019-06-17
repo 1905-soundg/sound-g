@@ -26,6 +26,7 @@ class CartsController < ApplicationController
 	    redirect_to ('/')
     end
 
+
     private
 
 

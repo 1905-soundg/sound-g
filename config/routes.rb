@@ -48,5 +48,6 @@ Rails.application.routes.draw do
   resources :genres
 
   post 'reviews' => 'reviews#create'
+  delete 'reviews' => 'reviews#destroy'
 
 end

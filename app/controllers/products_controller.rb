@@ -24,5 +24,4 @@ class ProductsController < ApplicationController
 			                            musics_attributes: [:id, :title, :track_number, :disc_id, :artist_id, :_destroy,
 		                                 ]])
 	end
-
-	end
+end

@@ -285,7 +285,6 @@ DEPENDENCIES
   chromedriver-helper
   cocoon
   coffee-rails (~> 4.2)
-  coffee-script-source (= 1.8.0)
   devise
   jbuilder (~> 2.5)
   jquery-rails

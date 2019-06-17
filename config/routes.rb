@@ -30,15 +30,14 @@ Rails.application.routes.draw do
   resources :users do
     resources :addresses
     resources :carts
-  end
-
-  patch "/users/:id/carts/:id/update" => "carts#update"
-
-  resources :orders do
+    resources :orders do
     collection do
       get :success
     end
   end
+  end
+
+
   resources :order_details
   resources :products, only:[:index, :show, :create]
   resources :artists

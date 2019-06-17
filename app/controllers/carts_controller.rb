@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
 	before_action :authenticate_user!
+
 	def index
 	 @carts = Cart.where(user_id: current_user.id)
 	 @user = current_user
@@ -18,16 +19,18 @@ class CartsController < ApplicationController
 	end
 
 	def create
+		current_cart(params[:cart][:product_id])
+		if @cart.blank?
 		@cart = Cart.new(cart_params)
+	    end
+	    @cart.quantity += params[:cart][:quantity].to_i
 	    @cart.user_id = current_user.id
-	 if @cart.save
-	 redirect_to ('/')
-	 else
-	 render :index
-	 end
+	    @cart.save
+	    redirect_to ('/')
     end
 
     private
+
 
     def cart_params
     	params.require(:cart).permit(:quantity, :product_id, :user_id)

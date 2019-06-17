@@ -17,7 +17,7 @@
 				<% @carts.each do |cart| %>
 				<tr>
 					<td><%= attachment_image_tag cart.product, :image, :fill, 10, 10, format: 'jpg' %><br>
-						<%= form_for(cart, url: "/users/#{@user.id}/carts/#{cart.id}/update") do |f| %>
+						<%= form_for cart, url: user_cart_path(user_id: @user.id,id: cart.id) do |f| %>
 						<%= f.number_field :quantity %>
 						<%= f.submit "update" %>
 						<% end %>
@@ -32,7 +32,7 @@
 		</table>
 		<div class="col-xs-7"></div>
 		<div class="col-xs-3">
-			<span class="page-header">総計¥<%= get_price(@carts) %></span>
+			<h2 class="page-header">総計    ¥<%= get_price(@carts) %></h2>
 		</div>
   </div>
   <div class="col-xs-1"></div>

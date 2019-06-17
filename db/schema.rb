@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_16_075217) do
+ActiveRecord::Schema.define(version: 2019_06_17_074321) do
+
+  create_table "Carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.integer "quantity", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -35,14 +43,6 @@ ActiveRecord::Schema.define(version: 2019_06_16_075217) do
 
   create_table "artists", force: :cascade do |t|
     t.string "artist"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "carts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
-    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -130,6 +130,12 @@ ActiveRecord::Schema.define(version: 2019_06_16_075217) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_name"

@@ -18,16 +18,7 @@ class CartsController < ApplicationController
 	 redirect_to user_carts_path()
 	end
 
-	def create
-		current_cart(params[:cart][:product_id])
-		if @cart.blank?
-		@cart = Cart.new(cart_params)
-	    end
-	    @cart.quantity += params[:cart][:quantity].to_i
-	    @cart.user_id = current_user.id
-	    @cart.save
-	    redirect_to ('/')
-    end
+
 
     private
 

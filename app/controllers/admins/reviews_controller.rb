@@ -15,9 +15,10 @@ class Admins::ReviewsController < ApplicationController
       @review.save
       redirect_to ('/')
   end
+
   def destroy
-		  review = Review.find(params[:id])
-		  review.destroy
+		  @review = Review.find(params[:id])
+		  @review.destroy
 		  redirect_to ('/')
 	end
 end

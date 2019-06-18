@@ -7,7 +7,38 @@
 		<p class="page-header">送料		¥<%= @fee %></p>
 		<p class="page-header">請求額	¥<%= @total %></p>
 
-		<%= render 'addresses/addresses' %>
+
+
+		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
+
+		<% @addresses.each do |address| %>
+
+		<ul>
+			<li>
+				<label>
+				<%= f.radio_button :address, address.address %>
+				<%= address.address %>
+				</label>
+			</li>
+		</ul>
+
+		<% end %>
+		<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <% @carts.each do |cart| %>
 				<%= cart.product.album %><br>

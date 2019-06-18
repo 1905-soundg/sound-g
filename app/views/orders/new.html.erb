@@ -7,14 +7,29 @@
 		<p class="page-header">送料		¥<%= @fee %></p>
 		<p class="page-header">請求額	¥<%= @total %></p>
 
-		<%= render 'addresses/addresses' %>
 
-            <% @carts.each do |cart| %>
-				<%= cart.product.album %><br>
-				<%= cart.quantity %><br>
-				<%= get_subtotal(cart) %><br>
-			<% end %>
-			<%= @user.last_name %>
+		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
+
+        <% @addresses.each do |address| %>
+
+        <ul>
+            <li>
+                <label>
+                <%= f.radio_button :address, address.address %>
+                〒<%= address.postalcode %>
+                <%= address.address %>
+                <%= address.name %>
+                </label>
+            </li>
+        </ul>
+
+        <% end %>
+        
+        <% end %>
+
+
+
+
 
 		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
 				<%= f.hidden_field :subtotal_price, :value => "get_price(@carts)" %>

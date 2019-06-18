@@ -1,39 +1,39 @@
-<body>
+<div class="container">
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
 	<h1>カート内容</h1>
 	<table class="table">
-			<thead>
-				<tr>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
 			<tbody>
 				<% @carts.each do |cart| %>
 				<tr>
-					<td><%= attachment_image_tag cart.product, :image, :fill, 150, 150, format: 'jpg' %></td>
-					<td><h3 class=""><%= cart.product.album %></h3><br>
-					<td><%= form_for cart, url: user_cart_path(user_id: @user.id,id: cart.id) do |f| %>
-						<%= f.number_field :quantity, min: 0, max: cart.product.stock_quantity%>
-						<%= f.submit "update" %></td>
-						<% end %>
-					<td><%= link_to "Destroy","/users/#{@user.id}/carts/#{cart.id}", method: :delete %></td>
-					 <td>   小計　¥<%= get_subtotal(cart) %></td>
+					<td><div class="center-block" style="margin-top: 10px;margin-bottom: 10px;"><%= attachment_image_tag cart.product, :image, :fill, 150, 150, format: 'jpg' %></div></td>
+						<td>
+							<div class="center-block" style="margin-top: 35px;margin-bottom: 35px;">
+							<h3><%= cart.product.album %></h3>
+							<%= form_for cart, url: user_cart_path(user_id: @user.id,id: cart.id) do |f| %>
+							<%= f.number_field :quantity, min: 0, max: cart.product.stock_quantity, style:"height:32px; width:45px; border-radius: 5px;" %>
+							<%= f.submit "update", class: "btn btn-default" %>
+					        <%= link_to "Destroy","/users/#{@user.id}/carts/#{cart.id}",  class: "btn btn-danger", method: :delete %><br>
+					        <div class="center-block" style="margin-top: 10px;"><strong>小計　¥<%= get_subtotal(cart) %></strong></div>
+					        </div>
+					    </td>
+				<% end %>
 				</tr>
 				<% end %>
 			</tbody>
-		</table>
-		<div class="row">
-		<div class="col-xs-7"></div>
-		<div class="col-xs-3">
-			<h2 class="page-header">総計    ¥<%= get_price(@carts) %></h2>
-		</div>
+	</table>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+    <div class="col-md-7"></div>
+    <div class="col-md-4">
+		<h2 class="page-header">総計    ¥<%= get_price(@carts) %></h2>
+	</div>
+	<div class="col-md-1" style="padding-top: 40px;">
 		<%= link_to "購入", new_user_order_path, class: "btn btn-success" %>
-  </div>
+    </div>
 </div>
 </div>
-</body>
+</div>

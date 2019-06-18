@@ -5,9 +5,9 @@ class ProductsController < ApplicationController
 		@genre = @product.genre
 		@label = @product.label
 		@discs = @product.discs
+		@reviews = @product.reviews
 		@cart = Cart.new
 		@review = Review.new
-		@reviews = @product.reviews
 		@user = current_user.id
 
 	end

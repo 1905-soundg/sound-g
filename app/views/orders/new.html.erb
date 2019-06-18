@@ -9,32 +9,27 @@
 
 
 
+
+
+
 		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
 
-		<% @addresses.each do |address| %>
+        <% @addresses.each do |address| %>
 
-		<ul>
-			<li>
-				<label>
-				<%= f.radio_button :address, address.address %>
-				<%= address.address %>
-				</label>
-			</li>
-		</ul>
+        <ul>
+            <li>
+                <label>
+                <%= f.radio_button :address, address.address %>
+                〒<%= address.postalcode %>
+                <%= address.address %>
+                <%= address.name %>
+                </label>
+            </li>
+        </ul>
 
-		<% end %>
-		<% end %>
+        <% end %>
 
-
-
-
-
-
-
-
-
-
-
+        <% end %>
 
 
 
@@ -46,6 +41,7 @@
 				<%= get_subtotal(cart) %><br>
 			<% end %>
 			<%= @user.last_name %>
+
 
 		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
 				<%= f.hidden_field :subtotal_price, :value => "get_price(@carts)" %>

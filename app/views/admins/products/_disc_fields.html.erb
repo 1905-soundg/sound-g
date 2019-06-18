@@ -1,17 +1,21 @@
-	<div class="d-center-block">
+
 		<div class="nested-fields well well-compact">
 
-			<div class="filed">
+			<div class="filed" style="font-size: 24px; padding-bottom: 20px; ">
 				<%= f.label :discs, "ディスク登録" %>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group" style="font-size: 18px;">
+				<div style="padding-bottom: 10px;">
 				<%= f.label :discs_number, "ディスクNo." %>
+			</div>
 				<%= f.text_field :disc_number %>
 				<%= link_to_remove_association "ディスク削除", f,  class: "btn btn-danger" %>
-			</div>
+			</div><br>
 
+			<div style="font-size: 18px; padding-right: 30px;">
 			<%= f.label :music, "楽曲" %>
+			</div>
 
 			<div  class="music">
 				<%= f.fields_for :musics do |music| %>
@@ -23,4 +27,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
+

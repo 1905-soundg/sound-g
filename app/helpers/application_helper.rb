@@ -10,4 +10,14 @@ module ApplicationHelper
     	return total
     end
 
+    def get_subtotal(c)
+
+    	total = 0
+
+    		subtotal = c.product.price * c.quantity
+    		total += subtotal
+
+    	return total
+    end
+
 end

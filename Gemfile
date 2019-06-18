@@ -71,3 +71,6 @@ gem 'ransack'
 gem 'pry-rails'
 gem "paranoia", "~> 2.0"
 gem 'coffee-script-source', '1.8.0'
+
+gem 'select2-rails'
+

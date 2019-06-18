@@ -9,9 +9,10 @@ class Admins::ProductsController < ApplicationController
   		@genre = @product.genre
   		@label = @product.label
   		@discs = @product.discs
+      @reviews = @product.reviews
   		@review = Review.new
-  		@reviews = @product.reviews
   	end
+
 
 	  def new
 	 	  @product = Product.new

@@ -35,11 +35,19 @@
 </div>
 
 
+
 <div class="row">
    <div class="col-xs-8 col-xs-offset-2">
+      <%= form_for (@review) do |f| %>
       <div class="d-center-block">
 				<h3>商品レビュー</h3>
-        <%= render 'reviews/reviews' %>
+				<p>編集フォーム</p>
+				<%= f.text_area :review, :size => "100" %>
+				<%= f.hidden_field :product_id, :value => @product.id %>
+				<%= f.submit "投稿" %>
+				<% end %>
+        <%= render 'admins/reviews/reviews' %>
+
       </div>
    </div>
 </div>

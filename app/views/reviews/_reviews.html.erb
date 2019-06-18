@@ -1,6 +1,15 @@
 <h3>みんなのレビュー</h3>
-<% @reviews.each do |f| %>
+<% @reviews.each do |review| %>
 
 
-<table ></table>
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td width="15%"> <%= review.user.first_name %> </td>
+			<td> <%= review.review %> </td>
+		</tr>
+	</tbody width="85%">
+</table>
+
+
 <% end %>

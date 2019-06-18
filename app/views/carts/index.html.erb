@@ -18,7 +18,7 @@
 					<td><%= attachment_image_tag cart.product, :image, :fill, 150, 150, format: 'jpg' %></td>
 					<td><h3 class=""><%= cart.product.album %></h3><br>
 					<td><%= form_for cart, url: user_cart_path(user_id: @user.id,id: cart.id) do |f| %>
-						<%= f.number_field :quantity, min: 0, max: cart.product.stock_quantity%>
+						<%= f.number_field :quantity, min: 0, max: cart.product.stock_quantity %>
 						<%= f.submit "update" %></td>
 						<% end %>
 					<td><%= link_to "Destroy","/users/#{@user.id}/carts/#{cart.id}", method: :delete %></td>

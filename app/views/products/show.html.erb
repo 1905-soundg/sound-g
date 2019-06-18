@@ -16,7 +16,7 @@
    		<p> ¥<%= @product.price %> </p>
 
    		<%= form_for @cart, url:user_carts_path(user_id: @user) do |f| %>
-   		<%= f.number_field :quantity, min: 0, max: cart.product.stock_quantity %>
+   		<%= f.number_field :quantity, min: 0, max: @product.stock_quantity %>
    		<%= f.hidden_field :product_id, :value => @product.id %>
    		<%= f.submit "カートに追加" %>
    		<% end %>

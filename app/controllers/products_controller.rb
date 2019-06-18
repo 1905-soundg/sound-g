@@ -8,7 +8,6 @@ class ProductsController < ApplicationController
 		@reviews = @product.reviews
 		@cart = Cart.new
 		@review = Review.new
-		@user = current_user.id
 
 	end
 

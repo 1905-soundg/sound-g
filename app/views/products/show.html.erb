@@ -1,3 +1,5 @@
+<% if user_signed_in? %>
+
 <div class="container">
 	<div class="row">
 <%= render 'layouts/header' %>
@@ -23,7 +25,7 @@
       </div>
 
    		<div style="margin: 20px 0px">
-      <%= form_for @cart, url:user_carts_path(user_id: @user) do |f| %>
+      <%= form_for @cart, url:user_carts_path(user_id: current_user.id) do |f| %>
    		<%= f.number_field :quantity, min: 0, max: @product.stock_quantity %>
    		<%= f.hidden_field :product_id, :value => @product.id %>
    		<%= f.submit "カートに追加" %>
@@ -68,3 +70,68 @@
       </div>
     </div>
 </div>
+
+<% else %>
+
+<div class="container">
+  <div class="row">
+<%= render 'layouts/header' %>
+
+      <div class="col-xs-1">
+     </div>
+
+    <div class="col-xs-6" >
+      <div style="margin: 40px">
+        <%= attachment_image_tag @product,:image, :fill,400,400, class: "img-rounded" %>
+      </div>
+
+    </div>
+
+     <div class="col-xs-4" style="margin-top: 40px">
+
+
+      <div >
+      <p> <%= @genre.genre %> </p>
+      <h2> <%= @product.album %> </h2>
+      <p> <%= @label.label %></p>
+      <p> ¥<%= @product.price %> </p>
+      </div>
+
+      <div style="margin: 20px 0px">
+      <%= number_field :quantity, min: 0, max: @product.stock_quantity %>
+      <%= link_to "カートに追加", new_user_session_path, aria_hidden: "true", class: "btn btn-default" %>
+      </div>
+
+               <% @discs.each do |d| %>
+               <div class="d-inline-block col-xs-5">
+                 <ul class="list-unstyled">
+                     <li>
+                        ディスクNo.<%= d.disc_number %>
+                     </li>
+                     <% d.musics.each do |m| %>
+                     <li>
+                        <%= m.title %>
+                     </li>
+                     <% end %>
+                 </ul>
+               </div>
+               <% end %>
+      </div>
+      <div class="col-xs-1">
+     </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1" >
+  <div class="d-center-block">
+        <h3>商品レビュー</h3>
+
+        <%= render 'reviews/reviews' %>
+
+      </div>
+    </div>
+</div>
+
+<% end %>

@@ -8,6 +8,10 @@
 		<p class="page-header">請求額	¥<%= @total %></p>
 
 
+
+
+
+
 		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
 
         <% @addresses.each do |address| %>
@@ -24,11 +28,19 @@
         </ul>
 
         <% end %>
-        
+
         <% end %>
 
 
 
+
+
+            <% @carts.each do |cart| %>
+				<%= cart.product.album %><br>
+				<%= cart.quantity %><br>
+				<%= get_subtotal(cart) %><br>
+			<% end %>
+			<%= @user.last_name %>
 
 
 		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>

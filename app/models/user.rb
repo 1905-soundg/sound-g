@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :addresses
   has_many :orders
   has_many :carts
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :reviews,dependent: :destroy
 
 end

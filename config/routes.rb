@@ -39,7 +39,10 @@ Rails.application.routes.draw do
 
 
   resources :order_details
-  resources :products, only:[:index, :show, :create]
+  resources :products, only:[:index, :show, :create] do
+    resource :favorites, only: [:create, :destroy]
+  end
+
   resources :artists
   resources :favorites
   resources :reviews

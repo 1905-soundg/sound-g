@@ -16,14 +16,26 @@ class Admins::ProductsController < ApplicationController
 
 	  def new
 	 	  @product = Product.new
-	   	@disc = @product.discs.build
-	  	@music = @disc.musics.build
+	   	  @disc = @product.discs.build
+	  	  @music = @disc.musics.build
 	  end
 
 	  def create
 		  @product = Product.new(product_params)
 	  	@product.save
 		  redirect_to ('/')
+	  end
+
+	  def update
+	  	@product = Product.find(params[:id])
+	  	@product.update(product_params)
+	  	redirect_to product_path(@product)
+	  end
+
+	  def destroy
+	  	@product = Product.find(params[:id])
+	  	@product.destroy
+	  	redirect_to ('/')
 	  end
 
 

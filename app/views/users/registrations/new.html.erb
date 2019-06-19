@@ -5,113 +5,109 @@
     <div class="form-user style-1 rounded has-shadow-1">
 
       <div class="form-header text-center">
-        <h2>Sign up</h2>
+        <h2>Sign up</h2><br>
       </div>
 
-      <div class="form-body">
+           <div class="form-body">
+
+
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-         <div class="field">
-          <div class="col-md-3">
+         <div class="col-md-6">
+
+         <div class="field" style="font-size: 16px; padding-bottom: 50px;">
+          <div class="col-md-4">
             <%= f.label :姓 %>
           </div>
-          <div class="col-md-9">
+            <div class="col-md-6">
             <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
           </div>
          </div>
 
 
-         <div class="field">
-          <div class="col-md-3">
+         <div class="field" style="font-size: 16px; padding-bottom: 50px;">
+          <div class="col-md-4">
+            <%= f.label :"姓(カナ)" %>
+          </div>
+            <div class="col-md-6">
+            <%= f.text_field :last_name_k, autofocus: true, autocomplete: "last_name_k" %>
+          </div>
+         </div>
+
+   </div>
+
+            <div class="col-md-6">
+
+
+        <div class="field"  style="font-size: 16px; padding-bottom: 50px;">
+          <div class="col-md-4">
             <%= f.label :名 %>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-6">
             <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
           </div>
          </div>
 
 
-         <div class="field">
-          <div class="col-md-3">
-            <%= f.label :"姓(カナ)" %>
-          </div>
-          <div class="col-md-9">
-            <%= f.text_field :last_name_k, autofocus: true, autocomplete: "last_name_k" %>
-          </div>
-         </div>
-
-
-         <div class="field">
-          <div class="col-md-3">
+         <div class="field"  style="font-size: 16px; padding-bottom: 50px;">
+          <div class="col-md-4">
             <%= f.label :"名(カナ)" %>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-6">
             <%= f.text_field :first_name_k, autofocus: true, autocomplete: "first_name_k" %>
           </div>
         </div>
 
+    </div>
 
-        <div class="field">
-          <div class="col-md-3">
-            <%= f.label :郵便番号 %>
-          </div>
-          <div class="col-md-9">
+
+
+
+       <div class="col-md-8" style="margin-left: 15px; margin-top: 10px;" >
+
+        <div class="field" style="font-size: 16px; padding-bottom: 10px;">
+            <%= f.label :郵便番号%><br>
             <%= f.text_field :postalcode, autofocus: true, autocomplete: "postalcode" %>
-          </div>
         </div>
 
 
-        <div class="field">
-          <div class="col-md-3">
-            <%= f.label :住所 %>
-          </div>
-          <div class="col-md-9">
-            <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-          </div>
+        <div class="field" style="font-size: 16px; padding-bottom: 10px;">
+            <%= f.label :住所 %><br>
+            <%= f.text_field :address, autofocus: true, autocomplete: "address", :size  => "80" %>
         </div>
 
 
-        <div class="field">
-          <div class="col-md-3">
-            <%= f.label :電話番号 %>
-          </div>
-          <div class="col-md-9">
-            <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_numberx" %>
-          </div>
+
+        <div class="field" style="font-size: 16px; padding-bottom: 10px;">
+            <%= f.label :email %><br>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :size  => "50" %>
         </div>
 
-
-        <div class="field">
-          <div class="col-md-3">
-            <%= f.label :email %>
-          </div>
-          <div class="col-md-9">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
-        </div>
-
-
-        <div class="field">
-          <div class="col-md-2">
-            <%= f.label :password %>
+        <div class="field" style="font-size: 16px; padding-bottom: 10px;">
+            <%= f.label :password %><br>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.password_field :password, autocomplete: "new-password" %><br>
         </div>
 
-        <div class="field">
+
+
+        <div class="field" style="font-size: 16px; padding-bottom: 10px;">
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
+        </div><br>
 
         <div class="actions">
-            <%= f.submit "Sign up" %>
-        </div>
+            <%= f.submit "Sign up", class: "btn btn-success singn_up" %>
+        </div><br>
       <% end %>
 
+
       <%= render "users/shared/links" %>
+    </div>
+    </div>
     </div>
 </div>
 </div>

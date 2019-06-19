@@ -1,0 +1,13 @@
+<%= render 'layouts/header' %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-2" >
+  <div class="d-center-block">
+<h1>レビュー編集</h1>
+<%= form_for (@review)  do |f| %>
+<%= f.text_area :review, :size => "130x5" %>
+<%= f.submit "投稿" %>
+<% end %>
+
+</div>
+</div>
+</div>

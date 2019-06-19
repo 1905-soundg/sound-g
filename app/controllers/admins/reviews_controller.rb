@@ -9,16 +9,19 @@ class Admins::ReviewsController < ApplicationController
       @review = Review.find(params[:id])
   end
 
+  def post
+     @review = Review.find(params[:id])
+  end
+
   def update
-      @review = Review.new(review_params)
-      @review.user_id = current_user.id
-      @review.save
-      redirect_to ('/')
+      @review = Review.find(params[:id])
+      @review.update(review_params)
+      redirect_back(fallback_location: root_path)
   end
 
   def destroy
 		  @review = Review.find(params[:id])
 		  @review.destroy
-		  redirect_to ('/')
+		  redirect_back(fallback_location: root_path)
 	end
 end

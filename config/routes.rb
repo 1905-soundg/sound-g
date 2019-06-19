@@ -48,5 +48,9 @@ Rails.application.routes.draw do
 
   post 'reviews' => 'reviews#create'
   delete 'reviews' => 'reviews#destroy'
+  post 'reviews/:id/edit' => 'admins/reviews#edit'
+  post "reviews/:id/update" => "admins/reviews#update"
+
+
 
 end

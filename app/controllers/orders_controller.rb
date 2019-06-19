@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
 	def new
 	 @carts = Cart.where(user_id: current_user.id)
 	 @fee = 500
-	 @total = view_context.get_price(@carts)+@fee
 	 @order = Order.new
 	 @user = current_user
 	 @address = Address.new

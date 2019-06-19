@@ -5,7 +5,7 @@
     	<h1>購入画面</h1>
 		<p class="page-header">小計		¥<%= get_price(@carts) %></p>
 		<p class="page-header">送料		¥<%= @fee %></p>
-		<p class="page-header">請求額	¥<%= @total %></p>
+		<p class="page-header">請求額	¥<%= get_totalprice(@carts) %>(税込)</p>
 
 
 
@@ -13,48 +13,51 @@
 
 
 		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
+        	<% @addresses.each do |address| %>
+		        <ul>
+		            <li>
+	                <label>
+	                <%= f.radio_button :address, address.address %>
+	                〒<%= address.postalcode %>
+	                住所		<%= address.address %>
+	                宛名		<%= address.name %>
+	                </label>
+		            </li>
+		        </ul>
+       		 <% end %>
+   		 	  	<%= form_for @address, url:user_addresses_path(user_id: @user) do |a| %>
+					<ul class="list-unstyled">
+					    <li class="postalcode">
+					    <div class="col-md-2">郵便番号</div>
+					    <div class="col-md-10">
+					    <%= a.text_field :postalcode, size:50 %>
+					    </div>
+					    </li>
 
-        <% @addresses.each do |address| %>
+					    <li class="address">
+					    <div class="col-md-2">住所</div>
+					    <div class="col-md-10">
+					    <%= a.text_field :address, size:50 %>
+					    </div>
+					    </li>
 
-        <ul>
-            <li>
-                <label>
-                <%= f.radio_button :address, address.address %>
-                〒<%= address.postalcode %>
-                <%= address.address %>
-                <%= address.name %>
-                </label>
-            </li>
-        </ul>
+					    <li class="name">
+					    <div class="col-md-2">宛名</div>
+					    <div class="col-md-10">
+					    <%= a.text_field :name, size:50 %>
+					    </div>
+					    </li>
+					</ul>
+				<% end %>
 
-        <% end %>
-
-        <%= f.text_field :address %>
-        <%= f.text_field :postalcode %>
-        <%= f.text_field :last_name %>
-
-
-        <% end %>
-
-
-
-
-
-            <% @carts.each do |cart| %>
-				<%= cart.product.album %><br>
-				<%= cart.quantity %><br>
-				<%= get_subtotal(cart) %><br>
-			<% end %>
-			<%= @user.last_name %>
-
-
-		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
-				<%= f.hidden_field :subtotal_price, :value => "get_price(@carts)" %>
+                <%= f.hidden_field :subtotal_price, :value => "" %>
 				<%= f.hidden_field :fee, :value => "@fee" %>
 				<%= f.hidden_field :order_id, :value => "" %>
 				<%= f.hidden_field :order_id, :value => "" %>
 			<%= f.submit "購入" ,class: "btn-sm btn-primary" %>
-		<% end %>
+        <% end %>
+		</div>
+		</div>
 	</div>
     </div>
 </div>

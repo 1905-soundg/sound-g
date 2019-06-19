@@ -8,7 +8,6 @@ class ProductsController < ApplicationController
 		@reviews = @product.reviews
 		@cart = Cart.new
 		@review = Review.new
-
 	end
 
 	def index

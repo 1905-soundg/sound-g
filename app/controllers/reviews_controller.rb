@@ -13,6 +13,22 @@
       redirect_to ('/')
   end
 
+  def edit
+      @review = Review.find(params[:id])
+  end
+
+  def update
+      @review = Review.find(params[:id])
+      @review.update(review_params)
+      redirect_to ('/')
+  end
+
+  def destroy
+      @review = Review.find(params[:id])
+      @review.destroy
+      redirect_to ('/')
+  end
+
   private
   def review_params
       params.require(:review).permit(:review, :product_id)

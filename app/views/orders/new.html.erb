@@ -7,53 +7,34 @@
 		<p class="page-header">送料		¥<%= @fee %></p>
 		<p class="page-header">請求額	¥<%= get_totalprice(@carts) %>(税込)</p>
 
-
-
-
-
-
+        <h1>送付先選択</h1>
 		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
-        	<% @addresses.each do |address| %>
 		        <ul>
+		        	<li>
+		        	<label>
+		        		<%= f.radio_button :address, @user.address  %>
+		        			<%= @user.address %>
+	                        <%= @user.postalcode %>
+							<%= @user.last_name + @user.first_name %>
+		        	</label>
+		        	</li>
+		        	<h3>送付先</h3>
+		        	<% @addresses.each do |address| %>
 		            <li>
 	                <label>
-	                <%= f.radio_button :address, address.address %>
+	                <%= f.radio_button :address, "#{address.id} #{address.address}" %>
 	                〒<%= address.postalcode %>
 	                住所		<%= address.address %>
 	                宛名		<%= address.name %>
 	                </label>
 		            </li>
+		             <% end %>
 		        </ul>
-       		 <% end %>
-   		 	  	<%= form_for @address, url:user_addresses_path(user_id: @user) do |a| %>
-					<ul class="list-unstyled">
-					    <li class="postalcode">
-					    <div class="col-md-2">郵便番号</div>
-					    <div class="col-md-10">
-					    <%= a.text_field :postalcode, size:50 %>
-					    </div>
-					    </li>
 
-					    <li class="address">
-					    <div class="col-md-2">住所</div>
-					    <div class="col-md-10">
-					    <%= a.text_field :address, size:50 %>
-					    </div>
-					    </li>
+                <%= f.hidden_field :subtotal_price, :value => get_price(@carts) %>
+				<%= f.hidden_field :fee, :value => @fee %>
+				<%= f.hidden_field :order_status, :value => "販売中" %>
 
-					    <li class="name">
-					    <div class="col-md-2">宛名</div>
-					    <div class="col-md-10">
-					    <%= a.text_field :name, size:50 %>
-					    </div>
-					    </li>
-					</ul>
-				<% end %>
-
-                <%= f.hidden_field :subtotal_price, :value => "" %>
-				<%= f.hidden_field :fee, :value => "@fee" %>
-				<%= f.hidden_field :order_id, :value => "" %>
-				<%= f.hidden_field :order_id, :value => "" %>
 			<%= f.submit "購入" ,class: "btn-sm btn-primary" %>
         <% end %>
 		</div>

@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        last_name: "姓"
+        first_name: "名"
+        last_name_k: "姓（カナ）"
+        first_name_k: "名（カナ）"
+        email: "メールアドレス"
+        postalcode: "郵便番号"
+        telephone_number: "電話番号"
+        address: "住所"
+        password: "パスワード"

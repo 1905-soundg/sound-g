@@ -10,17 +10,19 @@
   </head>
 
 <body>
+
     <header class="navbar navbar-fixed-top navbar-inverse", style="background-color: #00ff7f;border-color: white;padding: 0 0 0 0;">
     <div class="container">
 
-<% if user_signed_in? %>
-     <div class="center-block" style="padding: 0 0 25px 0;">
-       <nav class="nav navbar-nav navbar-left" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-       <%=link_to root_path do %>
-       <h1>SoundG</h1>
-       <% end %>
-       </nav>
-     </div>
+    <% if user_signed_in? %>
+      <div class="center-block" style="padding: 0 0 25px 0;">
+        <nav class="nav navbar-nav navbar-left" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+        <%=link_to root_path do %>
+        <h1>SoundG</h1>
+        <% end %>
+        </nav>
+      </div>
+
 
        <nav class="nav navbar-nav navbar-right" style="padding: 0 0 0 0;">
        <div id="slidemenu">
@@ -46,31 +48,32 @@
              </nav>
              </div>
 
-             <nav class="nav navbar-nav navbar-right" style="padding: 0 0 0 0;">
-             <div id="slidemenu">
-               <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn" style="padding: 0 0 0 0;" >
-                   <li>
-                     <%= link_to ' logout', destroy_admin_session_path, class: "glyphicon glyphicon-log-out navbar-link", style: "padding: 0 0 0 0;", method: :delete %>
-                   </li>
-           <% end %>
-         </ul>
-     </div>
-   </nav>
-   </div>
-   </header>
+
+              <nav class="nav navbar-nav navbar-right" style="padding: 0 0 0 0;">
+              <div id="slidemenu">
+                <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn" style="padding: 0 0 0 0;" >
+                    <li>
+                      <%= link_to ' logout', destroy_admin_session_path, class: "glyphicon glyphicon-log-out navbar-link", style: "padding: 0 0 0 0;", method: :delete %>
+                    </li>
+            <% end %>
+          </ul>
+      </div>
+    </nav>
+    </div>
+    </header>
 
 <div class="wrapper">
-  <%= yield %>
+   <%= yield %>
 </div>
 
- <footer>
-   <div class="container">
-     <div class="row">
-        <div class="col-xs-3 col-xs-offset-9">
-         <p>CopyRight Infratop.inc</p>
-       </div>
-     </div>
-   </div>
- </footer>
+  <footer>
+    <div class="container">
+      <div class="row">
+         <div class="col-xs-3 col-xs-offset-9">
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

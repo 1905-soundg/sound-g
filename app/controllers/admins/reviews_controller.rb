@@ -6,6 +6,7 @@ class Admins::ReviewsController < ApplicationController
   end
 
   def edit
+      @reviews = Review.all
       @review = Review.find(params[:id])
   end
 

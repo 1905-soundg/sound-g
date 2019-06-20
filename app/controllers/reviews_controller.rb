@@ -1,4 +1,4 @@
-  class ReviewsController < ApplicationController
+class ReviewsController < ApplicationController
 
 
   def show
@@ -10,7 +10,7 @@
       @review = Review.new(review_params)
       @review.user_id = current_user.id
       @review.save
-      redirect_to ('/')
+      redirect_back(fallback_location: root_path)
   end
 
   def edit
@@ -20,13 +20,13 @@
   def update
       @review = Review.find(params[:id])
       @review.update(review_params)
-      redirect_to ('/')
+      redirect_to admins_product_path(@review.product_id)
   end
 
   def destroy
       @review = Review.find(params[:id])
       @review.destroy
-      redirect_to ('/')
+      redirect_back(fallback_location: root_path)
   end
 
   private

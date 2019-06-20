@@ -13,8 +13,9 @@
 				<p class="" style="margin: 0px 0px 0px 0px;"><%= product.label.label %></p>
 				<p class="" style="margin: 0px 0px 0px 0px;">￥<%= product.price %></p>
 					<% product.discs.each do |disc| %>
-						<% disc.musics.each do |music| %>
-						<p class="" style="margin: 0px 0px 0px 0px;"><strong><%= music.artist.artist %></strong></p>
+					<% disc.musics.each do |music| %>
+					<p class="" style="margin: 0px 0px 0px 0px;"><strong><%= music.artist.artist %></strong></p>
+			        <p class="" style="margin: 0px 0px 0px 0px;"><%= product.favorites.count %> いいね</p>
 		    </div>
 			<% end %>
 			<% end %>

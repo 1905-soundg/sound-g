@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@address = Address.new
 		@addresses = @user.addresses
+		@favorites = Favorite.where(user_id: current_user.id)
 	end
 
 	def update

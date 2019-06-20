@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admins do
     resources :users
-    resources :products
+    resources :products do
+      resources :reviews
+    end
     resources :genres
     resources :labels
     resources :artists
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
     resources :addresses
     resources :carts
     resources :orders do
+      resources :order_details
     collection do
       get :success
     end
@@ -38,9 +41,9 @@ Rails.application.routes.draw do
   end
 
 
-  resources :order_details
   resources :products, only:[:index, :show, :create] do
     resource :favorites, only: [:create, :destroy]
+    resources :reviews
   end
 
   resources :artists

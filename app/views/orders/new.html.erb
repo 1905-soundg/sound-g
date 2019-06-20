@@ -2,30 +2,33 @@
 <div class="col-md-8 col-md-offset-2">
     <div class="row">
     <div class="col-md-8 col-md-offset-2">
-    	<h1>購入画面</h1>
+    	<h2>ご注文の確認</h2>
+
 		<p class="page-header">小計		¥<%= get_price(@carts) %></p>
 		<p class="page-header">送料		¥<%= @fee %></p>
 		<p class="page-header">請求額	¥<%= get_totalprice(@carts) %>(税込)</p>
 
-        <h1>送付先選択</h1>
+        <h2>お届け先住所の選択</h2>
+        <h1></h1>
 		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
-		        <ul>
+		        <ul class="list-unstyled">
 		        	<li>
-		        	<label>
+		        	<h4>ご自宅</h4>
+		        	<label style="font-weight: normal;">
 		        		<%= f.radio_button :address, @user.address  %>
 		        			<%= @user.address %>
 	                        <%= @user.postalcode %>
 							<%= @user.last_name + @user.first_name %>
 		        	</label>
 		        	</li>
-		        	<h3>送付先</h3>
+		        	<h4>ご自宅以外のお届け先</h4>
 		        	<% @addresses.each do |address| %>
 		            <li>
-	                <label>
+	                <label style="font-weight: normal;">
 	                <%= f.radio_button :address, "#{address.id} #{address.address}" %>
 	                〒<%= address.postalcode %>
-	                住所		<%= address.address %>
-	                宛名		<%= address.name %>
+	                <%= address.address %>
+	                <%= address.name %>
 	                </label>
 		            </li>
 		             <% end %>
@@ -35,7 +38,18 @@
 				<%= f.hidden_field :fee, :value => @fee %>
 				<%= f.hidden_field :order_status, :value => "販売中" %>
 
-			<%= f.submit "購入" ,class: "btn-sm btn-primary" %>
+				<h2>お支払い方法</h2>
+				<div class="radio">
+  					<label><input type="radio" name="radio" id="radio1" value="radio1"> 銀行振込</label>
+				</div>
+				<div class="radio">
+				  	<label><input type="radio" name="radio" id="radio2" value="radio2"> クレジットカード</label>
+				</div>
+				<div class="radio disabled">
+				 	 <label><input type="radio" name="radio" id="radio3" value="radio3"> 代金引換</label>
+				</div>
+
+			<%= f.submit "購入" ,class: "btn-sm btn-primary btn-block" %>
         <% end %>
 		</div>
 		</div>

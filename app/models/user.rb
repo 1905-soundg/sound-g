@@ -12,4 +12,12 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :reviews,dependent: :destroy
 
+  validates :last_name,presence: true, length:{ in: 1..50 }
+  validates :first_name,presence: true, length:{ in: 1..50 }
+  validates :last_name_k,presence: true, length:{ in: 1..50 }
+  validates :first_name_k,presence: true, length:{ in: 1..50 }
+  validates :postalcode,presence: true, length:{is:7}
+  validates :telephone_number,presence: true,length:{ in: 1..20 }
+
+
 end

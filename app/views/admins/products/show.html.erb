@@ -33,8 +33,13 @@
       <p> ¥<%= f.number_field :price %> </p>
 
 
+      <div>
       <%= f.label :image, "CD画像(アップデート後に画像変更)" %>
       <%= f.attachment_field :image %>
+      </div>
+
+
+  
 
 
       <div class="col-xs-1">
@@ -57,7 +62,8 @@
           <%= link_to_add_association "ディスク追加", f, :discs, class: "btn btn-success" %>
         </div><br>
 
-        <%= render 'admins/reviews/reviews' %>
+
+
     </div>
   </div>
 </div>

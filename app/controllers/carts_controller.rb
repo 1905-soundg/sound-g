@@ -17,7 +17,7 @@ class CartsController < ApplicationController
 	 cart.destroy
 	 redirect_to user_carts_path()
 	end
-	
+
 	def create
 		current_cart(params[:cart][:product_id])
 	    @cart.quantity += params[:cart][:quantity].to_i

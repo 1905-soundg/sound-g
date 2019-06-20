@@ -15,7 +15,7 @@
 					<% product.discs.each do |disc| %>
 					<% disc.musics.each do |music| %>
 					<p class="" style="margin: 0px 0px 0px 0px;"><strong><%= music.artist.artist %></strong></p>
-			        <p class="" style="margin: 0px 0px 0px 0px;"><%= product.favorites.count %> いいね</p>
+			        <p class="" style="margin: 0px 0px 0px 0px;"><i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i><%= product.favorites.count %></p>
 		    </div>
 			<% end %>
 			<% end %>

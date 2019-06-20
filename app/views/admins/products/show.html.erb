@@ -1,48 +1,92 @@
+<%= form_for @product do |product| %>
+
 <div class="container">
-	<div class="row">
+  <div class="row">
 <%= render 'layouts/header' %>
 
-		<div class="col-xs-7">
-			<%= attachment_image_tag @product,:image, :fill,400,400, class: "img-rounded" %>
+      <div class="col-xs-1">
+     </div>
 
-		</div>
+    <div class="col-xs-6" >
+      <div style="margin: 40px">
+        <%= attachment_image_tag @product,:image, :fill,400,400, class: "img-rounded" %>
+      </div>
 
-    <div class="row">
-   	 <div class="col-xs-5">
+      <% if @product.favorited_by?(current_user) %>
+          <%= link_to product_favorites_path(@product), method: :delete do %>
+            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+            <%= @product.favorites.count %> いいね
+          <% end %>
+      <% else %>
+          <%= link_to product_favorites_path(@product), method: :post do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <%= @product.favorites.count %> いいね
+          <% end %>
+      <% end %>
 
-   		<p> <%= @genre.genre %> </p>
-   		<h2> <%= @product.album %> </h2>
-   		<p> <%= @label.label %></p>
-   		<p> ¥<%= @product.price %> </p>
+    </div>
 
-               <% @discs.each do |d| %>
+     <div class="col-xs-4" style="margin-top: 40px">
+
+
+      <%= product.label :genre, "ジャンル" %>
+      <%= product.collection_select :genre_id, Genre.all, :id, :genre %><br>
+
+      <div style="margin-top: 10px;">
+      <%= product.label :album, "アルバム名" %>
+      </div>
+      <div style="margin-bottom: 20px;">
+      <h2> <%= product.text_field :album %> </h2>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+      <%= product.collection_select :label_id, Label.all, :id, :label %>
+      </div>
+      <p> ¥<%= product.number_field :price %> </p>
+
+
+
+               <div class="nested-fields form-inline">
+               <% @discs.each do |disc| %>
                <div class="d-inline-block col-xs-5">
                  <ul class="list-unstyled">
                      <li>
-                        ディスクNo.<%= d.disc_number %>
+                        ディスクNo.<%= disc.disc_number %>
                      </li>
-                     <% d.musics.each do |m| %>
+                     <% disc.musics.each do |music| %>
+                     <% form_for music, url:admins_music_path(disc_id: disc.id) do |m| %>
                      <li>
-                        <%= m.title %>
+                        <%= m.text_field :title %>
                      </li>
                      <% end %>
-								 </ul>
+                     <% end %>
+                 </ul>
                </div>
                <% end %>
-   	 </div>
-    </div>
-  </div>
+             </div>
+      </div>
+      <div class="col-xs-1">
+     </div>
 </div>
 
 
 
 <div class="row">
-   <div class="col-xs-8 col-xs-offset-2">
-      <div class="d-center-block">
-				<h3>商品レビュー</h3>
+  <div class="col-md-10 col-md-offset-1" >
+  <div class="d-center-block">
+      <%= form_for (@review) do |f| %>
+        <h3>商品レビュー</h3>
 
+        <p>新規投稿</p>
+
+        <%= f.text_area :review, :size => "130x5" %>
+        <%= f.hidden_field :product_id, :value => @product.id %>
+        <%= f.submit "投稿" %>
+        <% end %>
         <%= render 'admins/reviews/reviews' %>
 
       </div>
-   </div>
+    </div>
 </div>
+
+<% end %>

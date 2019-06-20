@@ -1,12 +1,26 @@
 <div class="container">
       <div class="row">
       <div class="col-md-10 col-md-offset-1">
-      	 <div class="col-lg-5" >
+      	 <div class="col-md-5" >
       	 	<%= render 'users/userinfo' %>
       	 </div>
-      	 <div class="col-lg-7" >
+      	 <div class="col-md-7" >
             <%= render 'addresses/addresses' %>
       	 </div>
       </div>
+
+      <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                  <h3 class="text-center"><strong>いいね一覧</strong></h3>
+                  <div class="d-inline-block" style="margin: 30px 50px 30px 80px;">
+                  <% @favorites.each do |favorite| %>
+                  <%=link_to product_path(favorite.product.id) do %>
+                  <%= attachment_image_tag favorite.product, :image, :fill, 150, 150, format: 'jpg' %>
+                  <% end %>
+                  <% end %>
+                  </div>
+            </div>
+      </div>
+
   </div>
 </div>

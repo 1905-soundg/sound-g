@@ -10,7 +10,8 @@
   </head>
 
 <body>
-    <header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #00ff7f;border-color: white;padding: 0 0 0 0;">
+
+    <header class="navbar navbar-fixed-top navbar-inverse", style="background-color: #00ff7f;border-color: white;padding: 0 0 0 0;">
     <div class="container">
 
     <% if user_signed_in? %>
@@ -22,31 +23,31 @@
         </nav>
       </div>
 
-        <nav class="nav navbar-nav navbar-right" style="padding: 0 0 0 0;">
-        <div id="slidemenu">
-          <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn" style="padding: 0 0 0 0;" >
+
+       <nav class="nav navbar-nav navbar-right" style="padding: 0 0 0 0;">
+       <div id="slidemenu">
+         <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn" style="padding: 0 0 0 0;" >
+             <li>
+               ようこそ
+                 <%= current_user.last_name %> <%= current_user.first_name %>
+               様
+             </li>
+             <li>
+               <%= link_to  '', user_carts_path(current_user.id), class: "glyphicon glyphicon-shopping-cart navbar-link",  style: "padding: 0 15px 0 30px;" %>
+             </li>
+             <li>
+               <%= link_to 'mypage', user_path(current_user.id), class: "glyphicon glyphicon-user navbar-link", style: "padding: 0 15px 0 15px;" %>
+             </li>
               <li>
-                ようこそ
-                  <%= current_user.last_name %> <%= current_user.first_name %>
-                様
-              </li>
-              <li>
-                <%= link_to  '', root_path, class: "glyphicon glyphicon-shopping-cart navbar-link",  style: "padding: 0 15px 0 30px;" %>
-              </li>
-              <li>
-                <%= link_to 'mypage', user_path(current_user.id), class: "glyphicon glyphicon-user navbar-link", style: "padding: 0 15px 0 15px;" %>
-              </li>
-               <li>
-                <%= link_to 'logout', destroy_user_session_path, class: "navbar-link glyphicon glyphicon-log-out ", style: "padding: 0 15px 0 15px;", method: :delete %>
-              </li>
-            <% elsif admin_signed_in? %>
-              <div class="center-block" style="padding: 0 0 25px 0;">
-              <nav class="nav navbar-nav navbar-left" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-                <%=link_to admin_path do %>
-                <h1>SoundG</h1>
-                <% end %>
-              </nav>
-              </div>
+               <%= link_to 'logout', destroy_user_session_path, class: "navbar-link glyphicon glyphicon-log-out ", style: "padding: 0 15px 0 15px;", method: :delete %>
+             </li>
+           <% elsif admin_signed_in? %>
+             <div class="center-block" style="padding: 0 0 25px 0;">
+             <nav class="nav navbar-nav navbar-left" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+               <h1>SoundG</h1>
+             </nav>
+             </div>
+
 
               <nav class="nav navbar-nav navbar-right" style="padding: 0 0 0 0;">
               <div id="slidemenu">

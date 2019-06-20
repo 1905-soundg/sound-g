@@ -9,7 +9,7 @@ class Admins::ProductsController < ApplicationController
   		@genre = @product.genre
   		@label = @product.label
   		@discs = @product.discs
-      @reviews = @product.reviews
+        @reviews = @product.reviews
   		@review = Review.new
   	end
 
@@ -22,7 +22,7 @@ class Admins::ProductsController < ApplicationController
 
 	  def create
 		  @product = Product.new(product_params)
-	  	@product.save
+	  	  @product.save
 		  redirect_to ('/')
 	  end
 

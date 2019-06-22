@@ -1,71 +1,110 @@
-<%= form_for @product do |f| %>
+<%= render 'layouts/header' %>
 
 <div class="container">
   <div class="row">
-<%= render 'layouts/header' %>
 
-      <div class="col-xs-1">
-     </div>
+    <div class="col-xs-1"></div>
+
 
     <div class="col-xs-6" >
+
       <div style="margin: 40px">
         <%= attachment_image_tag @product,:image, :fill,400,400 %>
       </div>
 
     </div>
 
-     <div class="col-xs-4" style="margin-top: 40px">
 
-
-      <%= f.label :genre, "ジャンル" %>
-      <%= f.collection_select :genre_id, Genre.all, :id, :genre %><br>
-
-      <div style="margin-top: 10px;">
-      <%= f.label :album, "アルバム名" %>
-      </div>
-      <div style="margin-bottom: 20px;">
-      <h2> <%= f.text_field :album %> </h2>
-      </div>
-
-      <div style="margin-bottom: 20px;">
-      <%= f.collection_select :label_id, Label.all, :id, :label %>
-      </div>
-      <p> ¥<%= f.number_field :price %> </p>
+    <div class="col-xs-4" style="margin-top: 40px">
 
 
       <div>
-      <%= f.label :image, "CD画像(アップデート後に画像変更)" %>
-      <%= f.attachment_field :image %>
+        <p> ジャンル：<%= @genre.genre %>　</p>
       </div>
 
 
-  
-
-
-      <div class="col-xs-1">
-     </div>
-</div>
-
-
-
-<div class="row">
-  <div class="col-md-10 col-md-offset-1" >
-    <div class="d-center-block">
-
-      <div id="discs">
-        <%= f.fields_for :discs do |disc| %>
-          <%= render 'disc_fields', f: disc %>
-        <% end %>
+      <div style="margin-bottom: 10px;">
+        <P> アルバム名 </P>
+        <div style="font-size: 30px;">
+          <p>  <%= @product.album %> </p>
         </div>
-
-        <div id="links">
-          <%= link_to_add_association "ディスク追加", f, :discs, class: "btn btn-success" %>
-        </div><br>
+      </div>
 
 
+      <div style="margin-bottom: 10px;">
+        <p> レーベル：<%= @label.label %> </p>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <p> 販売価格： ¥<%= @product.price %> </p>
+      </div>
+
+
+      <div style="margin-bottom: 10px;">
+        <p>  在 庫 数  ： <%= @product.stock_quantity %> </p>
+      </div>
+
+
+
+      <div style="margin-bottom: 10px;">
+        <p> 販売状況： <%= @product.sales_status %> </p>
+      </div>
+
+
+
+      <% @discs.each do |d| %>
+      <div class="d-inline-block col-xs-5" style="margin: 10px 0 0 0;padding: 0 0 0 0;">
+        <ul class="list-unstyled">
+          <li>
+            ディスクNo.<%= d.disc_number %>
+          </li>
+          <% d.musics.each do |m| %>
+          <li>
+            <%= m.title %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <div class="col-xs-5" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
+        <%= link_to "商品編集", edit_admins_product_path(@product), class: "btn btn-default btn-lg active" %>
+      </div>
+      <div class="col-xs-7" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
+        <%= link_to "商品削除", admins_product_path(@product), class: "btn btn-danger btn-lg active", method: :delete, data:{confirm:"本当に削除しますか？"} %>
+      </div>
+
+
+
+      <div class="col-xs-1"></div>
 
     </div>
-  </div>
+
+
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1" >
+        <div class="d-center-block">
+
+
+          <table class="table table-bordered">
+            <tbody>
+              <% @reviews.each  do |review| %>
+              <tr>
+                <td width="15%"> <%= review.user.first_name %> </td>
+                <td width="65%"> <%= review.review %></td>
+                <td width="10%" style="text-align: center;"><%= link_to "編集", edit_admins_product_review_path(review.id), class: "btn btn-default" %>
+                </td>
+                <td width="10%" style="text-align: center;" >
+                  <%= link_to "削除", admins_reviews_path(review.id), class: "btn btn-danger", method: :delete, data:{confirm:"本当に削除しますか？"} %>
+                </td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+
+
+        </div>
+      </div>
 </div>
 
-<% end %>

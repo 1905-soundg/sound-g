@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 		@address = Address.new
 		@addresses = @user.addresses
 		@favorites = Favorite.where(user_id: current_user.id)
+		@orders = Order.where(user_id: current_user.id)
 	end
 
 	def update

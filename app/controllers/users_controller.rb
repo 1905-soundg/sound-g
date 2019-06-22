@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@address = Address.new
-		@addresses = @user.addresses
-		@favorites = Favorite.where(user_id: current_user.id)
-		@orders = Order.where(user_id: current_user.id)
+		@addresses = @user.addresses.page(params[:page]).reverse_order.per(4)
+		@favorites = @user.favorites.page(params[:page]).reverse_order.per(4)
+		@orders = @user.orders.page(params[:page]).reverse_order.per(4)
 	end
 
 	def update

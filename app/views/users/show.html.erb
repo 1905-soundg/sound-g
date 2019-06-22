@@ -22,6 +22,11 @@
                   </tbody>
                   <% end %>
                   </table>
+
+                  <div class="text-center">
+                  <%= paginate @addresses, class: "paginate" %>
+                  </div>
+
       	 </div>
       </div>
       </div>
@@ -64,6 +69,9 @@
                   <% end %>
                   </tbody>
                   </table>
+                  <div class="text-center">
+                  <%= paginate @orders, class: "paginate" %>
+                  </div>
             </div>
       </div>
 
@@ -77,6 +85,9 @@
                   <%= attachment_image_tag favorite.product, :image, :fill, 150, 150, format: 'jpg' %>
                   <% end %>
                   <% end %>
+                  </div>
+                  <div class="text-center">
+                  <%= paginate @favorites, class: "paginate" %>
                   </div>
             </div>
       </div>

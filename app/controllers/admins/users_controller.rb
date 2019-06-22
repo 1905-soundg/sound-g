@@ -7,6 +7,7 @@ class Admins::UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@address = Address.new
     @addresses = @user.addresses
+    @orders = @user.orders
   end
 
 end

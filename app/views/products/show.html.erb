@@ -37,7 +37,7 @@
          <div class="col-xs-2" style="padding: 0 0 0 0;" >
        		<%= f.number_field :quantity, min: 0, max: @product.stock_quantity, class: "form-control", style: "width: 80px;" %>
          </div>
-         <div class="col-xs-2" style="padding: 0 0 0 0;">
+         <div class="col-xs-2" style="padding: 0 0 0 0;margin: 0 -30px 0 0;">
        		<%= f.hidden_field :product_id, :value => @product.id %>
          </div>
    		<%= f.submit "カートに追加", class: "btn btn-default" %>
@@ -45,7 +45,7 @@
    		<% end %>
 
                <% @discs.each do |d| %>
-               <div class="d-inline-block col-xs-5" style="margin: 10px 0 0 0;padding: 0 0 0 0;">
+               <div class="d-inline-block col-xs-5" style="margin: 0 0 0 0;padding: 0 0 0 0;">
                  <ul class="list-unstyled">
                    <li>
                     ディスクNo.<%= d.disc_number %>
@@ -97,10 +97,10 @@
 
 
         <div>
-        <p> <%= @genre.genre %> </p>
-        <h2> <%= @product.album %> </h2>
-        <p> <%= @label.label %></p>
-        <p> ¥<%= @product.price %> </p>
+        <p class="" style="margin: 0 0 0 0;"> <%= @genre.genre %> </p>
+        <h2 class="" style="margin: 15px 0 15px 0;"> <%= @product.album %> </h2>
+        <p class="" style="margin: 10px 0 10px 0;"> <%= @label.label %></p>
+        <p class="" style="margin: 10px 0 10px 0;"> ¥<%= @product.price %></p>
         <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
         <%= @product.favorites.count %>
         </div>
@@ -140,7 +140,7 @@
 
 
 <div class="row">
-  <div class="col-md-10 col-md-offset-1" >
+  <div class="col-md-8 col-md-offset-2" >
   <div class="d-center-block">
         <h3>商品レビュー</h3>
 

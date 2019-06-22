@@ -74,7 +74,23 @@
 				<%= f.hidden_field :product_id, :value => @product.id %>
 				<%= f.submit "投稿", class: "btn btn-default", style: "margin-top: 10px;" %>
 				<% end %>
-        <%= render 'reviews/reviews' %>
+
+
+
+            <h3>みんなのレビュー</h3>
+
+          <% @reviews.each do |review| %>
+
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td width="15%"> <%= review.user.last_name %><%= review.user.first_name %></td>
+                <td width="85%"> <%= review.review %> </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <% end %>
   </div>
   </div>
 </div>
@@ -141,13 +157,26 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2" >
-  <div class="d-center-block">
-        <h3>商品レビュー</h3>
+    <div class="d-center-block">
 
-        <%= render 'reviews/reviews' %>
+        <h3>みんなのレビュー</h3>
 
-      </div>
+          <% @reviews.each do |review| %>
+
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td width="15%"> <%= review.user.last_name %><%= review.user.first_name %></td>
+                <td width="85%"> <%= review.review %> </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <% end %>
+
+
     </div>
+  </div>
 </div>
 
 <% end %>

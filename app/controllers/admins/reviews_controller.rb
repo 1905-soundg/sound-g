@@ -8,6 +8,7 @@ class Admins::ReviewsController < ApplicationController
   def edit
       @review = Review.find(params[:id])
       @user = @review.user
+      @product = @review.product
   end
 
   def post
@@ -17,7 +18,7 @@ class Admins::ReviewsController < ApplicationController
   def update
       @review = Review.find(params[:id])
       if @review.update!(review_params)
-         redirect_to edit_admins_product_review_path(@review.id), notice: "You have updated review successfully."
+         redirect_to edit_admins_product_review_path(@review.id)
       else
         render :edit
       end

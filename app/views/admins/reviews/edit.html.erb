@@ -1,6 +1,5 @@
 <%= render 'layouts/header' %>
 
-<%= flash[:notice] %>
 
 <div class="container">
 	<div class="row">
@@ -23,6 +22,10 @@
 
         <div style="margin-bottom: 10px;">
           <%= link_to "削除", admins_product_review_path(review), class: "btn btn-danger", method: :delete %><br>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <%= link_to "商品詳細ページに戻る", admins_product_path(id: @product.id), class: "btn btn-default" %><br>
         </div>
 
         <% end %>

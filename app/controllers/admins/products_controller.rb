@@ -10,7 +10,6 @@ class Admins::ProductsController < ApplicationController
   		@label = @product.label
   		@discs = @product.discs
         @reviews = @product.reviews
-  		@review = Review.find_by(id: params[:id])
   	end
 
 

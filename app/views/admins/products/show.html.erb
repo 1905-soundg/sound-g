@@ -52,6 +52,7 @@
 
 
 
+      <div class="row">
       <% @discs.each do |d| %>
       <div class="d-inline-block col-xs-5" style="margin: 10px 0 0 0;padding: 0 0 0 0;">
         <ul class="list-unstyled">
@@ -66,13 +67,20 @@
         </ul>
       </div>
       <% end %>
+      </div>
 
-      <div class="col-xs-5" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
-        <%= link_to "商品編集", edit_admins_product_path(@product), class: "btn btn-default btn-lg active" %>
-      </div>
-      <div class="col-xs-7" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
-        <%= link_to "商品削除", admins_product_path(@product), class: "btn btn-danger btn-lg active", method: :delete, data:{confirm:"本当に削除しますか？"} %>
-      </div>
+        <div class="col-xs-5" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
+          <%= link_to "商品編集", edit_admins_product_path(@product), class: "btn btn-default btn-lg active" %>
+        </div>
+        <div class="col-xs-7" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
+          <%= link_to "商品削除", admins_product_path(@product), class: "btn btn-danger btn-lg active", method: :delete, data:{confirm:"本当に削除しますか？"} %>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-9" style="margin-top: 10px;">
+            <%= link_to "商品一覧に戻る", admins_products_path, class: "btn btn-info btn-lg btn-block active" %>
+          </div>
+        </div>
 
 
 
@@ -91,9 +99,9 @@
             <tbody>
               <% @reviews.each  do |review| %>
               <tr>
-                <td width="15%"> <%= review.user.first_name %> </td>
+                <td width="15%"> <%= review.user.last_name %> </td>
                 <td width="65%"> <%= review.review %></td>
-                <td width="10%" style="text-align: center;"><%= link_to "編集", edit_admins_product_review_path(review.id), class: "btn btn-default" %>
+                <td width="10%" style="text-align: center;"><%= link_to "編集", edit_admins_product_review_path(id: review.id, product_id: @product.id), class: "btn btn-default" %>
                 </td>
                 <td width="10%" style="text-align: center;" >
                   <%= link_to "削除", admins_reviews_path(review.id), class: "btn btn-danger", method: :delete, data:{confirm:"本当に削除しますか？"} %>

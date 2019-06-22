@@ -10,7 +10,17 @@ class Admins::ProductsController < ApplicationController
   		@label = @product.label
   		@discs = @product.discs
         @reviews = @product.reviews
-  		@review = Review.new
+  		@review = Review.find_by(id: params[:id])
+  	end
+
+
+  	def edit
+  		@prduct = Product.find(params[:id])
+  		@product = Product.find(params[:id])
+  		@genre = @product.genre
+  		@label = @product.label
+  		@discs = @product.discs
+        @reviews = @product.reviews
   	end
 
 
@@ -28,14 +38,14 @@ class Admins::ProductsController < ApplicationController
 
 	  def update
 	  	@product = Product.find(params[:id])
-	  	@product.update(product_params)
-	  	redirect_to product_path(@product)
+	  	@product.update!(product_params)
+	  	redirect_to admins_product_path(@product)
 	  end
 
 	  def destroy
 	  	@product = Product.find(params[:id])
 	  	@product.destroy
-	  	redirect_to ('/')
+	  	redirect_to admins_products_pahs
 	  end
 
 

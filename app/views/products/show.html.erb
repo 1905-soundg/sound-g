@@ -17,7 +17,7 @@
    		<div >
       <p class="" style="margin: 0 0 0 0;"> <%= @genre.genre %> </p>
    		<h2 class="" style="margin: 15px 0 15px 0;"> <%= @product.album %> </h2>
-   		<p class="" style="margin: 10px 0 10px 0;"> <%= @label.label %></p>
+   		<p class="" style="margin: 10px 0 10px 0;"> <%= @label.label %> </p>
    		<p class="" style="margin: 10px 0 10px 0;"> ¥<%= @product.price %></p>
       <% if @product.favorited_by?(current_user) %>
           <%= link_to product_favorites_path(@product), method: :delete do %>

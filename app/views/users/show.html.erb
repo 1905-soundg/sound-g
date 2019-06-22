@@ -6,7 +6,22 @@
       	 	<%= render 'users/userinfo' %>
       	 </div>
       	 <div class="col-md-7" >
-            <%= render 'addresses/addresses' %>
+                  <h3 class=""><strong>送付先住所</strong></h3>
+                  <table class="table ">
+
+                  <thead>
+                        <th>郵便番号</th>
+                        <th>住所</th>
+                        <th>宛名</th>
+                  </thead>
+                    <% @addresses.each do |address| %>
+                  <tbody>
+                   <td><%= address.postalcode %></td>
+                   <td><%= address.address %></td>
+                   <td><%= address.name %></td>
+                  </tbody>
+                  <% end %>
+                  </table>
       	 </div>
       </div>
       </div>

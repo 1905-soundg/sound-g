@@ -1,71 +1,77 @@
 <div class="container">
     <div class="row">
-<h3 class="" style="margin-left: 10px;margin-bottom: 30px;"><strong>送付先住所</strong></h3>
-    <% @addresses.each do |address| %>
-    <%= form_for address, url:user_address_path(user_id: @user, id: address.id) do |f| %>
-<ul class="list-unstyled">
+        <h3 class="" style="margin-left: 10px;margin-bottom: 30px;"><strong>送付先の追加</strong></h3>
 
-<div class="postalcode">
-<div class="col-md-1">郵便番号</div>
-<div class="col-md-11">
-<%= f.text_field :postalcode, size:50 %>
-</div>
-</div>
+        <%= form_for @address, url:user_addresses_path(user_id: @user) do |f| %>
+        <ul class="list-unstyled">
+            <li class="postalcode">
+            <div class="col-md-1">郵便番号</div>
+            <div class="col-md-11">
+            <%= f.text_field :postalcode, size:50 %>
+            </div>
+            </li>
 
-<li class="address">
-<div class="col-md-1">住所</div>
-<div class="col-md-11">
-<%= f.text_field :address, size:50 %>
-</div>
-</li>
+            <li class="address">
+            <div class="col-md-1">住所</div>
+            <div class="col-md-11">
+            <%= f.text_field :address, size:50 %>
+            </div>
+            </li>
 
-<li class="name">
-<div class="col-md-1">宛名</div>
-<div class="col-md-11">
-<%= f.text_field :name, size:50 %>
-</div>
-</li>
+            <li class="name">
+            <div class="col-md-1">宛名</div>
+            <div class="col-md-11">
+            <%= f.text_field :name, size:50 %>
+            </div>
+            </li>
 
-<div class="col-md-12" style="margin:  10px 0 30px 0;">
-<%= f.submit '編集', class: "btn btn-default edit_#{@address.id}" %>
- <% end %>
-<%= link_to "削除", user_address_path(user_id: @user, id: address.id), class: "btn btn-danger destroy_#{@address.id}",method: :delete %>
-</div>
-</ul>
-<% end %>
+        <div class="col-md-3" style="margin: 20px 0  0  55px;">
+        </div>
+        <div class="col-md-2" style="margin: 20px 0 0 0;">
+            <%= f.submit '登録', class: "btn btn-default w-100 mt-2" %>
+            <%= link_to "戻る", new_user_order_path, class: "btn btn-default w-100 mt-2" %>
 
-<h3 class="" style="margin-left: 10px;margin-bottom: 30px;"><strong>送付先の追加</strong></h3>
+        </div>
 
-<%= form_for @address, url:user_addresses_path(user_id: @user) do |f| %>
-<ul class="list-unstyled">
-    <li class="postalcode">
-    <div class="col-md-1">郵便番号</div>
-    <div class="col-md-11">
-    <%= f.text_field :postalcode, size:50 %>
+        </ul>
+        <% end %>
     </div>
-    </li>
 
-    <li class="address">
-    <div class="col-md-1">住所</div>
-    <div class="col-md-11">
-    <%= f.text_field :address, size:50 %>
+<div class="row">
+        <h3 class="" style="margin: 0px 0px 30px 10px;"><strong>送付先住所</strong></h3>
+            <% @addresses.each do |address| %>
+            <%= form_for address, url:user_address_path(user_id: @user, id: address.id) do |f| %>
+        <ul class="list-unstyled">
+        <div class="postalcode">
+        <div class="col-md-1">郵便番号</div>
+        <div class="col-md-11">
+        <%= f.text_field :postalcode, size:50 %>
+        </div>
+        </div>
+
+        <li class="address">
+        <div class="col-md-1">住所</div>
+        <div class="col-md-11">
+        <%= f.text_field :address, size:50 %>
+        </div>
+        </li>
+
+        <li class="name">
+        <div class="col-md-1">宛名</div>
+        <div class="col-md-11">
+        <%= f.text_field :name, size:50 %>
+        </div>
+        </li>
+
+        <div class="col-md-12" style="margin:  10px 0 30px 0;">
+        <%= f.submit '編集', class: "btn btn-default edit_#{@address.id}" %>
+         <% end %>
+        <%= link_to "削除", user_address_path(user_id: @user, id: address.id), class: "btn btn-danger destroy_#{@address.id}",method: :delete %>
+        </div>
+        </ul>
+        <% end %>
     </div>
-    </li>
 
-    <li class="name">
-    <div class="col-md-1">宛名</div>
-    <div class="col-md-11">
-    <%= f.text_field :name, size:50 %>
-    </div>
-    </li>
 
-<div class="col-md-4" style="margin: 20px 0 0 0;">
-</div>
-<div class="col-md-2" style="margin: 20px 0 0 0;">
-    <%= f.submit '登録', class: "btn btn-default w-100 mt-2" %>
-</div>
-
-</ul>
-<% end %>
 </div>
 </div>

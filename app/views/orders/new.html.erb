@@ -54,6 +54,7 @@
 		                <%= f.hidden_field :subtotal_price, :value => get_totalprice(@carts) %>
 						<%= f.hidden_field :fee, :value => @fee %>
 						<%= f.hidden_field :order_status, :value => 0 %>
+						<%= link_to "お届け先追加", user_addresses_path, class: "btn  btn-default" %>
 			</div>
 			<div class="row"  style="margin: 40px 0px;">
 					<h2  style="margin-top: 10px">お支払い方法</h2>

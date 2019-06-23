@@ -86,7 +86,7 @@
 		<%= f.label :sales_status, "販売ステータス" %>
 	</div>
 			<div class="col-md-7">
-		<%= f.text_field :sales_status %>
+		<%= f.select :sales_status, Product.sales_statuses.keys.map{|s| [s, s]} %>
 	</div><br>
 	</div>
 

@@ -2,14 +2,24 @@
 	<h3><strong>購入履歴一覧</strong></h3>
 	<table class="table table-bordered">
 		<thead>
-			<tr>
+			<tr >
 				<th>No</th>
 				<th>購入者</th>
-				<th>購入日</th>
-				<th>購入商品詳細</th>
-				<th>購入価格総計</th>
-				<th>送付先</th>
-				<th>ステータス</th>
+				<th style="text-align: center;">
+				  購入日
+				</th>
+				<th style="text-align: center;">
+				  購入商品詳細
+				</th>
+				<th style="text-align: center;">
+				  購入価格総計
+				</th>
+				<th style="text-align: center;">
+				  送付先
+				</th>
+				<th colspan="2" style="text-align: center;" >
+				  ステータス
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,7 +39,14 @@
 					<%= order.address %><br>
 					<%= order.last_name %>
 				</td>
-				<td><%= order.order_status %></td>
+				  <%= form_for order, url: admins_user_order_path(user_id: order.user_id, id: order.id) do |o| %>
+				<td style="text-align: center;">
+				  <%= o.select :order_status, Order.order_statuses.keys.map{|status| [status, status]}, {:prompt => order.order_status} %>
+				</td>
+				<td style="text-align: center;">
+				  <%= o.submit "編集", class: "btn btn-default btn-lg active" %>
+				</td>
+				<% end %>
 			</tr>
 			<% end %>
 		</tbody>

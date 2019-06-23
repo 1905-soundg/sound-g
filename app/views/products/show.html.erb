@@ -2,8 +2,7 @@
 
 <div class="container">
 	<div class="row">
-    <div class="col-xs-1">
-    </div>
+    <div class="col-xs-1"></div>
 
 		<div class="col-xs-6" >
       <div style="margin: 40px">
@@ -59,8 +58,8 @@
                </div>
                <% end %>
 
-    <div class="col-xs-1">
-    </div>
+    <div class="col-xs-1"></div>
+
   </div>
 </div>
 
@@ -70,21 +69,19 @@
       <%= form_for (@review) do |f| %>
 				<h3>商品レビュー</h3>
 
-				<p>新規投稿</p>
-
-				<% if flash[:notice] %>
-				  <p><%= flash[:notice] %></p>
-				<% end %>
-				<%= f.text_area :review, :size => "130x5",  class: "form-control", placeholder:"新規レビュー投稿" %>
-				<%= f.hidden_field :product_id, :value => @product.id %>
-				<%= f.submit "投稿", class: "btn btn-default", style: "margin-top: 10px;" %>
-				<% end %>
+    				<% if flash[:notice] %>
+    				  <p><%= flash[:notice] %></p>
+    				<% end %>
+    				<%= f.text_area :review, :size => "130x5",  class: "form-control", placeholder:"新規レビュー投稿" %>
+    				<%= f.hidden_field :product_id, :value => @product.id %>
+    				<%= f.submit "投稿", class: "btn btn-default", style: "margin-top: 10px;" %>
+    	<% end %>
 
 
 
-            <h3>みんなのレビュー</h3>
+        <h3>みんなのレビュー</h3>
 
-          <% @reviews.each do |review| %>
+        <% @reviews.each do |review| %>
 
           <table class="table table-bordered">
             <tbody>
@@ -96,7 +93,7 @@
           </table>
 
           <% end %>
-  </div>
+     </div>
   </div>
 </div>
 

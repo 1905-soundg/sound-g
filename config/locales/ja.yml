@@ -64,3 +64,10 @@ ja:
       wrong_length: "は%{count}文字にしてください。"
       invalid: "は有効でありません。"
       confirmation: "が内容とあっていません。"
+
+  activated:
+    enums:
+      product:
+        sales_status:
+          sale: "販売中"
+          selling_discontinue: "販売中止"

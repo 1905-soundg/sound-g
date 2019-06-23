@@ -12,6 +12,10 @@ class Product < ApplicationRecord
 
     attachment :image
 
+
+    enum sales_status:[:sale, :selling_discontinued]
+
+
 def favorited_by?(user)
   favorites.where(user_id: user.id).exists?
 end

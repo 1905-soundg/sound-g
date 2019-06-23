@@ -19,5 +19,7 @@ class User < ApplicationRecord
   validates :postalcode,presence: true, length:{is:7}
   validates :telephone_number,presence: true,length:{ in: 9..20 }
 
+  enum user_status:[]
+
 
 end

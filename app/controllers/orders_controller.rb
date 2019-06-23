@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 	 @order = Order.new(order_params)
 	 @order.user_id = current_user.id
 		 if @order.address == @user.address
+
 		 	#ユーザー登録時に登録した住所を選択した場合
 			 @order.address = @order.user.address
 			 @order.last_name = @order.user.last_name

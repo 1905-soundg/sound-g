@@ -24,7 +24,7 @@
                   </table>
 
                   <div class="text-center">
-                  <%= paginate @addresses, class: "paginate" %>
+                  <%= paginate @addresses, param_name: 'addresses_page', class: "paginate" %>
                   </div>
 
       	 </div>
@@ -70,7 +70,7 @@
                   </tbody>
                   </table>
                   <div class="text-center">
-                  <%= paginate @orders, class: "paginate" %>
+                  <%= paginate @orders, param_name: 'orders_page',class: "paginate" %>
                   </div>
             </div>
       </div>
@@ -87,7 +87,7 @@
                   <% end %>
                   </div>
                   <div class="text-center">
-                  <%= paginate @favorites, class: "paginate" %>
+                  <%= paginate @favorites, param_name: 'favorites_page', class: "paginate" %>
                   </div>
             </div>
       </div>

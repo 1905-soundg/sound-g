@@ -6,8 +6,8 @@ class Admins::UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
   	@address = Address.new
-    @addresses = @user.addresses
-    @orders = @user.orders
+    @addresses = @user.addresses.page(params[:addresses_page]).reverse_order.per(5)
+    @orders = @user.orders.page(params[:orders_page]).reverse_order.per(5)
   end
 
 end

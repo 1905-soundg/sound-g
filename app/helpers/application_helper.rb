@@ -15,38 +15,33 @@ module ApplicationHelper
 
     #cart/indexの商品在庫数変更
 
-    def get_total_quantity(c)
+    def get_total_quantity(q)
 
-        total = 0
+        total_quantity = 0
 
-        subtotal = 0
+        subtotal_quantity = 0
 
-        totalquantity = 0
+        total_quantity = 0
 
-        @carts = Cart.where(product_id: c.product.id)
-
-        @carts.each do |cart|
-
-        totalquantity += cart.quantity.to_i
-
-        subtotal += totalquantity
-
+        carts = Cart.where(product_id: q.product.id)
+        carts.each do |quantity|
+        total_quantity += quantity.quantity.to_i
+        subtotal_quantity += total_quantity
         end
 
 
-        subquantity = subtotal - c.quantity
+        subquantity = subtotal_quantity - q.quantity
+        stock_total = q.product.stock_quantity - subquantity
+        total_quantity += stock_total
+        return total_quantity
 
-        stock_total = c.product.stock_quantity - subquantity
-
-        total += stock_total
-
-        return total
     end
 
 
 
 
-	 def get_price(c)
+	 #crat/index総計
+     def get_price(c)
 
     	total = 0
 

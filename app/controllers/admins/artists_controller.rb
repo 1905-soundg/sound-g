@@ -8,8 +8,15 @@ class Admins::ArtistsController < ApplicationController
 
 	def create
 		@artist = Artist.new(artist_params)
-		@artist.save
-		redirect_to ('/')
+		if @artist.save
+			flash[:notice] = "アーティストを登録しました。"
+		  redirect_back(fallback_location: root_path)
+		else
+			flash[:notice] = "アーティストを入力してください。"
+			redirect_back(fallback_location: root_path)
+
+		end
+
 	end
 
 	private

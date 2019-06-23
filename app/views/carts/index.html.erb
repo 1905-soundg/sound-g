@@ -12,7 +12,7 @@
 							<div class="center-block" style="margin-top: 35px;margin-bottom: 35px;">
 							<h3><%= cart.product.album %></h3>
 							<%= form_for cart, url: user_cart_path(user_id: @user.id,id: cart.id) do |f| %>
-							<%= f.number_field :quantity, min: 0, max: cart.product.stock_quantity, style:"height:32px; width:45px;border: 1px solid #adadad; border-radius: 5px;" %>
+							<%= f.number_field :quantity, min: 0, max: get_total_quantity(cart) , style:"height:32px; width:45px;border: 1px solid #adadad; border-radius: 5px;" %>
 							<%= f.submit "変更", class: "btn btn-default" %>
 					        <%= link_to "削除","/users/#{@user.id}/carts/#{cart.id}",  class: "btn btn-danger", method: :delete %><br>
 					        <div class="center-block" style="margin-top: 10px;"><strong>小計　¥<%= get_subtotal(cart) %></strong></div>

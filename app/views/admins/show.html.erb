@@ -6,6 +6,9 @@
     <div class="container">
     <div class="row">
     <div class="col-md-8 col-md-offset-2"  style="margin-top: 50px;" >
+      <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+      <% end %>
 
   <%= link_to "商品登録", new_admins_product_path, class: "btn btn-success col-md-3", style:"margin: 10px 10px 10px 10px;" %>
   <%= link_to "アーティスト登録", new_admins_artist_path, class: "btn btn-success col-md-3", style:"margin: 10px 10px 10px 10px;" %>

@@ -19,14 +19,14 @@
 		        <h2  style="margin: 10px 0px 20px;">お届け先住所の選択</h2>
 		        <div class="row">
 		        	<div class="col-md-12" style="margin-left:15px;">
-
-				<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
+		        		<div data-turbolinks="false">
+						<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
 				        <ul class="list-unstyled">
 				        	<strong  style="margin-bottom: 15px;">ご自宅</strong>
 				        	<div class="col-md-12">
 				        	<li>
 				        	<label style="font-weight: normal; margin-bottom: 15px;">
-				        		<%= f.radio_button :address, @user.address  %>
+				        		<%= f.radio_button :address, @user.address ,{:checked => true} %>
 				        			<%= @user.address %>
 			                        <%= @user.postalcode %>
 									<%= @user.last_name + @user.first_name %>
@@ -48,32 +48,29 @@
 				           </div>
 				        </ul>
 
-				    </div>
-				</div>
 
 		                <%= f.hidden_field :subtotal_price, :value => get_totalprice(@carts) %>
 						<%= f.hidden_field :fee, :value => @fee %>
 						<%= f.hidden_field :order_status, :value => 0 %>
 						<%= link_to "お届け先追加", user_addresses_path, class: "btn  btn-default" %>
+						<div class="row"  style="margin: 40px 0px;">
+								<h2  style="margin-top: 10px">お支払い方法</h2>
+								<div class="col-md-12">
+								<div class="radio">
+				  					<label><input type="radio" name="radio" id="radio1" value="radio1" checked> 銀行振込</label>
+								</div>
+								<div class="radio">
+								  	<label><input type="radio" name="radio" id="radio2" value="radio2"> クレジットカード</label>
+								</div>
+								<div class="radio disabled">
+								 	 <label><input type="radio" name="radio" id="radio3" value="radio3"> 代金引換</label>
+								</div>
+								</div>
+				    	</div>
+						<%= f.submit "購入" ,class: " btn-primary btn-block" %>
+	        			<% end %>
+	        			</div>
+					</div>
+				</div>
 			</div>
-			<div class="row"  style="margin: 40px 0px;">
-					<h2  style="margin-top: 10px">お支払い方法</h2>
-					<div class="col-md-12">
-					<div class="radio">
-	  					<label><input type="radio" name="radio" id="radio1" value="radio1"> 銀行振込</label>
-					</div>
-					<div class="radio">
-					  	<label><input type="radio" name="radio" id="radio2" value="radio2"> クレジットカード</label>
-					</div>
-					<div class="radio disabled">
-					 	 <label><input type="radio" name="radio" id="radio3" value="radio3"> 代金引換</label>
-					</div>
-					</div>
-	    	</div>
-				<%= f.submit "購入" ,class: "btn-sm btn-primary btn-block" %>
-	        <% end %>
-
-		</div>
-		</div>
-	</div>
     </div>

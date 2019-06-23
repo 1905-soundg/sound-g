@@ -1,64 +1,76 @@
 <div class='row'>
 <div class="col-md-8 col-md-offset-2">
     <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-    	<h1>購入画面</h1>
-		<p class="page-header">小計		¥<%= get_price(@carts) %></p>
-		<p class="page-header">送料		¥<%= @fee %></p>
-		<p class="page-header">請求額	¥<%= get_totalprice(@carts) %>(税込)</p>
+    <div class="col-md-6 col-md-offset-3">
+	    	<div class="row"  style="margin: 10px 0px;">
+	    		<h2   style="margin: 20px 0px;">ご注文の確認</h2>
+
+				<div class="row" style="margin:  10px 0px 0px;">
+					<strong class="col-md-2">小計</strong><span class="col-md-7 col-md-offset-3">¥<%= get_price(@carts) %></span>
+				</div>
+				<div class="row" style="margin: 10px 0px 0px;">
+					<strong class="col-md-2">送料</strong><span class="col-md-7 col-md-offset-3">¥<%= @fee %></span>
+				</div>
+				<div class="row" style="margin: 10px 0px 0px;">
+					<strong class="col-md-2">請求額</strong><span class="col-md-7 col-md-offset-3">¥<%= get_totalprice(@carts) %>(税込)</span>
+				</div>
+			</div>
+			<div class="row" style="margin: 40px 0px;">
+		        <h2  style="margin: 10px 0px 20px;">お届け先住所の選択</h2>
+		        <div class="row">
+		        	<div class="col-md-12" style="margin-left:15px;">
+		        		<div data-turbolinks="false">
+						<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
+				        <ul class="list-unstyled">
+				        	<strong  style="margin-bottom: 15px;">ご自宅</strong>
+				        	<div class="col-md-12">
+				        	<li>
+				        	<label style="font-weight: normal; margin-bottom: 15px;">
+				        		<%= f.radio_button :address, @user.address ,{:checked => true} %>
+				        			<%= @user.address %>
+			                        <%= @user.postalcode %>
+									<%= @user.last_name + @user.first_name %>
+				        	</label>
+				        	</li>
+				        	</div>
+				        	<p style="margin: 15px 0px;"><strong>ご自宅以外のお届け先</strong></p>
+				        	<div class="col-md-12">
+				        	<% @addresses.each do |address| %>
+					            <li>
+				                <label style="font-weight: normal;">
+				                <%= f.radio_button :address, "#{address.id} #{address.address}" %>
+				                〒<%= address.postalcode %>
+				                <%= address.address %>
+				                <%= address.name %>
+				                </label>
+					            </li>
+				             <% end %>
+				           </div>
+				        </ul>
 
 
-
-
-
-
-		<%= form_for @order, url:user_orders_path(user_id: @user) do |f| %>
-        	<% @addresses.each do |address| %>
-		        <ul>
-		            <li>
-	                <label>
-	                <%= f.radio_button :address, address.address %>
-	                〒<%= address.postalcode %>
-	                住所		<%= address.address %>
-	                宛名		<%= address.name %>
-	                </label>
-		            </li>
-		        </ul>
-       		 <% end %>
-   		 	  	<%= form_for @address, url:user_addresses_path(user_id: @user) do |a| %>
-					<ul class="list-unstyled">
-					    <li class="postalcode">
-					    <div class="col-md-2">郵便番号</div>
-					    <div class="col-md-10">
-					    <%= a.text_field :postalcode, size:50 %>
-					    </div>
-					    </li>
-
-					    <li class="address">
-					    <div class="col-md-2">住所</div>
-					    <div class="col-md-10">
-					    <%= a.text_field :address, size:50 %>
-					    </div>
-					    </li>
-
-					    <li class="name">
-					    <div class="col-md-2">宛名</div>
-					    <div class="col-md-10">
-					    <%= a.text_field :name, size:50 %>
-					    </div>
-					    </li>
-					</ul>
-				<% end %>
-
-                <%= f.hidden_field :subtotal_price, :value => "" %>
-				<%= f.hidden_field :fee, :value => "@fee" %>
-				<%= f.hidden_field :order_id, :value => "" %>
-				<%= f.hidden_field :order_id, :value => "" %>
-			<%= f.submit "購入" ,class: "btn-sm btn-primary" %>
-        <% end %>
-		</div>
-		</div>
-	</div>
+		                <%= f.hidden_field :subtotal_price, :value => get_totalprice(@carts) %>
+						<%= f.hidden_field :fee, :value => @fee %>
+						<%= f.hidden_field :order_status, :value => 0 %>
+						<%= link_to "お届け先追加", user_addresses_path, class: "btn  btn-default" %>
+						<div class="row"  style="margin: 40px 0px;">
+								<h2  style="margin-top: 10px">お支払い方法</h2>
+								<div class="col-md-12">
+								<div class="radio">
+				  					<label><input type="radio" name="radio" id="radio1" value="radio1" checked> 銀行振込</label>
+								</div>
+								<div class="radio">
+								  	<label><input type="radio" name="radio" id="radio2" value="radio2"> クレジットカード</label>
+								</div>
+								<div class="radio disabled">
+								 	 <label><input type="radio" name="radio" id="radio3" value="radio3"> 代金引換</label>
+								</div>
+								</div>
+				    	</div>
+						<%= f.submit "購入" ,class: " btn-primary btn-block" %>
+	        			<% end %>
+	        			</div>
+					</div>
+				</div>
+			</div>
     </div>
-</div>
-</div>

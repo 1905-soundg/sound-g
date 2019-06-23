@@ -1,8 +1,9 @@
 <div class="container">
-	<h3>購入履歴一覧</h3>
+	<h3><strong>購入履歴一覧</strong></h3>
 	<table class="table table-bordered">
 		<thead>
 			<tr>
+				<th>No</th>
 				<th>購入者</th>
 				<th>購入日</th>
 				<th>購入商品詳細</th>
@@ -12,14 +13,28 @@
 			</tr>
 		</thead>
 		<tbody>
+			<% @orders.each do |order| %>
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><%= order.id %></td>
+				<td><%= order.user.last_name %><%= order.user.first_name %></td>
+				<td><%= order.created_at %></td>
+				<td>
+					<% order.order_details.each do |order_detail| %>
+	                <%= order_detail.product.album %> <%= order_detail.quantity %>枚<br>
+	                <% end %>
+                </td>
+				<td>￥<%= order.subtotal_price %></td>
+				<td>
+					〒<%= order.postalcode %><br>
+					<%= order.address %><br>
+					<%= order.last_name %>
+				</td>
+				<td><%= order.order_status %></td>
 			</tr>
+			<% end %>
 		</tbody>
 	</table>
-</div>s
+</div>
+<div class="text-center">
+	<%= paginate @orders, class: "paginate" %>
+</div>

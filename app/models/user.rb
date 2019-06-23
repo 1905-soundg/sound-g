@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :addresses
   has_many :orders
   has_many :carts
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :reviews,dependent: :destroy
 
   validates :last_name,presence: true, length:{ in: 1..50 }
@@ -18,6 +18,8 @@ class User < ApplicationRecord
   validates :first_name_k,presence: true, length:{ in: 1..50 },format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
   validates :postalcode,presence: true, length:{is:7},format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
   validates :telephone_number,presence: true,length:{ in: 9..20 },format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
+
+  enum user_status:[]
 
 
 end

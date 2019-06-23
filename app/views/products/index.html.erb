@@ -12,15 +12,19 @@
 				<p class="" style="margin: 10px 0px 0px 0px;"><%= product.album %></p>
 				<p class="" style="margin: 0px 0px 0px 0px;"><%= product.label.label %></p>
 				<p class="" style="margin: 0px 0px 0px 0px;">￥<%= product.price %></p>
-					<% product.discs.each do |disc| %>
-						<% disc.musics.each do |music| %>
-						<p class="" style="margin: 0px 0px 0px 0px;"><strong><%= music.artist.artist %></strong></p>
-		    </div>
-			<% end %>
-			<% end %>
+					<% product.discs.first(1).each do |disc| %>
+					<% disc.musics.first(1).each do |music| %>
+					<p class="" style="margin: 0px 0px 0px 0px;"><strong><%= music.artist.artist %></strong></p>
+					<% end %>
+			        <% end %>
+			        <p class="" style="margin: 0px 0px 0px 0px;"><i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i><%= product.favorites.count %></p>
+			</div>
 		</div>
 		<% end %>
 
 	</div>
 	</div>
+</div>
+<div class="text-center">
+	<%= paginate @products, class: "paginate" %>
 </div>

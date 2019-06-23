@@ -1,8 +1,15 @@
-<%= form_for @product, url:admins_products_path do |f| %>
+<%= form_for @product, url: admins_product_path(product_id: @product.id) do |f| %>
+
+<%= render 'layouts/header' %>
+
+<div class="text-center">
+	<h1>商品編集</h1>
+</div>
 
 <div class="container">
 	<div class="nested-fields well well-compact">
 	<div class="row">
+
 
 
 
@@ -86,7 +93,7 @@
 		<%= f.label :sales_status, "販売ステータス" %>
 	</div>
 			<div class="col-md-7">
-		<%= f.select :sales_status, Product.sales_statuses.keys.map{|s| [s, s]} %>
+		<%= f.text_field :sales_status %>
 	</div><br>
 	</div>
 

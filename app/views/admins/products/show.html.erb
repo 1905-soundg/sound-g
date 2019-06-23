@@ -1,48 +1,118 @@
-<div class="container">
-	<div class="row">
 <%= render 'layouts/header' %>
 
-		<div class="col-xs-7">
-			<%= attachment_image_tag @product,:image, :fill,400,400, class: "img-rounded" %>
+<div class="container">
+  <div class="row">
 
-		</div>
+    <div class="col-xs-1"></div>
+
+
+    <div class="col-xs-6" >
+
+      <div style="margin: 40px">
+        <%= attachment_image_tag @product,:image, :fill,400,400 %>
+      </div>
+
+    </div>
+
+
+    <div class="col-xs-4" style="margin-top: 40px">
+
+
+      <div>
+        <p> ジャンル：<%= @genre.genre %>　</p>
+      </div>
+
+
+      <div style="margin-bottom: 10px;">
+        <P> アルバム名 </P>
+        <div style="font-size: 30px;">
+          <p>  <%= @product.album %> </p>
+        </div>
+      </div>
+
+
+      <div style="margin-bottom: 10px;">
+        <p> レーベル：<%= @label.label %> </p>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <p> 販売価格： ¥<%= @product.price %> </p>
+      </div>
+
+
+      <div style="margin-bottom: 10px;">
+        <p>  在 庫 数  ： <%= @product.stock_quantity %> </p>
+      </div>
+
+
+
+      <div style="margin-bottom: 10px;">
+        <p> 販売状況： <%= @product.sales_status %> </p>
+      </div>
+
+
+
+      <div class="row">
+      <% @discs.each do |d| %>
+      <div class="d-inline-block col-xs-5" style="margin: 10px 0 0 0;padding: 0 0 0 0;">
+        <ul class="list-unstyled">
+          <li>
+            ディスクNo.<%= d.disc_number %>
+          </li>
+          <% d.musics.each do |m| %>
+          <li>
+            <%= m.title %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      </div>
+
+        <div class="col-xs-5" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
+          <%= link_to "商品編集", edit_admins_product_path(@product), class: "btn btn-default btn-lg active" %>
+        </div>
+        <div class="col-xs-7" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
+          <%= link_to "商品削除", admins_product_path(@product), class: "btn btn-danger btn-lg active", method: :delete, data:{confirm:"本当に削除しますか？"} %>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-9" style="margin-top: 10px;">
+            <%= link_to "商品一覧に戻る", admins_products_path, class: "btn btn-info btn-lg btn-block active" %>
+          </div>
+        </div>
+
+
+
+      <div class="col-xs-1"></div>
+
+    </div>
+
+
 
     <div class="row">
-   	 <div class="col-xs-5">
-
-   		<p> <%= @genre.genre %> </p>
-   		<h2> <%= @product.album %> </h2>
-   		<p> <%= @label.label %></p>
-   		<p> ¥<%= @product.price %> </p>
-
-               <% @discs.each do |d| %>
-               <div class="d-inline-block col-xs-5">
-                 <ul class="list-unstyled">
-                     <li>
-                        ディスクNo.<%= d.disc_number %>
-                     </li>
-                     <% d.musics.each do |m| %>
-                     <li>
-                        <%= m.title %>
-                     </li>
-                     <% end %>
-								 </ul>
-               </div>
-               <% end %>
-   	 </div>
-    </div>
-  </div>
-</div>
+      <div class="col-md-10 col-md-offset-1" >
+        <div class="d-center-block">
 
 
+          <table class="table table-bordered">
+            <tbody>
+              <% @reviews.each  do |review| %>
+              <tr>
+                <td width="15%"> <%= review.user.last_name %> </td>
+                <td width="65%"> <%= review.review %></td>
+                <td width="10%" style="text-align: center;"><%= link_to "編集", edit_admins_product_review_path(id: review.id, product_id: @product.id), class: "btn btn-default" %>
+                </td>
+                <td width="10%" style="text-align: center;" >
+                  <%= link_to "削除", admins_reviews_path(review.id), class: "btn btn-danger", method: :delete, data:{confirm:"本当に削除しますか？"} %>
+                </td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
 
-<div class="row">
-   <div class="col-xs-8 col-xs-offset-2">
-      <div class="d-center-block">
-				<h3>商品レビュー</h3>
 
-        <%= render 'admins/reviews/reviews' %>
-
+        </div>
       </div>
-   </div>
 </div>
+

@@ -1,7 +1,7 @@
 class Admins::ProductsController < ApplicationController
 
     def index
-    	@products = Product.all
+    	@products = Product.page(params[:page]).reverse_order.per(20)
     end
 
     def show
@@ -9,8 +9,17 @@ class Admins::ProductsController < ApplicationController
   		@genre = @product.genre
   		@label = @product.label
   		@discs = @product.discs
-      @reviews = @product.reviews
-  		@review = Review.new
+        @reviews = @product.reviews
+  	end
+
+
+  	def edit
+  		@prduct = Product.find(params[:id])
+  		@product = Product.find(params[:id])
+  		@genre = @product.genre
+  		@label = @product.label
+  		@discs = @product.discs
+        @reviews = @product.reviews
   	end
 
 
@@ -22,21 +31,28 @@ class Admins::ProductsController < ApplicationController
 
 	  def create
 		  @product = Product.new(product_params)
-	  	@product.save
+	  	  @product.save
 		  redirect_to ('/')
 	  end
 
 	  def update
 	  	@product = Product.find(params[:id])
-	  	@product.update(product_params)
-	  	redirect_to product_path(@product)
+	  	@product.update!(product_params)
+	  	redirect_to admins_product_path(@product)
 	  end
 
 	  def destroy
 	  	@product = Product.find(params[:id])
 	  	@product.destroy
-	  	redirect_to ('/')
+	  	redirect_to admins_products_pahs
 	  end
+
+	  def number?(str)
+	  	Integer(str)
+	  	track_number
+	  rescue ArgumentError
+	  	false
+	end
 
 
 	protected
@@ -46,5 +62,13 @@ class Admins::ProductsController < ApplicationController
 			                            discs_attributes: [:id, :disc_number, :product_id, :_destroy,
 			                            musics_attributes: [:id, :title, :track_number, :disc_id, :artist_id, :_destroy,
 		                                 ]])
+	end
+
+	def params_int(product_params)
+		product_params.each do |key,value|
+			if integer_string?(value)
+				product_params[key] = value.to_i
+			end
+		end
 	end
 end

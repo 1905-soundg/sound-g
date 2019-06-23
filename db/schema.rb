@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_16_075217) do
+ActiveRecord::Schema.define(version: 2019_06_23_062016) do
+
+  create_table "Carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.integer "quantity", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -35,14 +43,6 @@ ActiveRecord::Schema.define(version: 2019_06_16_075217) do
 
   create_table "artists", force: :cascade do |t|
     t.string "artist"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "carts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
-    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_075217) do
     t.string "address"
     t.string "last_name"
     t.string "first_name"
-    t.integer "order_status"
+    t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(version: 2019_06_16_075217) do
     t.string "album"
     t.string "image_id"
     t.integer "price"
-    t.integer "stock_quantity"
-    t.integer "sales_status"
+    t.integer "stock_quantity", default: 0, null: false
+    t.integer "sales_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_075217) do
     t.string "postalcode"
     t.string "address"
     t.string "telephone_number"
-    t.integer "user_status"
+    t.integer "user_status", default: 0, null: false
     t.integer "address_id"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"

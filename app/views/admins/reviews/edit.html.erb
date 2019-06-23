@@ -1,13 +1,38 @@
 <%= render 'layouts/header' %>
-<div class="row">
-  <div class="col-md-10 col-md-offset-2" >
-  <div class="d-center-block">
-<h1>レビュー編集</h1>
-<%= form_for (@review)  do |f| %>
-<%= f.text_area :review, :size => "130x5" %>
-<%= f.submit "投稿" %>
-<% end %>
 
+
+<div class="container">
+	<div class="row">
+    <div class="col-md-8 col-md-offset-2" >
+      <div class="d-center-block">
+
+	       <h1>レビュー編集</h1>
+
+
+         <%= form_for @review, url: admins_product_review_path(id: @review.id) do |review| %>
+
+         <h4>ユーザー名： <%= @user.last_name %> </h4>
+         <%= review.text_area :review, size: "80x10" %>
+
+
+
+      	<div style="margin: 10px 0 10px 0;">
+          <%= review.submit "編集", class: "btn btn-default" %>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <%= link_to "削除", admins_product_review_path(review), class: "btn btn-danger", method: :delete %><br>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <%= link_to "商品詳細ページに戻る", admins_product_path(id: @product.id), class: "btn btn-default" %><br>
+        </div>
+
+        <% end %>
+
+
+    </div>
+	</div>
 </div>
-</div>
-</div>
+
+

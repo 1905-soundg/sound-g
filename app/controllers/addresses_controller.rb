@@ -3,29 +3,26 @@ class AddressesController < ApplicationController
 	def index
 		@user = current_user
 	    @address = Address.new
+	    @addresses = @user.addresses
 	end
 
 	def create
 		@address = Address.new(address_params)
 		@address.user_id = params[:user_id]
 		@address.save
-		if params[from_order]
-			redirect_to new_user_order_path
-	    else
-			redirect_to user_path(@address.user_id)
-	    end
+		redirect_to  new_user_order_path
 	end
 
 	def update
 		@address = Address.find(params[:id])
 		@address.update(address_params)
-		redirect_to user_path(@address.user_id)
+		redirect_to user_addresses_path
 	end
 
 	def destroy
 		@address = Address.find(params[:id])
 		@address.destroy
-		redirect_to user_path(@address.user_id)
+		redirect_to user_addresses_path
 	end
 
     private

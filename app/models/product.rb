@@ -13,7 +13,7 @@ class Product < ApplicationRecord
     attachment :image
 
 
-    enum sales_status:[:sale, :selling_discontinued]
+    enum sales_status:{販売中: 0, 販売中止: 1,}
 
 
 def favorited_by?(user)

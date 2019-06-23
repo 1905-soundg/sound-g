@@ -36,6 +36,12 @@ class OrdersController < ApplicationController
 			@order_detail.quantity = cart.quantity
 			@order_detail.order_price = view_context.get_subtotal(cart)
 			@order_detail.save
+
+			#商品の在庫数を購入分変更する
+			product = cart.product
+			cart.product.stock_quantity -= @order_detail.quantity.to_i
+			product.save
+
 			#cartの削除
 			cart.destroy
 		end

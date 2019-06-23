@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 	end
 
 	def index
-		@products = Product.page(params[:page]).reverse_order.per(4)
+		@products = Product.page(params[:page]).reverse_order.per(40)
 	end
 
 	protected

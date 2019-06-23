@@ -2,8 +2,16 @@ class Admins::LabelsController < ApplicationController
 
 	def create
 		@label = Label.new(label_params)
-		@label.save
-		redirect_to ('/')
+
+		if @label.save
+			flash[:notice] = "レーベルを登録しました。"
+		  redirect_back(fallback_location: root_path)
+		else
+			flash[:notice] = "レーベルを入力してください。"
+			redirect_back(fallback_location: root_path)
+
+		end
+
 	end
 
 	private

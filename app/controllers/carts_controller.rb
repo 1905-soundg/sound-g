@@ -4,9 +4,6 @@ class CartsController < ApplicationController
 	def index
 	 @carts = Cart.where(user_id: current_user.id)
 	 @user = current_user
-
-	 #商品の在庫数の変更機能
-	 #@temporary_quantity =  view_context.get_total_quantity(@carts)
 	end
 
 	def update

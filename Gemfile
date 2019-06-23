@@ -74,3 +74,5 @@ gem 'coffee-script-source', '1.8.0'
 
 gem 'select2-rails'
 
+gem 'enum_help'
+

@@ -9,8 +9,14 @@ class ReviewsController < ApplicationController
   def create
       @review = Review.new(review_params)
       @review.user_id = current_user.id
-      @review.save
-      redirect_back(fallback_location: root_path)
+
+      if @review.save
+  			flash[:notice] = "レビューを投稿しました。"
+  		  redirect_back(fallback_location: root_path)
+  		else
+  			flash[:notice] = "レビューを入力してください。"
+  			redirect_back(fallback_location: root_path)
+  		end
   end
 
   def edit

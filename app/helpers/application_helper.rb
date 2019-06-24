@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 
-    #product/show商品の在庫数
+    #product/show商品の在庫数/不採用
     def get_quantity(c)
 
         total = 0

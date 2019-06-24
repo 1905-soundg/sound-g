@@ -76,3 +76,5 @@ gem 'select2-rails'
 
 gem 'enum_help'
 
+gem 'acts_as_paranoid', '~> 0.6.0'
+

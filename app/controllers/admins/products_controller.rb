@@ -31,8 +31,13 @@ class Admins::ProductsController < ApplicationController
 
 	  def create
 		  @product = Product.new(product_params)
-	  	  @product.save
-		  redirect_to ('/')
+	  	  if @product.save
+			flash[:notice] = "商品を登録しました。"
+		    redirect_to admins_product_path(@product)
+		else
+			flash[:alert] = "商品登録に失敗しました。"
+			render :new
+		end
 	  end
 
 	  def update

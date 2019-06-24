@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
   			flash[:notice] = "レビューを投稿しました。"
   		  redirect_back(fallback_location: root_path)
   		else
-  			flash[:notice] = "レビューを入力してください。"
+  			flash[:alert] = "レビューを入力してください。"
   			redirect_back(fallback_location: root_path)
   		end
   end

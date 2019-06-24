@@ -7,7 +7,7 @@ class Admins::LabelsController < ApplicationController
 			flash[:notice] = "レーベルを登録しました。"
 		  redirect_back(fallback_location: root_path)
 		else
-			flash[:notice] = "レーベルを入力してください。"
+			flash[:alert] = "レーベルを入力してください。"
 			redirect_back(fallback_location: root_path)
 
 		end

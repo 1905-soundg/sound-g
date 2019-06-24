@@ -12,7 +12,7 @@ class Admins::ArtistsController < ApplicationController
 			flash[:notice] = "アーティストを登録しました。"
 		  redirect_back(fallback_location: root_path)
 		else
-			flash[:notice] = "アーティストを入力してください。"
+			flash[:alert] = "アーティストを入力してください。"
 			redirect_back(fallback_location: root_path)
 
 		end

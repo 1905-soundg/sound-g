@@ -2,8 +2,26 @@
 <div class="container">
 	<div class="row">
 	<div class="d-inline-block col-lg-12">
+    
+		<% if notice %>
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            <span class="sr-only">close</span>
+          </button>
+          <%= notice %>
+        </div>
+    <% end %>
+    <% if alert %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span class="sr-only">close</span>
+      </button>
+      <%= alert %>
+    </div>
+    <% end %>
 
 		<% @search_products.each do |product| %>
+
 		<div class="d-inline-block col-lg-3" style="margin: 30px 0 30px 0;">
 			<%=link_to product_path(product.id) do %>
 			<%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpg' %>

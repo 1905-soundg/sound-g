@@ -72,7 +72,9 @@
            <% else admin_signed_in? %>
              <div class="center-block" style="padding: 0 0 25px 0;">
              <nav class="nav navbar-nav navbar-left" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-               <h1 style="color:#777;text-decoration: none;" >SoundG</h1>
+                <%=link_to home_admins_path, :style=>"color:#777;text-decoration: none;" do %>
+                   <h1>SoundG</h1>
+                <% end %>
              </nav>
              </div>
 

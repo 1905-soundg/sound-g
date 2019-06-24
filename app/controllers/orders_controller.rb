@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 			 @order.address = ship_address
 			 @order_address = Address.find(address_id)
 			 @order.last_name = @order_address.name
-			 @order.first_name = @order_address.name
+			 @order.first_name = ""
 			 @order.postalcode = @order_address.postalcode
 		end
 		# order_detailの作成とcartの削除

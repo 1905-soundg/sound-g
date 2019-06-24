@@ -31,6 +31,13 @@
       <% end %>
       </div>
 
+      <div>
+        <%= @product.sales_status %>
+        <% if @product.sales_status == "販売中" %>
+        在庫数<%= @product.stock_quantity %> 個
+        <% end %>
+      </div>
+
    		<div style="margin: 10px 0px">
       <%= form_for @cart, url:user_carts_path(user_id: current_user.id) do |f| %>
          <div class="col-xs-2" style="padding: 0 0 0 0;" >
@@ -121,6 +128,13 @@
         <p class="" style="margin: 10px 0 10px 0;"> ¥<%= @product.price %></p>
         <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
         <%= @product.favorites.count %>
+        </div>
+
+        <div>
+          <%= @product.sales_status %>
+          <% if @product.sales_status == "販売中" %>
+          在庫数<%= @product.stock_quantity %> 個
+          <% end %>
         </div>
 
         <div style="margin: 10px 0px">

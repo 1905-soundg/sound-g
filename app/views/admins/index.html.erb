@@ -44,7 +44,7 @@
 				  <%= o.select :order_status, Order.order_statuses.keys.map{|status| [status, status]}, {:prompt => order.order_status} %>
 				</td>
 				<td style="text-align: center;">
-				  <%= o.submit "変更", class: "btn btn-default active" %>
+				  <%= o.submit "変更", class: "btn btn-default" %>
 				</td>
 				<% end %>
 			</tr>

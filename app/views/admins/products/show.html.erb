@@ -89,16 +89,16 @@
       <% end %>
       </div>
 
-        <div class="col-xs-5" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
-          <%= link_to "商品編集", edit_admins_product_path(@product), class: "btn btn-default btn-lg active" %>
+        <div class="col-xs-3" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
+          <%= link_to "商品編集", edit_admins_product_path(@product), class: "btn btn-secondary", :style=>"background-color: #777;color: white;" %>
         </div>
-        <div class="col-xs-7" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
-          <%= link_to "商品削除", admins_product_path(@product), class: "btn btn-danger btn-lg active", method: :delete, data:{confirm:"本当に削除しますか？"} %>
+        <div class="col-xs-6" style="margin: 10px 0 0 0; padding: 0 0 0 0;">
+          <%= link_to "商品削除", admins_product_path(@product), class: "btn btn-danger", method: :delete, data:{confirm:"本当に削除しますか？"} %>
         </div>
 
         <div class="row">
-          <div class="col-xs-9" style="margin-top: 10px;">
-            <%= link_to "商品一覧に戻る", admins_products_path, class: "btn btn-info btn-lg btn-block active" %>
+          <div class="col-xs-12" style="margin-top: 10px;">
+            <%= link_to "商品一覧に戻る", admins_products_path, class: "btn btn-default", style:"width: 170px;" %>
           </div>
         </div>
 

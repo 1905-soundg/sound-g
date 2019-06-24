@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@address = Address.new
 		@addresses = @user.addresses.page(params[:addresses_page]).reverse_order.per(5)
-		@favorites = @user.favorites.page(params[:favorites_page]).reverse_order.per(4)
+		@favorites = @user.favorites.all
 		@orders = @user.orders.page(params[:orders_page]).reverse_order.per(5)
 	end
 

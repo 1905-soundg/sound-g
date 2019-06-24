@@ -21,6 +21,14 @@ class ApplicationController < ActionController::Base
        end
     end
 
+    #検索機能
+    before_action :set_search
+
+    def set_search
+      @search = Product.search(params[:q])
+      @search_products = @search.result
+    end
+
     helper_method :current_cart
 
     def current_cart(product_id)

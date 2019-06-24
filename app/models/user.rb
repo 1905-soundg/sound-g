@@ -19,7 +19,6 @@ class User < ApplicationRecord
   validates :postalcode,presence: true, length:{is:7},format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
   validates :telephone_number,presence: true,length:{ in: 9..20 },format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
 
-  enum user_status:[]
 
 
 end

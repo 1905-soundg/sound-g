@@ -2,8 +2,7 @@
 
 <div class="container">
 	<div class="row">
-    <div class="col-xs-1">
-    </div>
+    <div class="col-xs-1"></div>
 
 		<div class="col-xs-6" >
       <div style="margin: 40px">
@@ -30,6 +29,13 @@
             <%= @product.favorites.count %>
           <% end %>
       <% end %>
+      </div>
+
+      <div>
+        <%= @product.sales_status %>
+        <% if @product.sales_status == "販売中" %>
+        在庫数<%= @product.stock_quantity %> 個
+        <% end %>
       </div>
 
    		<div style="margin: 10px 0px">
@@ -59,8 +65,8 @@
                </div>
                <% end %>
 
-    <div class="col-xs-1">
-    </div>
+    <div class="col-xs-1"></div>
+
   </div>
 </div>
 
@@ -69,6 +75,7 @@
   <div class="d-center-block">
       <%= form_for (@review) do |f| %>
 				<h3>商品レビュー</h3>
+
 
 				<p>新規投稿</p>
 
@@ -98,9 +105,10 @@
 
 
 
-            <h3>みんなのレビュー</h3>
 
-          <% @reviews.each do |review| %>
+        <h3>みんなのレビュー</h3>
+
+        <% @reviews.each do |review| %>
 
           <table class="table table-bordered">
             <tbody>
@@ -112,7 +120,7 @@
           </table>
 
           <% end %>
-  </div>
+     </div>
   </div>
 </div>
 
@@ -140,6 +148,13 @@
         <p class="" style="margin: 10px 0 10px 0;"> ¥<%= @product.price %></p>
         <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
         <%= @product.favorites.count %>
+        </div>
+
+        <div>
+          <%= @product.sales_status %>
+          <% if @product.sales_status == "販売中" %>
+          在庫数<%= @product.stock_quantity %> 個
+          <% end %>
         </div>
 
         <div style="margin: 10px 0px">

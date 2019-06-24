@@ -27,10 +27,10 @@
 			<tr>
 				<td><%= order.id %></td>
 				<td><%= order.user.last_name %><%= order.user.first_name %></td>
-				<td><%= order.created_at %></td>
+				<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 				<td>
 					<% order.order_details.each do |order_detail| %>
-	                <%= order_detail.product.album %> <%= order_detail.quantity %>枚<br>
+	                <%= order_detail.product.album %>： 購入枚数<%= order_detail.quantity %>枚<br>
 	                <% end %>
                 </td>
 				<td>￥<%= order.subtotal_price %></td>
@@ -39,12 +39,12 @@
 					<%= order.address %><br>
 					<%= order.last_name %>
 				</td>
-				  <%= form_for order, url: admins_user_order_path(user_id: order.user_id, id: order.id) do |o| %>
+				<%= form_for order, url: admins_user_order_path(user_id: order.user_id, id: order.id) do |o| %>
 				<td style="text-align: center;">
 				  <%= o.select :order_status, Order.order_statuses.keys.map{|status| [status, status]}, {:prompt => order.order_status} %>
 				</td>
 				<td style="text-align: center;">
-				  <%= o.submit "編集", class: "btn btn-default btn-lg active" %>
+				  <%= o.submit "変更", class: "btn btn-default active" %>
 				</td>
 				<% end %>
 			</tr>

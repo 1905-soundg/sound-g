@@ -17,16 +17,21 @@ module ApplicationHelper
 
     def get_total_quantity(q)
 
+        #カートに追加できる個数
         total_quantity = 0
+
+        #その商品が入っているすべてのカートの合計
+        cart_quantity = 0
 
         subtotal_quantity = 0
 
-        total_quantity = 0
+        #その商品の在庫数ーその商品が入っているすべてのカートの合計
+        stock_total = 0
 
         carts = Cart.where(product_id: q.product.id)
-        carts.each do |quantity|
-        total_quantity += quantity.quantity.to_i
-        subtotal_quantity += total_quantity
+        carts.each do |ca|
+        cart_quantity += ca.quantity
+        subtotal_quantity += cart_quantity
         end
 
 
@@ -51,6 +56,8 @@ module ApplicationHelper
     	end
     	return total
     end
+
+
 
     def get_totalprice(c)
 

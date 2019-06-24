@@ -16,7 +16,7 @@ class Admins::OrdersController < ApplicationController
 	private
 
 	def order_params
-		params.require(:order).permit(:user_id, :subtotal_price, :fee, :address)
+		params.require(:order).permit(:user_id, :subtotal_price, :fee, :address, :order_status)
 	end
 
 	def params_int(order_params)

@@ -25,7 +25,7 @@ $(document).ready(function(){
 	 allowCear: true
  });
  $('.multiple-items').slick({
-            slidesToShow: 4,
+            slidesToShow: 5,
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 1000,

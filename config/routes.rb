@@ -29,7 +29,11 @@ Rails.application.routes.draw do
   end
 
 
-  resources :admins
+  resources :admins do
+    collection do
+      get :home
+    end
+  end
 
   resources :users do
     resources :addresses

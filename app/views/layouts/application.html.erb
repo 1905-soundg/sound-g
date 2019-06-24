@@ -13,59 +13,66 @@
 
 <body>
 
-    <header class="navbar navbar-fixed-top navbar-inverse", style="background-color: #00ff7f;border-color: white;padding: 0 0 0 0;">
+    <header class="navbar navbar-fixed-top navbar-default", style="background-color: white;border-color: white;padding: 0 0 0 0;">
     <div class="container">
-
+    <div class="row">
+    <div class="col-md-12">
 
 
     <% if user_signed_in? %>
       <div class="center-block" style="padding: 0 0 25px 0;">
-        <nav class="nav navbar-nav navbar-left" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-        <%=link_to root_path do %>
+        <nav class="nav navbar-nav navbar-left" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn" style="margin-right: 50px;">
+        <%=link_to root_path, :style=>"color:#777;text-decoration: none;" do %>
         <h1>SoundG</h1>
         <% end %>
         </nav>
       </div>
 
-        <!--------検索フォーム-------->
+             <nav class="nav navbar-nav navbar-center" style="padding: 0 0 0 0;">
+             <div id="slidemenu">
+               <ul class="nav navbar-nav navbar-center" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn" style="padding: 0 0 0 0;" >
 
-          <div class="input-group">
-            <%= search_form_for @search do |f| %>
-            <span class="input-group-btn">
-            <%= f.text_field :album_cont, class: "form-control", placeholder:"テキスト入力欄"%>
-            <button class="btn btn-default" type="submit" >
-              <i class="glyphicon glyphicon-search"></i>
-            </button>
-          </span>
-            <% end %>
+　　　　　　　 　<li>
+                <!--------検索フォーム-------->
+                <div class="input-group">
+                  <%= search_form_for @search do |f| %>
+                  <span class="input-group-btn">
+                  <%= f.text_field :album_cont, class: "form-control", placeholder:"商品名検索"%>
+                  <button class="btn btn-default" type="submit" >
+                    <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                  </span>
+                  <% end %>
+                </div>
+                <!---------------->
+              </li>
+            </ul>
           </div>
-          <!---------------->
-
-
-       <nav class="nav navbar-nav navbar-right" style="padding: 0 0 0 0;">
+        </nav>
+       <nav class="nav navbar-nav navbar-right" style="margin-left: 50px;padding: 0 0 0 0;">
        <div id="slidemenu">
          <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn" style="padding: 0 0 0 0;" >
 
 
 
               <li>
-               ようこそ
+               <span style="color: #777;">ようこそ
                  <%= current_user.last_name %> <%= current_user.first_name %>
-               様
+               様</span>
              </li>
              <li>
                <%= link_to  '', user_carts_path(current_user.id), class: "glyphicon glyphicon-shopping-cart navbar-link",  style: "padding: 0 15px 0 30px;" %>
              </li>
              <li>
-               <%= link_to 'mypage', user_path(current_user.id), class: "glyphicon glyphicon-user navbar-link", style: "padding: 0 15px 0 15px;" %>
+               <%= link_to '', user_path(current_user.id), class: "glyphicon glyphicon-user navbar-link", style: "padding: 0 15px 0 15px;" %>
              </li>
               <li>
-               <%= link_to 'logout', destroy_user_session_path, class: "navbar-link glyphicon glyphicon-log-out ", style: "padding: 0 15px 0 15px;", method: :delete %>
+               <%= link_to '', destroy_user_session_path, class: "navbar-link glyphicon glyphicon-log-out ", style: "padding: 0 15px 0 15px;", method: :delete %>
              </li>
            <% else admin_signed_in? %>
              <div class="center-block" style="padding: 0 0 25px 0;">
              <nav class="nav navbar-nav navbar-left" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-               <h1>SoundG</h1>
+               <h1 style="color:#777;text-decoration: none;" >SoundG</h1>
              </nav>
              </div>
 
@@ -74,12 +81,15 @@
               <div id="slidemenu">
                 <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn" style="padding: 0 0 0 0;" >
                     <li>
-                      <%= link_to ' logout', destroy_admin_session_path, class: "glyphicon glyphicon-log-out navbar-link", style: "padding: 0 0 0 0;", method: :delete %>
+                      <%= link_to '', destroy_admin_session_path, class: "glyphicon glyphicon-log-out navbar-link", style: "padding: 0 0 0 0;", method: :delete %>
                     </li>
             <% end %>
           </ul>
       </div>
     </nav>
+  </ul>
+    </div>
+    </div>
     </div>
     </header>
 

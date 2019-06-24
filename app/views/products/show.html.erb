@@ -32,9 +32,14 @@
       </div>
 
       <div>
+        <% if @product.stock_quantity == "0".to_i %>
+        <% @product.sales_status = "販売中止" %>
         <%= @product.sales_status %>
+        <% else %>
         <% if @product.sales_status == "販売中" %>
+        <%= @product.sales_status %>
         在庫数<%= @product.stock_quantity %> 個
+        <% end %>
         <% end %>
       </div>
 
@@ -75,9 +80,6 @@
   <div class="d-center-block">
       <%= form_for (@review) do |f| %>
 				<h3>商品レビュー</h3>
-
-
-				<p>新規投稿</p>
 
 				<% if notice %>
 		        <div class="alert alert-info alert-dismissible" role="alert">

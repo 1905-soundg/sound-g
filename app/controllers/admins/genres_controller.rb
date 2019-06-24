@@ -7,7 +7,7 @@ def create
 			flash[:notice] = "ジャンルを登録しました。"
 		  redirect_back(fallback_location: root_path)
 		else
-			flash[:notice] = "ジャンルを入力してください。"
+			flash[:alert] = "ジャンルを入力してください。"
 			redirect_back(fallback_location: root_path)
 
 		end

@@ -16,6 +16,8 @@
     <header class="navbar navbar-fixed-top navbar-inverse", style="background-color: #00ff7f;border-color: white;padding: 0 0 0 0;">
     <div class="container">
 
+
+
     <% if user_signed_in? %>
       <div class="center-block" style="padding: 0 0 25px 0;">
         <nav class="nav navbar-nav navbar-left" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
@@ -25,11 +27,28 @@
         </nav>
       </div>
 
+        <!--------検索フォーム-------->
+
+          <div class="input-group">
+            <%= search_form_for @search do |f| %>
+            <span class="input-group-btn">
+            <%= f.text_field :album_cont, class: "form-control", placeholder:"テキスト入力欄"%>
+            <button class="btn btn-default" type="submit" >
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </span>
+            <% end %>
+          </div>
+          <!---------------->
+
 
        <nav class="nav navbar-nav navbar-right" style="padding: 0 0 0 0;">
        <div id="slidemenu">
          <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn" style="padding: 0 0 0 0;" >
-             <li>
+
+
+
+              <li>
                ようこそ
                  <%= current_user.last_name %> <%= current_user.first_name %>
                様

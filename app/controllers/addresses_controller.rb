@@ -10,7 +10,7 @@ class AddressesController < ApplicationController
 		@address = Address.new(address_params)
 		@address.user_id = params[:user_id]
 		@address.save
-		redirect_to  new_user_order_path
+		redirect_to  new_user_order_path, notice: 'お届け先新規登録しました'
 	end
 
 	def update

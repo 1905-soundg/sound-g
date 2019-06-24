@@ -1,7 +1,19 @@
 <div class='row'>
 <div class="col-md-8 col-md-offset-2">
+
     <div class="row">
+		<% if notice %>
+		        <div class="alert alert-info alert-dismissible" style="margin: 10px 0px;">
+		          <button type="button" class="close" data-dismiss="alert">
+		          	 <span aria-hidden="true">&times;</span>
+		            <span class="sr-only">close</span>
+		          </button>
+		        	<%= flash[:notice] %>
+		      </div>
+		<% end %>
     <div class="col-md-6 col-md-offset-3">
+
+
 	    	<div class="row"  style="margin: 10px 0px;">
 	    		<h2   style="margin: 20px 0px;">ご注文の確認</h2>
 

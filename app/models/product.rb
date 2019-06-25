@@ -5,7 +5,7 @@ class Product < ApplicationRecord
 
 	has_many :favorites, dependent: :destroy
     has_many :reviews
-    has_many :carts
+    has_many :carts, dependent: :destroy
     has_many :discs, inverse_of: :product
 
     accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
@@ -16,7 +16,11 @@ class Product < ApplicationRecord
     attachment :image
 
 
+    validates :stock_quantity, numericality: {greater_than_or_equal_to: 0}
+
+
     enum sales_status:{販売中: 0, 販売中止: 1,}
+
 
 
 def favorited_by?(user)

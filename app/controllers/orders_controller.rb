@@ -9,6 +9,9 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		#トランザクション処理
+		ActiveRecord::Base.transaction do
+
 	@carts = Cart.where(user_id: current_user.id)
 	@user = current_user
 	 @order = Order.new(order_params)
@@ -36,18 +39,39 @@ class OrdersController < ApplicationController
 			@order_detail.product_id = cart.product_id
 			@order_detail.quantity = cart.quantity
 			@order_detail.order_price = view_context.get_subtotal(cart)
-			@order_detail.save
 
 			#商品の在庫数を購入分変更する
 			product = cart.product
-			cart.product.stock_quantity -= @order_detail.quantity.to_i
-			product.save
+			if product.stock_quantity == 0
+       			product.sales_status = "販売中止"
+    		end
+			#販売中止の場合
+			if  product.sales_status == "販売中止"
+				flash[:alert] = "販売をしていない商品があります。カートを確認してください。"
+			    redirect_to user_carts_path(cart.user.id)
+			    raise ActiveRecord::Rollback
+			elsif
+			#カートの中の商品の数が在庫数より多い
+			    product.stock_quantity < @order_detail.quantity
+			    flash[:alert] = "カートの中の商品の数が在庫数より多いものがあります。カートを確認してください。"
+			    redirect_to user_carts_path(cart.user.id)
+			    raise ActiveRecord::Rollback
+			else
+				product.stock_quantity -= @order_detail.quantity.to_i
+				product.save!
+			 end
+
+			 @order_detail.save!
+
 
 			#cartの削除
 			cart.destroy
 		end
-	 @order.save
+
+	 @order.save!
 	 redirect_to success_user_orders_path()
+	end
+rescue ActiveRecord::Rollback
 	end
 
 	def update

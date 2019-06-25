@@ -6,12 +6,16 @@ class ProductsController < ApplicationController
 		@label = @product.label
 		@discs = @product.discs
 		@reviews = @product.reviews
-
 		@cart = Cart.new
 
 		#商品の在庫数の変更機能
-		@carts = Cart.where(product_id: @product.id)
-		@temporary_quantity = @product.stock_quantity - view_context.get_quantity(@carts)
+		if Cart.where(user_id: current_user.id).find_by(product_id: @product.id)
+          @usercart = Cart.where(user_id: current_user.id).find_by(product_id: @product.id)
+          @temporary_quantity = @product.stock_quantity - @usercart.quantity
+        else
+        	@temporary_quantity = @product.stock_quantity
+        end
+
 
 		@review = Review.new
 

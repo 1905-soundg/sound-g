@@ -6,4 +6,5 @@ class Order < ApplicationRecord
 
 	enum order_status:{受付: 0, 準備中: 1, 出荷済: 2,}
 
+
 end

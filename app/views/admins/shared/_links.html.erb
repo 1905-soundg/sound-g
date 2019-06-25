@@ -1,5 +1,7 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <div class="col-md-8 col-md-offset-10" style="padding-top: 10px;padding-bottom: 10px;">
+    <%= link_to "Log in", new_session_path(resource_name) %><br />
+  </div>
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>

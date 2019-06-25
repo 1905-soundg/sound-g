@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+	before_action :authenticate_user!
 	def new
 	 @carts = Cart.where(user_id: current_user.id)
 	 @fee = 500

@@ -117,12 +117,12 @@
             <tbody>
               <% @reviews.each  do |review| %>
               <tr>
-                <td width="15%"> <%= review.user.last_name %> </td>
+                <td width="15%"> <%= review.user.last_name %> <%= review.user.first_name %> </td>
                 <td width="65%"> <%= review.review %></td>
                 <td width="10%" style="text-align: center;"><%= link_to "編集", edit_admins_product_review_path(id: review.id, product_id: @product.id), class: "btn btn-default" %>
                 </td>
                 <td width="10%" style="text-align: center;" >
-                  <%= link_to "削除", admins_reviews_path(review.id), class: "btn btn-danger", method: :delete, data:{confirm:"本当に削除しますか？"} %>
+                  <%= link_to "削除", admins_review_path(review.id), class: "btn btn-danger", method: :delete, data:{confirm:"本当に削除しますか？"} %>
                 </td>
               </tr>
             </tbody>
@@ -133,4 +133,3 @@
         </div>
       </div>
 </div>
-

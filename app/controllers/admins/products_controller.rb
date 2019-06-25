@@ -49,7 +49,7 @@ class Admins::ProductsController < ApplicationController
 	  def destroy
 	  	@product = Product.find(params[:id])
 	  	@product.destroy
-	  	redirect_to admins_products_pahs
+	  	redirect_to admins_products_path
 	  end
 
 	  def number?(str)

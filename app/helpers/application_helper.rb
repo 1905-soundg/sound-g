@@ -13,7 +13,7 @@ module ApplicationHelper
     end
 
 
-    #cart/indexの商品在庫数変更
+    #cart/indexの商品在庫数変更/不採用
 
     def get_total_quantity(q)
 
@@ -42,10 +42,27 @@ module ApplicationHelper
 
     end
 
+    #cart/indexの商品在庫数変更/不採用
+
+    def get_total_quantity(q)
+
+        #カートに追加できる個数
+        total_quantity = 0
+
+
+        #その商品の在庫数ーその商品が入っているカートの中の個数
+        stock_total = 0
+
+        stock_total = q.product.stock_quantity - q.quantity
+        total_quantity += stock_total
+        return total_quantity
+
+    end
 
 
 
-	 #crat/index総計
+
+	 #crat/index・order/new注文小計
      def get_price(c)
 
     	total = 0
@@ -59,6 +76,7 @@ module ApplicationHelper
 
 
 
+    #order/new注文総計
     def get_totalprice(c)
 
     	total = 0
@@ -74,6 +92,7 @@ module ApplicationHelper
     end
 
 
+    #crat/index商品小計
     def get_subtotal(c)
 
     	total = 0

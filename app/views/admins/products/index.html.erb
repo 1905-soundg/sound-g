@@ -17,8 +17,8 @@
 					<% end %>
 					</td>
 				<td><%= product.album %></td>
-				<% product.discs.each do |disc| %>
-				<% disc.musics.each do |music| %>
+				<% product.discs.first(1).each do |disc| %>
+				<% disc.musics.first(1).each do |music| %>
                 <td><%= music.artist.artist %></td>
 　　　　　　　　　　<% end %>
                  <% end %>

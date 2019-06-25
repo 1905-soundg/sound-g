@@ -39,8 +39,8 @@
 				        	<li>
 				        	<label style="font-weight: normal; margin-bottom: 15px;">
 				        		<%= f.radio_button :address, @user.address ,{:checked => true} %>
+				        			〒<%= @user.postalcode %>
 				        			<%= @user.address %>
-			                        <%= @user.postalcode %>
 									<%= @user.last_name + @user.first_name %>
 				        	</label>
 				        	</li>

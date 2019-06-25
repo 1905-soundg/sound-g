@@ -32,18 +32,24 @@
       </div>
 
       <div>
-        <% if @product.stock_quantity == "0".to_i %>
-        <% @product.sales_status = "販売中止" %>
+        <% if @product.stock_quantity == 0 %>
+        <% @product.sales_status = 1 %>
         <%= @product.sales_status %>
         <% else %>
-        <% if @product.sales_status == "販売中" %>
         <%= @product.sales_status %>
         在庫数<%= @product.stock_quantity %> 個
         <% end %>
+      </div>
+
+
+      <div>
+        <% if Cart.where(user_id: current_user.id).find_by(product_id: @product.id) %>
+        <p> あなたのカートには　<%= @usercart.quantity %> 個入っています。</p>
         <% end %>
       </div>
 
-   		<div style="margin: 10px 0px">
+      <% if @product.sales_status == "販売中" %>
+      <div style="margin: 10px 0px">
       <%= form_for @cart, url:user_carts_path(user_id: current_user.id) do |f| %>
          <div class="col-xs-2" style="padding: 0 0 0 0;" >
        		<%= f.number_field :quantity, min: 1, max: @temporary_quantity, class: "form-control", style: "width: 80px;" %>
@@ -54,6 +60,7 @@
    		<%= f.submit "カートに追加", class: "btn btn-default" %>
       </div>
    		<% end %>
+      <% end %>
 
                <% @discs.each do |d| %>
                <div class="d-inline-block col-xs-5" style="margin: 0 0 0 0;padding: 0 0 0 0;">
@@ -152,12 +159,16 @@
         <%= @product.favorites.count %>
         </div>
 
-        <div>
-          <%= @product.sales_status %>
-          <% if @product.sales_status == "販売中" %>
-          在庫数<%= @product.stock_quantity %> 個
-          <% end %>
-        </div>
+          <div>
+              <% if @product.stock_quantity == 0 %>
+              <% @product.sales_status = 1 %>
+              <%= @product.sales_status %>
+              <% else %>
+              <%= @product.sales_status %>
+              在庫数<%= @product.stock_quantity %> 個
+              <% end %>
+          </div>
+
 
         <div style="margin: 10px 0px">
           <div class="col-xs-2" style="padding: 0 0 0 0;margin: 0 0 0 0;" >

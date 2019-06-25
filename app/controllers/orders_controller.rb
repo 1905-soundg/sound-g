@@ -34,18 +34,21 @@ class OrdersController < ApplicationController
 			 @order.first_name = ""
 			 @order.postalcode = @order_address.postalcode
 		end
-		# order_detailの作成とcartの削除
-		@carts.each do |cart|
+		    # order_detailの作成とcartの削除
+		    @carts.each do |cart|
 			@order_detail = @order.order_details.new
 			@order_detail.product_id = cart.product_id
 			@order_detail.quantity = cart.quantity
 			@order_detail.order_price = view_context.get_subtotal(cart)
 
-			#商品の在庫数を購入分変更する
+			#商品の販売状況を判断する
 			product = cart.product
 			if product.stock_quantity == 0
        			product.sales_status = 1
     		end
+
+    		#商品の在庫数を購入分変更する
+
 			#販売中止の場合
 			if  product.sales_status == "販売停止中"
 				flash[:alert] = "販売をしていない商品があります。カートを確認してください。"
@@ -70,7 +73,7 @@ class OrdersController < ApplicationController
 		end
 
 	 @order.save!
-	 redirect_to success_user_orders_path()
+	 redirect_to success_user_orders_path
 	end
 rescue ActiveRecord::Rollback
 	end

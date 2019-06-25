@@ -32,6 +32,10 @@ class Admins::ProductsController < ApplicationController
 	  def create
 		  @product = Product.new(product_params)
 
+		if @product.stock_quantity == 0
+			@product.sales_status = 1
+		end
+
 	  	  if @product.save
 			flash[:notice] = "商品を登録しました。"
 		    redirect_to admins_product_path(@product)
@@ -43,8 +47,17 @@ class Admins::ProductsController < ApplicationController
 
 	  def update
 	  	@product = Product.find(params[:id])
-	  	@product.update!(product_params)
-	  	redirect_to admins_product_path(@product)
+
+	  	if @product.stock_quantity == 0
+			@product.sales_status = 1
+		end
+
+	  	if @product.update!(product_params)
+	  	   redirect_to admins_product_path(@product)
+	  	else
+	  		flash[:alert] = "商品編集に失敗しました。"
+			render :edit
+		end
 	  end
 
 	  def destroy

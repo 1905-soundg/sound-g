@@ -8,8 +8,14 @@ class CartsController < ApplicationController
 
 	def update
 	 @cart = Cart.find(params[:id])
+
+	 product = @cart.product
+	if product.stock_quantity == 0
+		product.sales_status = 1
+	end
+
 	 @cart.update!(cart_params)
-	 redirect_to user_carts_path(@cart.user_id)
+	 redirect_to user_carts_path(@cart.user.id)
 	end
 
 	def destroy
@@ -20,6 +26,12 @@ class CartsController < ApplicationController
 
 	def create
 		current_cart(params[:cart][:product_id])
+
+		product = @cart.product
+	if product.stock_quantity == 0
+		product.sales_status = 1
+	end
+
 	    @cart.quantity += params[:cart][:quantity].to_i
 	    @cart.user_id = current_user.id
 	    @cart.save

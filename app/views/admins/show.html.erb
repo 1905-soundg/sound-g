@@ -1,0 +1,38 @@
+  <head>
+    <meta charset="utf-8">
+    <title>機能一覧</title>
+  </head>
+  <body>
+    <div class="container">
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3"  style="margin-top: 50px;" >
+
+      <% if notice %>
+          <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">close</span>
+            </button>
+            <%= notice %>
+          </div>
+      <% end %>
+      <% if alert %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">close</span>
+        </button>
+        <%= alert %>
+      </div>
+      <% end %>
+
+  <%= link_to "商品登録", new_admins_product_path, class: "btn btn-secondary col-md-3", :style=>"background-color: #777;color: white;margin: 10px 10px 10px 10px;" %>
+  <%= link_to "アーティスト登録", new_admins_artist_path, class: "btn btn-secondary col-md-3", :style=>"background-color: #777;color: white;margin: 10px 10px 10px 10px;" %>
+  <%= link_to "商品一覧", admins_products_path, class: "btn btn-secondary col-md-3", :style=>"background-color: #777;color: white;margin: 10px 10px 10px 10px;" %>
+  <%= link_to "購入履歴", admins_path, class: "btn btn-secondary col-md-3", :style=>"background-color: #777;color: white;margin: 10px 10px 10px 10px;" %>
+  <%= link_to "ユーザー一覧", admins_users_path, class: "btn btn-secondary col-md-3", :style=>"background-color: #777;color: white;margin: 10px 10px 10px 10px;" %>
+
+</div>
+</div>
+</div>
+</body>

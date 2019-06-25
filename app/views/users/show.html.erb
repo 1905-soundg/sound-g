@@ -7,6 +7,7 @@
       	 </div>
       	 <div class="col-md-7" >
                   <h3 class=""><strong>送付先住所</strong></h3>
+
                   <table class="table ">
 
                   <thead>
@@ -38,8 +39,6 @@
                   <table class="table table-bordered">
                   <thead>
                   <tr>
-                        <th>No</th>
-                        <th>購入者</th>
                         <th>購入日</th>
                         <th>購入商品詳細</th>
                         <th>購入価格総計</th>
@@ -50,8 +49,6 @@
                   <tbody>
                   <% @orders.each do |order| %>
                   <tr>
-                        <td><%= order.id %></td>
-                        <td><%= order.user.last_name %><%= order.user.first_name %></td>
                         <td><%= order.created_at %></td>
                         <td>
                               <% order.order_details.each do |order_detail| %>

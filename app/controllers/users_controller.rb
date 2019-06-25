@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
+	before_action :authenticate_user!
 
 	def show
 		@user = User.find(params[:id])
+		if current_user.id != @user.id
+	    redirect_to root_path
+	    end
 		@address = Address.new
 		@addresses = @user.addresses.page(params[:addresses_page]).reverse_order.per(5)
 		@favorites = @user.favorites.all

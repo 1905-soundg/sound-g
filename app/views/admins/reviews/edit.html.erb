@@ -1,6 +1,3 @@
-<%= render 'layouts/header' %>
-
-
 <div class="container">
 	<div class="row">
 
@@ -31,7 +28,7 @@
 
          <%= form_for @review, url: admins_product_review_path(id: @review.id) do |review| %>
 
-         <h4>ユーザー名： <%= @user.last_name %> </h4>
+         <h4>ユーザー名： <%= @user.last_name %>  <%= @user.first_name %></h4>
          <%= review.text_area :review, size: "80x10" %>
 
 
@@ -54,5 +51,3 @@
     </div>
 	</div>
 </div>
-
-

@@ -14,53 +14,53 @@
 
 
    		<div >
-      <p class="" style="margin: 0 0 0 0;"> <%= @genre.genre %> </p>
-   		<h2 class="" style="margin: 15px 0 15px 0;"> <%= @product.album %> </h2>
-   		<p class="" style="margin: 10px 0 10px 0;"> <%= @label.label %> </p>
-   		<p class="" style="margin: 10px 0 10px 0;"> ¥<%= @product.price %></p>
-      <% if @product.favorited_by?(current_user) %>
-          <%= link_to product_favorites_path(@product), method: :delete do %>
-            <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
-            <%= @product.favorites.count %>
-          <% end %>
-      <% else %>
-          <%= link_to product_favorites_path(@product), method: :post do %>
-            <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
-            <%= @product.favorites.count %>
-          <% end %>
-      <% end %>
-      </div>
-
-      <div>
-        <% if @product.stock_quantity == 0 %>
-        <% @product.sales_status = 1 %>
-        <%= @product.sales_status %>
+        <p class="" style="margin: 0 0 0 0;"> <%= @genre.genre %> </p>
+     		<h2 class="" style="margin: 15px 0 15px 0;"> <%= @product.album %> </h2>
+     		<p class="" style="margin: 10px 0 10px 0;"> <%= @label.label %> </p>
+     		<p class="" style="margin: 10px 0 10px 0;"> ¥<%= @product.price %></p>
+        <% if @product.favorited_by?(current_user) %>
+            <%= link_to product_favorites_path(@product), method: :delete do %>
+              <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
+              <%= @product.favorites.count %>
+            <% end %>
         <% else %>
-        <%= @product.sales_status %>
-        在庫数<%= @product.stock_quantity %> 個
+            <%= link_to product_favorites_path(@product), method: :post do %>
+              <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+              <%= @product.favorites.count %>
+            <% end %>
         <% end %>
-      </div>
+        </div>
+
+        <div>
+          <% if @product.stock_quantity == 0 %>
+            <% @product.sales_status = 1 %>
+            <%= @product.sales_status %>
+            <% else %>
+            <%= @product.sales_status %>
+            在庫数<%= @product.stock_quantity %> 個
+          <% end %>
+        </div>
 
 
-      <div>
-        <% if Cart.where(user_id: current_user.id).find_by(product_id: @product.id) %>
-        <p> あなたのカートには　<%= @usercart.quantity %> 個入っています。</p>
+        <div>
+          <% if Cart.where(user_id: current_user.id).find_by(product_id: @product.id) %>
+          <p> あなたのカートには　<%= @usercart.quantity %> 個入っています。</p>
+          <% end %>
+        </div>
+
+        <% if @product.sales_status == "販売中" %>
+          <div style="margin: 10px 0px">
+          <%= form_for @cart, url:user_carts_path(user_id: current_user.id) do |f| %>
+             <div class="col-xs-2" style="padding: 0 0 0 0;" >
+           		 <%= f.number_field :quantity, min: 1, max: @temporary_quantity, class: "form-control", style: "width: 80px;" %>
+             </div>
+             <div class="col-xs-2" style="padding: 0 0 0 0;margin: 0 -30px 0 0;">
+           		 <%= f.hidden_field :product_id, :value => @product.id %>
+             </div>
+       		     <%= f.submit "カートに追加", class: "btn btn-default" %>
+          <% end %>
+          </div>
         <% end %>
-      </div>
-
-      <% if @product.sales_status == "販売中" %>
-      <div style="margin: 10px 0px">
-      <%= form_for @cart, url:user_carts_path(user_id: current_user.id) do |f| %>
-         <div class="col-xs-2" style="padding: 0 0 0 0;" >
-       		<%= f.number_field :quantity, min: 1, max: @temporary_quantity, class: "form-control", style: "width: 80px;" %>
-         </div>
-         <div class="col-xs-2" style="padding: 0 0 0 0;margin: 0 -30px 0 0;">
-       		<%= f.hidden_field :product_id, :value => @product.id %>
-         </div>
-   		<%= f.submit "カートに追加", class: "btn btn-default" %>
-      </div>
-   		<% end %>
-      <% end %>
 
                <% @discs.each do |d| %>
                <div class="d-inline-block col-xs-5" style="margin: 0 0 0 0;padding: 0 0 0 0;">
@@ -88,28 +88,28 @@
       <%= form_for (@review) do |f| %>
 				<h3>商品レビュー</h3>
 
-				<% if notice %>
-		        <div class="alert alert-info alert-dismissible" role="alert">
-		          <button type="button" class="close" data-dismiss="alert">
-		            <span aria-hidden="true">&times;</span>
-		            <span class="sr-only">close</span>
-		          </button>
-		          <%= notice %>
-		        </div>
-		    <% end %>
-		    <% if alert %>
-		    <div class="alert alert-danger alert-dismissible" role="alert">
-		      <button type="button" class="close" data-dismiss="alert">
-		        <span aria-hidden="true">&times;</span>
-		        <span class="sr-only">close</span>
-		      </button>
-		      <%= alert %>
-		    </div>
-		    <% end %>
+  				<% if notice %>
+  		        <div class="alert alert-info alert-dismissible" role="alert">
+  		          <button type="button" class="close" data-dismiss="alert">
+  		            <span aria-hidden="true">&times;</span>
+  		            <span class="sr-only">close</span>
+  		          </button>
+  		          <%= notice %>
+  		        </div>
+  		    <% end %>
+  		    <% if alert %>
+  		    <div class="alert alert-danger alert-dismissible" role="alert">
+  		      <button type="button" class="close" data-dismiss="alert">
+  		        <span aria-hidden="true">&times;</span>
+  		        <span class="sr-only">close</span>
+  		      </button>
+  		      <%= alert %>
+  		    </div>
+  		    <% end %>
 
-				<%= f.text_area :review, :size => "130x5",  class: "form-control", placeholder:"新規レビュー投稿" %>
-				<%= f.hidden_field :product_id, :value => @product.id %>
-				<%= f.submit "投稿", class: "btn btn-default", style: "margin-top: 10px;" %>
+  				<%= f.text_area :review, :size => "130x5",  class: "form-control", placeholder:"新規レビュー投稿" %>
+  				<%= f.hidden_field :product_id, :value => @product.id %>
+  				<%= f.submit "投稿", class: "btn btn-default", style: "margin-top: 10px;" %>
 				<% end %>
 
 
@@ -161,11 +161,11 @@
 
           <div>
               <% if @product.stock_quantity == 0 %>
-              <% @product.sales_status = 1 %>
-              <%= @product.sales_status %>
-              <% else %>
-              <%= @product.sales_status %>
-              在庫数<%= @product.stock_quantity %> 個
+                <% @product.sales_status = 1 %>
+                <%= @product.sales_status %>
+                <% else %>
+                <%= @product.sales_status %>
+                在庫数<%= @product.stock_quantity %> 個
               <% end %>
           </div>
 

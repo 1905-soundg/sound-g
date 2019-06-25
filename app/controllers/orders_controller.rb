@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
 	@user = current_user
 	 @order = Order.new(order_params)
 	 @order.user_id = current_user.id
+
 		 if @order.address == @user.address
 
 		 	#ユーザー登録時に登録した住所を選択した場合
@@ -43,10 +44,10 @@ class OrdersController < ApplicationController
 			#商品の在庫数を購入分変更する
 			product = cart.product
 			if product.stock_quantity == 0
-       			product.sales_status = "販売中止"
+       			product.sales_status = "販売停止中"
     		end
 			#販売中止の場合
-			if  product.sales_status == "販売中止"
+			if  product.sales_status == "販売停止中"
 				flash[:alert] = "販売をしていない商品があります。カートを確認してください。"
 			    redirect_to user_carts_path(cart.user.id)
 			    raise ActiveRecord::Rollback

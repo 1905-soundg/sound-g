@@ -60,18 +60,29 @@ module ApplicationHelper
     end
 
 
+    #税込の商品価格
+    def get_producttax(t)
+        tax = 1.08
+        producttax = t.price * tax
+        return producttax.floor
+
+    end
+
+
 
 
 	 #crat/index・order/new注文小計
      def get_price(c)
 
     	total = 0
+        tax = 1.08
 
     	c.each do |cart|
     		subtotal = cart.product.price * cart.quantity
     		total += subtotal
     	end
-    	return total
+         totaltax = total * tax
+    	return totaltax.floor
     end
 
 
@@ -95,12 +106,12 @@ module ApplicationHelper
     #crat/index商品小計
     def get_subtotal(c)
 
-    	total = 0
+        tax = 1.08
 
     		subtotal = c.product.price * c.quantity
-    		total += subtotal
+            subtotaltax = subtotal * tax
 
-    	return total
+    	return subtotaltax.floor
     end
 
 end

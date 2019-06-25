@@ -31,7 +31,7 @@
 			<div class="productdata">
 				<p class="" style="margin: 10px 0px 0px 0px;"><%= product.album %></p>
 				<p class="" style="margin: 0px 0px 0px 0px;"><%= product.label.label %></p>
-				<p class="" style="margin: 0px 0px 0px 0px;">￥<%= product.price %></p>
+				<p class="" style="margin: 0px 0px 0px 0px;">￥<%= get_producttax(product) %></p>
 					<% product.discs.first(1).each do |disc| %>
 					<% disc.musics.first(1).each do |music| %>
 					<p class="" style="margin: 0px 0px 0px 0px;"><strong><%= music.artist.artist %></strong></p>

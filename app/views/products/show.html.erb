@@ -46,7 +46,7 @@
           <% end %>
         </div>
 
-        <% if @product.sales_status == "販売中" %>
+        <% unless @product.sales_status == "販売停止中" or @product.stock_quantity == 0 %>
           <div style="margin: 10px 0px">
           <%= form_for @cart, url:user_carts_path(user_id: current_user.id) do |f| %>
              <div class="col-xs-2" style="padding: 0 0 0 0;" >

@@ -49,7 +49,7 @@ class Admins::ProductsController < ApplicationController
 	  	@product = Product.find(params[:id])
 
 	  	if @product.stock_quantity == 0
-			@product.sales_status = "販売中止"
+			@product.sales_status = 1
 		end
 
 	  	@product.update!(product_params)

@@ -30,7 +30,8 @@
 				<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 				<td>
 					<% order.order_details.each do |order_detail| %>
-	                <%= order_detail.product.album %>： 購入枚数<%= order_detail.quantity %>枚<br>
+	                <%= order_detail.product.album %>： 購入枚数<%= order_detail.quantity %>枚
+	                ¥<%= get_subtotal(order_detail) %><br>
 	                <% end %>
                 </td>
 				<td>￥<%= order.subtotal_price %></td>

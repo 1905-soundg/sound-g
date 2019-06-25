@@ -38,19 +38,11 @@
 								<%= attachment_image_tag cart.product, :image, :fill, 150, 150, format: 'jpg' %>
 							<% end %>
 							</div>
-							<p> 販売状況：
-					          <% if cart.product.stock_quantity == 0 %>
-					            <% cart.product.sales_status = 1 %>
-					            <%= cart.product.sales_status %>
-					            </div>
-					            <% else %>
-					              <% if cart.product.sales_status == 0 %>
-					              <%= cart.product.sales_status %>
-					               / 在庫数 ：<%= cart.product.stock_quantity %>
-					              </div>
-					            <% end %>
+					          <% if cart.product.sales_status == "販売停止中" or cart.product.stock_quantity == 0 %>
+					                <p>販売停止中</p>
+					          <% else %>
+					            <%= cart.product.sales_status %>/在庫数<%= cart.product.stock_quantity %> 個
 					          <% end %>
-					        </p>
 						</td>
 						<td>
 							<div class="center-block" style="margin-top: 35px;margin-bottom: 35px;">
@@ -74,7 +66,7 @@
 <div class="col-md-8 col-md-offset-2">
     <div class="col-md-7"></div>
     <div class="col-md-4">
-		<h2 class="page-header">総計    ¥<%= get_price(@carts) %></h2>
+		<h2 class="page-header">総計    ¥<%= get_price(@carts) %>（税込）</h2>
 	</div>
 	<div class="col-md-1" style="padding-top: 40px;">
 			<%= link_to "購入", new_user_order_path, class: "btn btn-secondary", :style=>"background-color: #777;color: white;" %>

@@ -17,7 +17,7 @@
         <p class="" style="margin: 0 0 0 0;"> <%= @genre.genre %> </p>
      		<h2 class="" style="margin: 15px 0 15px 0;"> <%= @product.album %> </h2>
      		<p class="" style="margin: 10px 0 10px 0;"> <%= @label.label %> </p>
-     		<p class="" style="margin: 10px 0 10px 0;"> ¥<%= get_producttax(@product) %></p>
+     		<p class="" style="margin: 10px 0 10px 0;"> ¥<%= get_producttax(@product) %>（税込）</p>
         <% if @product.favorited_by?(current_user) %>
             <%= link_to product_favorites_path(@product), method: :delete do %>
               <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
@@ -32,15 +32,13 @@
         </div>
 
         <div>
-          <% if @product.stock_quantity == 0 %>
-            <% @product.sales_status = 1 %>
-            <%= @product.sales_status %>
-            <% else %>
+          <% if @product.sales_status == "販売停止中" or @product.stock_quantity == 0 %>
+                <p>販売停止中</p>
+          <% else %>
             <%= @product.sales_status %>
             在庫数<%= @product.stock_quantity %> 個
           <% end %>
         </div>
-
 
         <div>
           <% if Cart.where(user_id: current_user.id).find_by(product_id: @product.id) %>
@@ -154,20 +152,19 @@
         <p class="" style="margin: 0 0 0 0;"> <%= @genre.genre %> </p>
         <h2 class="" style="margin: 15px 0 15px 0;"> <%= @product.album %> </h2>
         <p class="" style="margin: 10px 0 10px 0;"> <%= @label.label %></p>
-        <p class="" style="margin: 10px 0 10px 0;"> ¥<%= @product.price %></p>
+        <p class="" style="margin: 10px 0 10px 0;"> ¥<%= get_producttax(@product) %>（税込）</p>
         <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
         <%= @product.favorites.count %>
         </div>
 
-          <div>
-              <% if @product.stock_quantity == 0 %>
-                <% @product.sales_status = 1 %>
-                <%= @product.sales_status %>
-                <% else %>
-                <%= @product.sales_status %>
-                在庫数<%= @product.stock_quantity %> 個
-              <% end %>
-          </div>
+           <div>
+          <% if @product.sales_status == "販売停止中" or @product.stock_quantity == 0 %>
+                <p>販売停止中</p>
+          <% else %>
+            <%= @product.sales_status %>
+            在庫数<%= @product.stock_quantity %> 個
+          <% end %>
+        </div>
 
 
         <div style="margin: 10px 0px">

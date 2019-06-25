@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
 			#商品の在庫数を購入分変更する
 			product = cart.product
 			if product.stock_quantity == 0
-       			product.sales_status = "販売停止中"
+       			product.sales_status = 1
     		end
 			#販売中止の場合
 			if  product.sales_status == "販売停止中"

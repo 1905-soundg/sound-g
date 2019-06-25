@@ -58,12 +58,12 @@
 
       <div style="margin-bottom: 10px;">
             <% if @product.stock_quantity == 0 %>
-            <% @product.sales_status = 1 %>
-            <%= @product.sales_status %><br>
-            在庫数<%= @product.stock_quantity %> 個
-            <% else %>
-            <%= @product.sales_status %><br>
-            在庫数 <%= @product.stock_quantity %> 個
+              <% @product.sales_status = 1 %>
+              <%= @product.sales_status %><br>
+              在庫数<%= @product.stock_quantity %> 個
+              <% else %>
+              <%= @product.sales_status %><br>
+              在庫数 <%= @product.stock_quantity %> 個
             <% end %>
       </div>
 

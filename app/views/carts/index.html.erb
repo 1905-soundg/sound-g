@@ -39,12 +39,12 @@
 							<% end %>
 							</div>
 							<p> 販売状況：
-					          <% if cart.product.stock_quantity == "0".to_i %>
-					            <% cart.product.sales_status = "販売中止" %>
+					          <% if cart.product.stock_quantity == 0 %>
+					            <% cart.product.sales_status = 1 %>
 					            <%= cart.product.sales_status %>
 					            </div>
 					            <% else %>
-					              <% if cart.product.sales_status == "販売中" %>
+					              <% if cart.product.sales_status == 0 %>
 					              <%= cart.product.sales_status %>
 					               / 在庫数 ：<%= cart.product.stock_quantity %>
 					              </div>

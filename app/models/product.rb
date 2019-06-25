@@ -19,7 +19,7 @@ class Product < ApplicationRecord
     validates :stock_quantity, numericality: {greater_than_or_equal_to: 0}
 
 
-    enum sales_status:{販売中: 0, 販売中止: 1,}
+    enum sales_status:{販売中: 0, 販売停止中: 1,}
 
 
 

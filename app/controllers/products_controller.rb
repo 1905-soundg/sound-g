@@ -8,19 +8,18 @@ class ProductsController < ApplicationController
 		@reviews = @product.reviews
 		@cart = Cart.new
 
-		#商品の在庫数の変更機能
-		if Cart.where(user_id: current_user.id).find_by(product_id: @product.id)
-          @usercart = Cart.where(user_id: current_user.id).find_by(product_id: @product.id)
-          @temporary_quantity = @product.stock_quantity - @usercart.quantity
-        else
-        	@temporary_quantity = @product.stock_quantity
+		if user_signed_in?
+			#カートの商品の在庫数の変更機能
+			if Cart.where(user_id: current_user.id).find_by(product_id: @product.id)
+	          @usercart = Cart.where(user_id: current_user.id).find_by(product_id: @product.id)
+	          @temporary_quantity = @product.stock_quantity - @usercart.quantity
+	        else
+	        	@temporary_quantity = @product.stock_quantity
+	        end
         end
 
 
 		@review = Review.new
-
-
-
 
 	end
 

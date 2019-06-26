@@ -73,7 +73,7 @@
     <%= f.submit "更新", class: "btn btn-default col-xs-3", style: "margin-right: 5px;" %>
     <%= link_to "退会", user_path(@user), class: "btn btn-danger  col-xs-3 destroy_#{@user.id}", style: "margin-left: 5px;", method: :delete %>
   <% else %>
-    <p class="btn btn-danger  col-xs-6">退会しました</p>
+    <%= link_to "退会しました", admins_users_path, class: "btn btn-danger  col-xs-6" %>
   <% end %>
 </div>
 

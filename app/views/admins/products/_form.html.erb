@@ -26,7 +26,7 @@
 							<%= f.label :genre, "ジャンル" %>
 						</div>
 						<div class="col-md-6">
-							<%= f.collection_select :genre_id, Genre.all, :id, :genre, :include_blank => true %>
+							<%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id]}, { include_blank: true }, { class: 'js-searchable'} %>
 						</div><br>
 					</div>
 
@@ -38,7 +38,7 @@
 							<%= f.label :label, "レーベル" %>
 						</div>
 						<div class="col-md-6">
-							<%= f.collection_select :label_id, Label.all, :id, :label, :include_blank => true %>
+							<%= f.select :label_id, Label.all.map{|l| [l.label, l.id]}, { include_blank: true }, {class: 'js-searchable'} %>
 						</div><br>
 					</div>
 

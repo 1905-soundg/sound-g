@@ -1,6 +1,7 @@
 <div class="text-center">
 	<h1>商品登録</h1>
 </div>
+
 <% if notice %>
 		<div class="alert alert-info alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert">
@@ -19,4 +20,5 @@
 	<%= alert %>
 </div>
 <% end %>
+
 <%= render 'form', product: @product %>

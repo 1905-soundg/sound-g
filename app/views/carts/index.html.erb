@@ -1,77 +1,73 @@
 <div class="container">
-<div class="row">
-<div class="col-md-8 col-md-offset-2">
-<% if @carts.blank? %>
 	<div class="row">
-		<h1 class="text-center" style="margin: 50px 0px;">カートが空です</h1>
+		<div class="col-md-8 col-md-offset-2">
+			<% if @carts.blank? %>
+				<div class="row">
+					<h1 class="text-center" style="margin: 50px 0px;">カートが空です</h1>
+				</div>
+			<div class="col-md-6 col-md-offset-3">
+				<div>
+			 		<%= link_to "戻る", root_path, class: "btn btn-default btn-block" %>
+				</div>
+			</div>
+		</div>
 	</div>
-<div class="col-md-6 col-md-offset-3">
-	<div>
-	 	<%= link_to "戻る", root_path, class: "btn btn-default btn-block" %>
-	</div>
-</div>
-</div>
-</div>
 </div>
 	<% else %>
 
-	<% if alert %>
-        <div class="alert alert-danger alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">close</span>
-          </button>
-          <%= alert %>
-        </div>
-    <% end %>
-
-
-	<h1>カート内容</h1>
-		<table class="table">
-				<tbody>
-					<% @carts.each do |cart| %>
-					<tr>
-
-						<td>
-							<div class="center-block" style="margin-top: 10px;margin-bottom: 10px;">
-							<%=link_to product_path(cart.product.id) do %>
-								<%= attachment_image_tag cart.product, :image, :fill, 150, 150, format: 'jpg' %>
-							<% end %>
-							</div>
-					          <% if cart.product.sales_status == "販売停止中" or cart.product.stock_quantity == 0 %>
-					                <p>販売停止中</p>
-					          <% else %>
-					            <%= cart.product.sales_status %>/在庫数<%= cart.product.stock_quantity %> 個
-					          <% end %>
-						</td>
-						<td>
-							<div class="center-block" style="margin-top: 35px;margin-bottom: 35px;">
-							<h3><%= cart.product.album %></h3>
-							<%= form_for cart, url: user_cart_path(user_id: @user.id,id: cart.id) do |f| %>
-							<%= f.number_field :quantity, min: 1, max: cart.product.stock_quantity , style:"height:32px; width:45px;border: 1px solid #adadad; border-radius: 5px;" %>
-							<%= f.submit "変更", class: "btn btn-default" %>
-					        <%= link_to "削除","/users/#{@user.id}/carts/#{cart.id}",  class: "btn btn-danger", method: :delete %><br>
-					        <div class="center-block" style="margin-top: 10px;"><strong>小計　¥<%= get_subtotal(cart) %></strong></div>
-					        </div>
-					    </td>
-					<% end %>
-					</tr>
-					<% end %>
-				</tbody>
-		</table>
+<% if alert %>
+<div class="alert alert-danger alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert">
+		<span aria-hidden="true">&times;</span>
+		<span class="sr-only">close</span>
+	</button>
+	<%= alert %>
 </div>
-</div>
+<% end %>
+
+
+<h1>カート内容</h1>
+<table class="table">
+	<tbody>
+		<% @carts.each do |cart| %>
+		<tr>
+			<td>
+				<div class="center-block" style="margin-top: 10px;margin-bottom: 10px;">
+					<%=link_to product_path(cart.product.id) do %>
+						<%= attachment_image_tag cart.product, :image, :fill, 150, 150, format: 'jpg' %>
+					<% end %>
+				</div>
+				<% if cart.product.sales_status == "販売停止中" or cart.product.stock_quantity == 0 %>
+					<p>販売停止中</p>
+					<% else %>
+						<%= cart.product.sales_status %>/在庫数<%= cart.product.stock_quantity %> 個
+				<% end %>
+			</td>
+			<td>
+				<div class="center-block" style="margin-top: 35px;margin-bottom: 35px;">
+					<h3><%= cart.product.album %></h3>
+					<%= form_for cart, url: user_cart_path(user_id: @user.id,id: cart.id) do |f| %>
+					<%= f.number_field :quantity, min: 1, max: cart.product.stock_quantity , style:"height:32px; width:45px;border: 1px solid #adadad; border-radius: 5px;" %>
+					<%= f.submit "変更", class: "btn btn-default" %>
+					<%= link_to "削除","/users/#{@user.id}/carts/#{cart.id}",  class: "btn btn-danger", method: :delete %><br>
+					<div class="center-block" style="margin-top: 10px;"><strong>小計　¥<%= get_subtotal(cart) %></strong></div>
+					<% end %>
+				</div>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
 
 <div class="row">
-<div class="col-md-8 col-md-offset-2">
-    <div class="col-md-5"></div>
-    <div class="col-md-6">
-		<h2 class="page-header">総計    ¥<%= get_price(@carts) %>（税込）</h2>
+	<div class="col-md-8 col-md-offset-2">
+	    <div class="col-md-3"></div>
+	    <div class="col-md-8">
+			<h2 class="page-header">総計    ¥<%= get_price(@carts) %>（税込）</h2>
+		</div>
+		<div class="col-md-1" style="padding-top: 40px;">
+				<%= link_to "購入", new_user_order_path, class: "btn btn-secondary", :style=>"background-color: #777;color: white;" %>
+	    </div>
 	</div>
-	<div class="col-md-1" style="padding-top: 40px;">
-			<%= link_to "購入", new_user_order_path, class: "btn btn-secondary", :style=>"background-color: #777;color: white;" %>
-    </div>
-</div>
-</div>
 </div>
 <% end %>

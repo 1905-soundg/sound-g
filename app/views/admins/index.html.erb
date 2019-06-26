@@ -5,6 +5,7 @@
 			<tr >
 				<th>No</th>
 				<th>購入者</th>
+				<th>会員情報</th>
 				<th style="text-align: center;">
 				  購入日
 				</th>
@@ -18,7 +19,7 @@
 				  送付先
 				</th>
 				<th colspan="2" style="text-align: center;" >
-				  ステータス
+				  販売ステータス
 				</th>
 			</tr>
 		</thead>
@@ -27,6 +28,13 @@
 			<tr>
 				<td><%= order.id %></td>
 				<td><%= order.user.last_name %><%= order.user.first_name %></td>
+				<td>
+					<% if order.user.deleted_at == nil %>
+					<p>入会</p>
+				    <% else %>
+				    <p>退会</p>
+				    <% end %>
+				</td>
 				<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 				<td>
 					<% order.order_details.each do |order_detail| %>

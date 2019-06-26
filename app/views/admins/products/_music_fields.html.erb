@@ -10,7 +10,7 @@
 
 	<div class="form-group" style="font-size: 18px; padding-bottom: 30px; padding-right: 20px;">
 		<%= f.label :artist, "アーティスト" %>
-		<%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id]}, {}, {class: 'js-searchable'} %>
+		<%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id]}, { include_blank: true }, {class: 'js-searchable'} %>
 		<%= link_to_remove_association "楽曲削除", f, class: "btn btn-danger" %>
 	</div>
 

@@ -4,9 +4,10 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th>name</th>
-				<th>tell</th>
-				<th>mail</th>
+				<th>名前</th>
+				<th>電話番号</th>
+				<th>メール</th>
+				<th>会員情報</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -15,6 +16,13 @@
 				<td><%= link_to user.last_name + user.first_name , admins_user_path(user.id), :style=>"color:#777;text-decoration: none;" %></td>
 				<td><%= user.telephone_number %></td>
 				<td><%= user.email %></td>
+				<td>
+					<% if user.deleted_at == nil %>
+					<p>入会</p>
+				    <% else %>
+				    <p>退会</p>
+				    <% end %>
+				</td>
 			</tr>
 			<% end %>
 		</tbody>

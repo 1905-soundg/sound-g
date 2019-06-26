@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   acts_as_paranoid
 
+  def user
+      User.unscoped{super}
+  end
+
   has_many :addresses
   has_many :orders
   has_many :carts
@@ -18,7 +22,6 @@ class User < ApplicationRecord
   validates :first_name_k,presence: true, length:{ in: 1..50 },format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
   validates :postalcode,presence: true, length:{is:7},format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
   validates :telephone_number,presence: true,length:{ in: 9..20 },format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
-
 
 
 end

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 
 	def show
-		@user = User.find(params[:id])
+		@user = User.unscoped.find(params[:id])
 		if current_user.id != @user.id
 	    redirect_to root_path
 	    end

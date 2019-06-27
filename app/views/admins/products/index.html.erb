@@ -3,9 +3,10 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th></th>
-				<th>title</th>
-				<th>artist</th>
+				<th>CD画像</th>
+				<th>アルバム名</th>
+				<th>アーティスト名</th>
+				<th>販売情報</th>
 			</tr>
 		</thead>
 			<% @products.each do |product| %>
@@ -19,7 +20,16 @@
 				<% product.discs.first(1).each do |disc| %>
 				<% disc.musics.first(1).each do |music| %>
                 <td><%= music.artist.artist %></td>
-　　　　　　　　　　<% end %>
+                <td>
+                 	<% if product.stock_quantity == 0 %>
+                 	<% product.sales_status = 1 %>
+                 	<%= product.sales_status %><br>
+                 	<% else %>
+                	<%= product.sales_status %><br>
+                	<% end %>
+                	 在庫数 <%= product.stock_quantity %> 個
+                </td>
+				<% end %>
                  <% end %>
 			</tr>
 			<% end %>

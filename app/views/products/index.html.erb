@@ -25,13 +25,17 @@
 		<% @search_products.each do |product| %>
 
 		<div class="d-inline-block col-lg-3" style="margin: 30px 0 30px 0;">
-			<%=link_to product_path(product.id) do %>
+			<%= link_to product_path(product.id) do %>
 			<%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpg' %>
 			<% end %>
 			<div class="productdata">
 				<p class="" style="margin: 10px 0px 0px 0px;"><%= product.album %></p>
 				<p class="" style="margin: 0px 0px 0px 0px;"><%= product.label.label %></p>
-				<p class="" style="margin: 0px 0px 0px 0px;">￥<%= get_producttax(product) %></p>
+				<% if product.sales_status == "販売停止中" or product.stock_quantity == 0 %>
+                	<p class="" style="margin: 0px 0px 0px 0px;">販売停止中</p>
+          		<% else %>
+            		<p class="" style="margin: 0px 0px 0px 0px;">￥<%= get_producttax(product) %></p>
+         		<% end %>
 					<% product.discs.first(1).each do |disc| %>
 					<% disc.musics.first(1).each do |music| %>
 					<p class="" style="margin: 0px 0px 0px 0px;"><strong><%= music.artist.artist %></strong></p>

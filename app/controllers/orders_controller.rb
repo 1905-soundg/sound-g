@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
 			elsif
 			#カートの中の商品の数が在庫数より多い
 			    product.stock_quantity < @order_detail.quantity
-			    flash[:alert] = "カートの中の商品の数が在庫数より多いものがあります。カートを確認してください。"
+			    flash[:alert] = "カートの商品の数が在庫数より多いものがあります。カートを確認してください。"
 			    redirect_to user_carts_path(cart.user.id)
 			    raise ActiveRecord::Rollback
 			else

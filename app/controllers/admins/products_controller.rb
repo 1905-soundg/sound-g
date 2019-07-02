@@ -32,6 +32,7 @@ class Admins::ProductsController < ApplicationController
 
 	  def create
 		  @product = Product.new(product_params)
+		  @product.save
 
 		if @product.stock_quantity == 0
 			@product.sales_status = 1
@@ -48,6 +49,7 @@ class Admins::ProductsController < ApplicationController
 
 	  def update
 	  	@product = Product.find(params[:id])
+	  	@product.update!(product_params)
 
 	  	if @product.stock_quantity == 0
 			@product.sales_status = 1
